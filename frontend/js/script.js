@@ -11,7 +11,7 @@ loginForm.addEventListener('submit', (e)=>{
   const pass = document.getElementById('password').value.trim();
   if(!user || !pass){ alert('Enter username and password'); return; }
 
-  fetch('/api/auth/login', {
+  fetch('https://holisol.onrender.com/api/auth/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ username: user, password: pass })
