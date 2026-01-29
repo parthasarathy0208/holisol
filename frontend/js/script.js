@@ -4,6 +4,8 @@ const loginPage = document.getElementById('loginPage');
 const appRoot = document.getElementById('app');
 const headerUser = document.getElementById('headerUser');
 const logoutBtn = document.getElementById('logoutBtn');
+const API_BASE = 'https://holisol.onrender.com';
+
 
 loginForm.addEventListener('submit', (e)=>{
   e.preventDefault();
@@ -1526,7 +1528,7 @@ document.getElementById('oem_addSame').addEventListener('click', ()=>{
   }
 
   try{
-    const res = await fetch('/api/inventory/refresh', { 
+    const res = await fetch('https://holisol.onrender.com/api/inventory/refresh', { 
       method: 'POST', 
       headers: { 'Content-Type':'application/json' } 
     });
@@ -1620,9 +1622,9 @@ document.querySelector('.ss-orange-btn')?.addEventListener('click', async () => 
   let url = '';
 
 if (fromSource.toUpperCase() === 'INWARD HISTORY') {
-  url = '/api/inventory/inward-summary';
+  url = 'https://holisol.onrender.com/api/inventory/inward-summary';
 } else if (fromSource.toUpperCase() === 'OEM INWARD HISTORY') {
-  url = '/api/inventory/oem-inward-summary';
+  url = 'https://holisol.onrender.com/api/inventory/oem-inward-summary';
 } else {
   alert("Please select a valid FROM option");
   return;
