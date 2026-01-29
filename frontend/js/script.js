@@ -884,7 +884,7 @@ let oemDataset = [];
 // load OEM dataset from server (replaces hardcoded sample)
 (function loadOemDataset(){
   try{
-    fetch('/api/inventory/oem-inward').then(r=>r.json()).then(resp=>{
+    fetch('https://holisol.onrender.com/api/inventory/oem-inward').then(r=>r.json()).then(resp=>{
       if(resp && resp.ok && Array.isArray(resp.docs)){
         oemDataset = resp.docs.map(d=>{
           const boxes = d.boxes || {};
