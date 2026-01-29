@@ -203,6 +203,56 @@ select.with-arrow::-ms-expand{display:none}
   .menu button{padding:12px;font-size:14px}
   .tiles{grid-template-columns:1fr}
 }
+/* ============================
+   TRUE MOBILE LAYOUT FIX
+   ============================ */
+@media (max-width: 760px) {
+
+  /* CHANGE LAYOUT DIRECTION */
+  body {
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  /* SIDEBAR SHOULD NOT BE SIDE-BY-SIDE */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  /* MAIN CONTENT MUST RESET */
+  .main,
+  .content,
+  .container {
+    width: 100% !important;
+    margin-left: 0 !important;
+  }
+
+  /* DASHBOARD CARDS */
+  .tiles {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* FORMS */
+  input,
+  select,
+  textarea,
+  button {
+    width: 100% !important;
+  }
+
+  /* TABLES (VERY IMPORTANT) */
+  .table-wrapper,
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 720px;
+  }
+}
+
 
 /* Prevent add-more blocks from overflowing the grey container */
 .extra-block{box-sizing:border-box;max-width:100%;overflow:hidden}
@@ -478,64 +528,84 @@ html, body {
   border-color: #f4a000 !important;
   color: #fff !important;
 }
-/* =========================
-   MOBILE RESPONSIVE FIX
-   ========================= */
+/* ===============================
+   MOBILE RESPONSIVE FIX (CRITICAL)
+   =============================== */
 @media (max-width: 768px) {
 
-  /* Stack layout vertically */
+  /* BODY */
   body {
     flex-direction: column;
     overflow-x: hidden;
   }
 
-  /* Hide sidebar on mobile */
+  /* SIDEBAR */
   .sidebar {
+    position: relative;
     width: 100%;
     height: auto;
-    position: relative;
     border-right: none;
   }
 
-  /* Header alignment */
-  header {
-    flex-direction: column;
-    gap: 10px;
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .sidebar li {
+    width: 50%;
+    text-align: center;
+  }
+
+  /* MAIN CONTENT */
+  .main,
+  .content,
+  .container {
+    width: 100% !important;
+    margin-left: 0 !important;
     padding: 12px;
   }
 
-  /* Login card */
-  .login-wrap {
-    width: 95%;
-    padding: 24px;
-    margin: 20px auto;
+  /* DASHBOARD CARDS */
+  .dashboard-cards {
+    grid-template-columns: 1fr !important;
   }
 
-  /* Forms */
-  .form {
-    gap: 20px;
-  }
-
-  /* Inputs */
-  .input {
+  /* FORMS */
+  form {
     width: 100%;
-    max-width: 100%;
-    height: 48px;
   }
 
-  /* Buttons */
+  input,
+  select,
+  textarea,
   button {
+    width: 100% !important;
+  }
+
+  /* TABLE FIX */
+  .table-wrapper,
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px;
+  }
+
+  /* HEADER */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* LOGOUT BUTTON */
+  .logout {
+    position: relative;
     width: 100%;
-  }
-
-  /* Brand title */
-  .brand {
-    font-size: 26px;
-  }
-
-  /* Menu buttons */
-  .menu button {
-    padding: 14px;
-    font-size: 16px;
+    margin-top: 10px;
   }
 }
+
+
