@@ -1,0 +1,2352 @@
+[
+  {
+    "customer": "TURBO",
+    "oem": "FORD",
+    "partName": "TURBO CHARGER T6",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 6,
+      "separator": 1,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 120,
+      "separator": 20,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "TURBO",
+    "oem": "FML",
+    "partName": "TURBO CHARGER 1603",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 3,
+      "separator": 4,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 60,
+      "separator": 80,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "TURBO",
+    "oem": "RNPL",
+    "partName": "TURBO CHARGER HR 10",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 3,
+      "separator": 4,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 60,
+      "separator": 80,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "TURBO",
+    "oem": "VW",
+    "partName": "TURBO CHARGER VW",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 3,
+      "separator": 4,
+      "crates": 0,
+      "dummy": 1
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 60,
+      "separator": 80,
+      "crates": 0,
+      "dummy": 20
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "RANE TN",
+    "oem": "RANE",
+    "partName": "TML KITE",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 8,
+      "separator": 8,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 160,
+      "separator": 160,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "RANE PY",
+    "oem": "RANE",
+    "partName": "YG8 ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 10,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 200,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "RANE PY",
+    "oem": "RANE",
+    "partName": "YRA BLACK",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 9,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 180,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "RANE PY",
+    "oem": "RANE",
+    "partName": "YL1 ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 9,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 180,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "RANE PY",
+    "oem": "RANE",
+    "partName": "YR9",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 8,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 160,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "RANE PY",
+    "oem": "RANE",
+    "partName": "YXA GREEN ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 8,
+      "separator": 8,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 160,
+      "separator": 160,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "RANE PY",
+    "oem": "VW",
+    "partName": "DV5-1B5 ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 7,
+      "separator": 7,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 140,
+      "separator": 140,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "HANON",
+    "oem": "HANON",
+    "partName": "RADIATOR",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 2,
+      "separator": 3,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 40,
+      "separator": 60,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "HANON",
+    "oem": "HANON",
+    "partName": "COMBO COLLER",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 2,
+      "separator": 3,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 40,
+      "separator": 60,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "HANON",
+    "oem": "HANON",
+    "partName": "FRONT ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 3,
+      "separator": 4,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 60,
+      "separator": 80,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "HANON",
+    "oem": "HANON",
+    "partName": "REAR",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 5,
+      "separator": 6,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 100,
+      "separator": 120,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "HANON",
+    "oem": "HANON",
+    "partName": "HEATER",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 4,
+      "separator": 5,
+      "crates": 0,
+      "dummy": 1
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 80,
+      "separator": 100,
+      "crates": 0,
+      "dummy": 20
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "MAHINDRA",
+    "partName": "CYLINDER 9914",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 7,
+      "separator": 8,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 140,
+      "separator": 160,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "MAHINDRA",
+    "partName": " CYLINDER 8626",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 7,
+      "separator": 8,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 140,
+      "separator": 160,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "MAHINDRA",
+    "partName": " CYLINDER 9653",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 8,
+      "separator": 9,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 160,
+      "separator": 180,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "CNH",
+    "partName": "CYLINDER GREEN",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 4,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 80,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "CNH",
+    "partName": "CYLINDER ORANGE",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 4,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 80,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "CNH",
+    "partName": " CYLINDER BLUE",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 4,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 80,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "CNH",
+    "partName": "CYLINDER GRAY",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 4,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 80,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "CNH EX",
+    "partName": "EXCUVATOR BLUE",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 4,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 80,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "JCB",
+    "partName": "CYLINDERS BIG",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 2,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 40,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "WIPRO",
+    "oem": "JCB",
+    "partName": "CYLINDERS SMALL",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 2,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 40,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SONA COMSTAR",
+    "oem": "FIAT",
+    "partName": "X104  ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 7,
+      "separator": 8,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 140,
+      "separator": 160,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SONA COMSTAR",
+    "oem": "FIAT",
+    "partName": "1SS   ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 5,
+      "separator": 6,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 100,
+      "separator": 120,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SONA COMSTAR",
+    "oem": "FIAT",
+    "partName": "NSS",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 5,
+      "separator": 6,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 100,
+      "separator": 120,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SONA COMSTAR",
+    "oem": "TML",
+    "partName": "TATA CURVE",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 6,
+      "separator": 7,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 120,
+      "separator": 140,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SONA COMSTAR",
+    "oem": "TML",
+    "partName": "NSS",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 5,
+      "separator": 6,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 100,
+      "separator": 120,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "CIE AUTOMOTIVE",
+    "oem": "ROYAL ENFIELD",
+    "partName": "BOTTOM YOKE",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 7,
+      "separator": 8,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 140,
+      "separator": 160,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SANSERA",
+    "oem": "ROYAL ENFIELD",
+    "partName": "CRANK SHAFT",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 6,
+      "separator": 7,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 120,
+      "separator": 140,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "KASUYAGPP",
+    "oem": "ROYAL ENFIELD",
+    "partName": "BALANCER SHAFT",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 32,
+      "separator": 1,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 640,
+      "separator": 20,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "VITESCO RE",
+    "oem": "ROYAL ENFIELD",
+    "partName": "THROTTLE BODY",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 0,
+      "lid": 1,
+      "inserts": 30,
+      "separator": 60,
+      "crates": 30,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 0,
+      "lid": 20,
+      "inserts": 600,
+      "separator": 1200,
+      "crates": 600,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "BHARATH FORGE",
+    "oem": "KIA MOTORS",
+    "partName": "FORGED CRANK SHAFT",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 0,
+      "separator": 4,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 0,
+      "separator": 80,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "MK TRONS",
+    "oem": "KIA MOTORS",
+    "partName": "JACK ASSEMBLY",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 0,
+      "separator": 3,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 0,
+      "separator": 60,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "BHARATH FORGE",
+    "oem": "HYUNDAI",
+    "partName": "IN/OUT SHAFT ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 2,
+      "separator": 3,
+      "crates": 0,
+      "dummy": 1
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 40,
+      "separator": 60,
+      "crates": 0,
+      "dummy": 20
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 1,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "VITESCO HMI",
+    "oem": "HYUNDAI",
+    "partName": "THROTTLE BODY HMI",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 0,
+      "lid": 1,
+      "inserts": 30,
+      "separator": 30,
+      "crates": 30,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 0,
+      "lid": 20,
+      "inserts": 600,
+      "separator": 600,
+      "crates": 600,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SAC",
+    "oem": "JD",
+    "partName": "CAM SHAFT",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 14,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 280,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SUNSTAR",
+    "oem": "DIAMLER",
+    "partName": "FLANGE",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 7,
+      "separator": 8,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 140,
+      "separator": 160,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "SOUND CASTING",
+    "oem": "DIAMLER",
+    "partName": "TOOLS BRACKETS",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 0,
+      "separator": 3,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 0,
+      "separator": 60,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "MM FORGING",
+    "oem": "DIAMLER",
+    "partName": "STOP PLATES",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 0,
+      "separator": 9,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 0,
+      "separator": 180,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "LUMAX",
+    "oem": "PCA AUTO",
+    "partName": "\nASS AIR FILTER",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 9,
+      "separator": 10,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 180,
+      "separator": 200,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "LUMAX",
+    "oem": "PCA AUTO",
+    "partName": "DAD ASS AIR FILTER",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 8,
+      "separator": 9,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 160,
+      "separator": 180,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "LUMAX",
+    "oem": "PCA AUTO",
+    "partName": "PSA C21 ASS AIR ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 2,
+      "separator": 3,
+      "crates": 0,
+      "dummy": 1
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 40,
+      "separator": 60,
+      "crates": 0,
+      "dummy": 20
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  },
+  {
+    "customer": "LUMAX",
+    "oem": "PCA AUTO",
+    "partName": "DAD C21 ASS AIR ",
+    "boxQuantity": {
+      "pallet": 1,
+      "sleeve": 1,
+      "lid": 1,
+      "inserts": 5,
+      "separator": 6,
+      "crates": 0,
+      "dummy": 0
+    },
+    "warehouseStock": {
+      "pallet": 20,
+      "sleeve": 20,
+      "lid": 20,
+      "inserts": 100,
+      "separator": 120,
+      "crates": 0,
+      "dummy": 0
+    },
+    "inward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "outward": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    },
+    "damage": {
+      "pallet": 0,
+      "sleeve": 0,
+      "lid": 0,
+      "inserts": 0,
+      "separator": 0,
+      "crates": 0,
+      "dummy": 0
+    }
+  }
+]

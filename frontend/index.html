@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ULMS - CHENNAI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- load SheetJS for .xlsx export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+  <!-- LOGIN -->
+  <div id="loginPage" class="page-login">
+    <main class="login-wrap" role="main" aria-labelledby="brand">
+      <h1 id="brand" class="brand">HOLISOL LOGISTICS PVT.LTD</h1>
+      <form id="loginForm" class="form" autocomplete="off">
+        <label class="input"><input id="username" name="username" placeholder="USER NAME" /></label>
+        <label class="input"><input id="password" name="password" type="password" placeholder="PASSWORD" /></label>
+        <div class="actions"><button id="signInBtn" class="btn" type="submit">S I G N &nbsp; I N →</button></div>
+      </form>
+
+
+
+    </main>
+  </div>
+
+  <!-- APP -->
+  <div id="app" class="app-root hidden" aria-hidden="true">
+    <header>
+      <div class="title">ULMS CHENNAI WAREHOUSE</div>
+      <div class="user" id="headerUser">USER NAME</div>
+    </header>
+
+    <div class="layout">
+      <div class="nav-strip"></div>
+
+      <aside class="sidebar" aria-label="Sidebar">
+        <nav class="menu" role="navigation">
+          <button id="menuDashboard" class="active">DASHBOARD</button>
+          <button id="menuOutward">OUTWARD HISTORY</button>
+          <button id="menuInward">INWARD HISTORY</button>
+          <button id="menuOEM">OEM HISTORY</button>
+          <button id="menuTransferHistory">TRANSFER HISTORY</button>
+        </nav>
+        <div class="spacer"></div>
+        <div class="logout-wrap"><button id="logoutBtn" class="logout">LOGOUT</button></div>
+      </aside>
+
+      <main class="main">
+        <!-- DASHBOARD -->
+        <section id="dashboardView" class="panel view">
+          <div class="tiles">
+            <article id="tileInventory" class="tile t-inv" tabindex="0">
+              <h3>INVENTORY CHART</h3>
+              <div class="underline"></div>
+            </article>
+            <article id="createOutwardTile" class="tile t-create-out" tabindex="0">
+              <h3>CREATE OUTWARD</h3>
+              <div class="underline"></div>
+            </article>
+            <article id="createInwardTile" class="tile t-create-in" tabindex="0">
+              <h3>CREATE INWARD</h3>
+              <div class="underline"></div>
+            </article>
+            <article id="createOemTile" class="tile t-oem" tabindex="0">
+              <h3>OEM INWARD<br />COLLECTION</h3>
+              <div class="underline"></div>
+            </article>
+            <article id="stockTransferTile" class="tile t-stock" tabindex="0">
+              <h3>STOCK TRANSFER</h3>
+              <div class="underline"></div>
+            </article>
+            <article id="shortageSummaryTile" class="tile t-shortage" tabindex="0">
+              <h3>SHORTAGE SUMMARY</h3>
+              <div class="underline"></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- CREATE OUTWARD -->
+        <section id="createOutwardView" class="panel view hidden" aria-hidden="true">
+          <div class="form-title">CREATE OUTWARD</div>
+          <div class="co-panel">
+            <div class="row">
+              <div class="field">
+                <div class="label">DISPATCH DATE *</div><input id="co_dispatchDate" type="date" />
+              </div>
+              <div class="field">
+                <div class="label">INVOICE NO *</div><input id="co_invoiceNo" type="text"
+                  placeholder="Enter Invoice No" />
+              </div>
+              <div class="field">
+                <div class="label">LOCATION *</div><select id="co_locationSel" class="with-arrow">
+                  <option value="">Select</option>
+                  <option>CIE HOSUR LIMITED - HOSUR, TN</option>
+                  <option>HANON AUTOMOTIVE - Chennai, TN</option>
+                  <option>HLPL - PUNE, MAHARASHTRA (NEW)</option>
+                  <option>KOLAPUR-CHENNAI-TN</option>
+                  <option>MATHUR,KANCHIPURAM</option>
+                  <option>MK TRON_JACK DIVISION - CHENNAI, TN</option>
+                  <option>RANE MADRAS - PUDUCHERRY</option>
+                  <option>RANE MADRAS - VARANAVASI, TN</option>
+                  <option>SAC ENGINES - TIRUVALLUR, TN</option>
+                  <option>SANSERA ENGINEERING - BENGALURU, KARNATAKA</option>
+                  <option>SONA BLW PRECISION FORGINGS - CHENNAI, TN</option>
+                  <option>TEL - CHENNAI, TN</option>
+                  <option>VITESCO TECHNOLOGIES - PUNE, MH</option>
+                  <option>WIPRO ENTERPRISE - CHENNAI, TN</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">VEHICLE NO *</div><input id="co_vehicleNo" type="text"
+                  placeholder="Enter vehicle no" />
+              </div>
+              <div style="display:flex;align-items:flex-end"><button id="co_clearFilter" class="clear-btn"
+                  type="button">CLEAR FILTER</button></div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label">CUSTOMER *</div><select id="co_customerSel" class="with-arrow">
+                  <option value="">Select customer</option>
+                  <option>Cust A</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">OEM *</div><select id="co_oemSel" class="with-arrow">
+                  <option value="">Select OEM</option>
+                  <option>OEM X</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">PART NAME *</div><select id="co_partSel" class="with-arrow">
+                  <option value="">Select part</option>
+                  <option>Part 1</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="small-inputs" style="margin-top:22px;">
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_palletQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Pallet" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_sleeveQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Sleeve" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_lidQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Lid" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_insertQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Inserts" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_separatorQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Separator" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_cratesQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Crates" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_dummyQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
+            </div>
+
+            <div class="note-row" style="margin-bottom:28px;">
+              <button id="co_addSame" class="blue-btn" type="button">ADD MORE FOR SAME CUSTOMER/OEM</button>
+              <button id="co_addDiff" class="blue-btn" type="button">ADD MORE FOR DIFFERENT OEM</button>
+            </div>
+
+            <div id="co_extraSameContainer"></div>
+            <div id="co_extraDiffContainer"></div>
+
+            <div style="height:28px"></div>
+            <div class="submit-wrap"><button id="co_submit" class="submit-btn" type="button">SUBMIT</button></div>
+          </div>
+        </section>
+
+        <!-- CREATE INWARD -->
+        <section id="createInwardView" class="panel view hidden" aria-hidden="true">
+          <div class="form-title">CREATE INWARD</div>
+          <div class="co-panel">
+            <div class="row">
+              <div class="field">
+                <div class="label">DISPATCH DATE *</div><input id="ci_dispatchDate" type="date" />
+              </div>
+              <div class="field">
+                <div class="label">INVOICE NO *</div><input id="ci_invoiceNo" type="text"
+                  placeholder="Enter Invoice No" />
+              </div>
+              <div class="field">
+                <div class="label">LOCATION *</div><select id="ci_locationSel" class="with-arrow">
+                  <option value="">Select</option>
+                  <option>HLPL - FARIDABAD, HARYANA</option>
+                  <option>HLPL - PUNE, MAHARASHTRA (NEW)</option>
+                  <option>HLPL - RAJKOT, GJ</option>
+                  <option>HLPL CNHI - PITHAMPUR, MP</option>
+                  <option>M&M - NAGPUR, MAHARASTRA</option>
+                  <option>M&M - SANGAREDDY, TELANGANA</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">VEHICLE NO *</div><input id="ci_vehicleNo" type="text"
+                  placeholder="Enter vehicle no" />
+              </div>
+              <div style="display:flex;align-items:flex-end"><button id="ci_clearFilter" class="clear-btn"
+                  type="button">CLEAR FILTER</button></div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label">CUSTOMER *</div><select id="ci_customerSel" class="with-arrow">
+                  <option value="">Select customer</option>
+                  <option>Cust A</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">OEM *</div><select id="ci_oemSel" class="with-arrow">
+                  <option value="">Select OEM</option>
+                  <option>OEM X</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">PART NAME *</div><select id="ci_partSel" class="with-arrow">
+                  <option value="">Select part</option>
+                  <option>Part 1</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="small-inputs" style="margin-top:22px;">
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_palletQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Pallet" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_sleeveQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Sleeve" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_lidQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Lid" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_insertQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Inserts" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_separatorQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Separator" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_cratesQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Crates" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_dummyQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
+            </div>
+
+            <div class="note-row" style="margin-bottom:28px;">
+              <button id="ci_addSame" class="blue-btn" type="button">ADD MORE FOR SAME CUSTOMER /OEM</button>
+              <button id="ci_addDiff" class="blue-btn" type="button">ADD MORE FOR DIFFERENT CUSTOMER /OEM</button>
+              <button id="ci_addDiffOem" class="blue-btn" type="button">ADD MORE FOR DIFFERENT OEM</button>
+            </div>
+
+            <div id="ci_extraSameContainer"></div>
+            <div id="ci_extraDiffContainer"></div>
+            <div id="ci_extraDiffOemContainer"></div>
+
+            <div style="height:28px"></div>
+            <div class="submit-wrap"><button id="ci_submit" class="submit-btn" type="button">SUBMIT</button></div>
+          </div>
+        </section>
+
+        <!-- CREATE OEM COLLECTION -->
+        <section id="createOemView" class="panel view hidden" aria-hidden="true">
+          <div class="form-title">CREATE OEM COLLECTION</div>
+          <div class="co-panel">
+            <div class="row">
+              <div class="field">
+                <div class="label">DISPATCH DATE *</div><input id="oem_dispatchDate" type="date" />
+              </div>
+              <div class="field">
+                <div class="label">INVOICE NO *</div><input id="oem_invoiceNo" type="text"
+                  placeholder="Enter Invoice NO" />
+              </div>
+              <div class="field">
+                <div class="label">LOCATION *</div><select id="oem_locationSel" class="with-arrow">
+                  <option value="">Select</option>
+                  <option>FORD (TCI) - THIRUVALLUR, TN</option>
+                  <option>RENAULT NISSAN - KANCHIPURAM, TAMIL NADU</option>
+                  <option>ROYAL ENFIELD - KANCHIPURAM, TN</option>
+                  <option>ROYAL ENFIELD - ORAGADAM,TN</option>
+                  <option>SWIFT LOGISTICS (KIA), ANANTHAPUR, AP</option>
+                  <option>HYUNDAI - KANCHIPURAM, TAMIL NADU </option>
+                  <option>HYUNDAI - TIRUVALLUR, TN</option>
+                  <option>DICV - KANCHIPURAM, TAMIL NADU</option>
+                  <option>PCA AUTO - CHENNAI, TN</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">VEHICLE NO *</div><input id="oem_vehicleNo" type="text"
+                  placeholder="Enter vehicle no" />
+              </div>
+              <div style="display:flex;align-items:flex-end"><button id="oem_clearFilter" class="clear-btn"
+                  type="button">CLEAR FILTER</button></div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label">CUSTOMER *</div><select id="oem_customerSel" class="with-arrow">
+                  <option value="">Select customer</option>
+                  <option>Cust A</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">OEM *</div><select id="oem_oemSel" class="with-arrow">
+                  <option value="">Select OEM</option>
+                  <option>OEM X</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">PART NAME *</div><select id="oem_partSel" class="with-arrow">
+                  <option value="">Select part</option>
+                  <option>Part 1</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="small-inputs" style="margin-top:22px;">
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_palletQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Pallet" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_sleeveQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Sleeve" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_lidQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Lid" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_insertQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Inserts" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_separatorQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Separator" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_cratesQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Crates" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_dummyQty"
+                  inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
+            </div>
+
+            <div class="note-row" style="margin-bottom:28px;">
+              <button id="oem_addSame" class="blue-btn" type="button">ADD MORE FOR SAME CUSTOMER/OEM</button>
+              <button id="oem_addDiff" class="blue-btn" type="button">ADD MORE FOR DIFFERENT CUSTOMER</button>
+            </div>
+
+            <div id="oem_extraSameContainer"></div>
+            <div id="oem_extraDiffContainer"></div>
+
+            <div style="height:28px"></div>
+            <div class="submit-wrap"><button id="oem_submit" class="submit-btn" type="button">SUBMIT</button></div>
+          </div>
+        </section>
+        <!-- STOCK TRANSFER -->
+        <section id="stockTransferView" class="panel view hidden" aria-hidden="true">
+          <div class="form-title">STOCK TRANSFER</div>
+          <div class="co-panel">
+
+            <div class="row">
+              <div class="field">
+                <div class="label">FROM</div>
+                <select id="st_from" class="st-wide">
+                  <option value="">SELECT</option>
+                  <option>DAMAGE</option>
+                  <option>WAREHOUSE STOCK</option>
+                </select>
+              </div>
+              <div class="field">
+                <div class="label">TRANSFER DATE</div>
+                <input type="date" id="st_transfer_date" class="ss-date-stock" />
+              </div>
+
+              <div style="display:flex;align-items:flex-end;margin-left:auto;">
+                <button id="st_clear_btn" class="clear-btn">CLEAR FILTER</button>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label">CUSTOMER</div>
+                <select id="st_customer_from" >
+                  <option value="">Select customer</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">OEM</div>
+                <select id="st_oem_from" >
+                  <option value="">Select Oem</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">PART NAME</div>
+                <select id="st_part_from" >
+                  <option value="">Select Part</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="small-inputs" style="margin-top:22px;">
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_pallet" inputmode="numeric"
+                  pattern="\d*" placeholder="Pallet" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_sleeve" inputmode="numeric"
+                  pattern="\d*" placeholder="Sleeve" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_lid" inputmode="numeric"
+                  pattern="\d*" placeholder="Lid" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box"  id="from_inserts" inputmode="numeric"
+                  pattern="\d*" placeholder="Inserts" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box"  id="from_separator" inputmode="numeric"
+                  pattern="\d*" placeholder="Separator" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_crates" inputmode="numeric"
+                  pattern="\d*" placeholder="Crates" /></div>
+              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_dummy" inputmode="numeric"
+                  pattern="\d*" placeholder="Dummy" /></div>
+            </div>
+
+
+            <hr />
+
+            <div class="row">
+              <div class="field">
+                <div class="label">TO</div>
+                <select id="st_to" class="st-wide">
+                  <option value="">SELECT</option>
+                  <option>DAMAGE</option>
+                  <option>WAREHOUSE STOCK</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label">CUSTOMER</div>
+                <select id="st_customer_to" >
+                  <option value="">Select Customer</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">OEM</div>
+                <select id="st_oem_to" >
+                  <option value="">Select oem</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">PART NAME</div>
+                <select  id="st_part_to" >
+                  <option value="">Select Oem</option>
+                </select>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <button class="st_submit_btn" type="button">SUBMIT</button>
+            </div>
+
+          </div>
+        </section>
+        <!-- SHORTAGE SUMMARY -->
+        <section id="shortageSummaryView" class="panel view hidden" aria-hidden="true">
+          <div class="form-title">SHORTAGE SUMMARY</div>
+          <div class="co-panel">
+
+            <div class="row">
+              <div class="field">
+                <div class="label">FROM</div>
+                <select id="ss_from" class="ss-from-wide">
+                  <option value="">SELECT</option>
+
+                  <option>INWARD HISTORY</option>
+                  <option>OEM INWARD HISTORY</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">RECEIVE DATE FROM</div>
+                <input type="date" id="ss_date_from" class="ss-date-narrow" />
+              </div>
+
+              <div class="field">
+                <div class="label">RECEIVE DATE TO</div>
+                <input type="date" id="ss_date_to" class="ss-date-narrow" />
+              </div>
+
+              <div style="display:flex;align-items:flex-end;margin-left:auto;">
+                <button id="ss_clear" class="clear-btn">CLEAR FILTER</button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label">CUSTOMER</div>
+                <select id="ss_customer" class="ss-wide-40">
+                  <option value="">SELECT</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">OEM</div>
+                <select id="ss_oem" class="ss-wide-40">
+                  <option value="">SELECT</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">PART NAME</div>
+                <select id="ss_part" class="ss-wide-40">
+                  <option value="">SELECT</option>
+                </select>
+              </div>
+
+              <div style="display:flex;align-items:flex-end;margin-left:auto;">
+                <button id="ss_view" class="btn-primary ss-orange-btn">VIEW SUMMARY</button>
+                <span id="ssSpinner" style="display:none;margin-left:10px;">
+                  <img src="assets/img/loading.gif" width="24" />
+                </span>
+
+              </div>
+            </div>
+
+
+            <div class="history-export-wrap" style="display:flex;gap:8px;margin:10px 0;align-items:center;">
+              <button id="btnExcelSS" class="history-export-btn">Excel (.xlsx)</button>
+              <button id="btnCsvSS" class="history-export-btn">CSV</button>
+              
+            </div>
+
+            <div id="ssScrollContainer">
+              <div id="ssDataWrap" class="oh-data-wrap" role="region" aria-live="polite">
+                <table id="ssTable" class="oh-table" aria-label="Shortage Summary table">
+                  <thead>
+                    <tr>
+                      <th class="col-receive" rowspan="2">RECEIVE DATE FROM</th>
+                      <th class="col-receive" rowspan="2">RECEIVE DATE TO</th>
+                      <th class="col-customer" rowspan="2">CUSTOMER</th>
+                      <th class="col-oem" rowspan="2">OEM</th>
+                      <th class="col-partname" rowspan="2">PART NAME</th>
+                      <th class="inward-group" colspan="7">INWARD</th>
+                      <th class="col-sets" rowspan="2">SETS</th>
+                      <th class="shortage-group" colspan="7">SHORTAGE</th>
+                    </tr>
+                    <tr>
+                      <th class="small inward-group">PALLET</th>
+                      <th class="small inward-group">SLEEVE</th>
+                      <th class="small inward-group">LID</th>
+                      <th class="small inward-group">INSERTS</th>
+                      <th class="small inward-group">SEPARATOR</th>
+                      <th class="small inward-group">CRATES</th>
+                      <th class="small inward-group">DUMMY</th>
+
+                      <th class="small shortage-group">PALLET</th>
+                      <th class="small shortage-group">SLEEVE</th>
+                      <th class="small shortage-group">LID</th>
+                      <th class="small shortage-group">INSERTS</th>
+                      <th class="small shortage-group">SEPARATOR</th>
+                      <th class="small shortage-group">CRATES</th>
+                      <th class="small shortage-group">DUMMY</th>
+                    </tr>
+                  </thead>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+        <!-- INVENTORY CHART PAGE (UPDATED: last header now OUTWARD) -->
+        <section id="inventoryView" class="panel view hidden" aria-hidden="true">
+          <div class="form-title inv-title-bar">
+            <span class="inv-title-text">INVENTORY CHART</span>
+            <div class="inv-actions">
+              <button id="btnExcelInv">Excel (.xlsx)</button>
+              <button id="btnCsvInv">CSV</button>
+              <button id="btnPrintInv">Print</button>
+            </div>
+          </div>
+          <div class="co-panel">
+            <div class="inv-wrapper">
+              <div id="invTableOuter" class="inv-panel" role="region" tabindex="0"
+                aria-label="Inventory table with horizontal scroll always visible">
+                <table class="inv-table" id="invTable" aria-label="Inventory table">
+                  <thead>
+                    <tr>
+                      <!-- S.NO removed -->
+                      <th class="col-customer" rowspan="2">CUSTOMER</th>
+                      <th class="col-oem" rowspan="2">OEM</th>
+                      <th class="col-part" rowspan="2">PARTNAME</th>
+
+                      <!-- BOX QUANTITY group (7 subcolumns PALLET..DUMMY) -->
+                      <th class="col-group" colspan="7">BOX QUANTITY</th>
+
+                      <!-- WAREHOUSE STOCK group (7) -->
+                      <th class="col-group" colspan="7">WAREHOUSE STOCK</th>
+
+                      <!-- INWARD (7) -->
+                      <th class="col-group inv-header-group-inward" colspan="7">INWARD</th>
+
+                      <!-- OUTWARD (was SHORTAGE) -->
+                      <th class="col-group inv-header-group-outward" colspan="7">OUTWARD</th>
+                      <!--DAMAGE(7)-->
+                      <th class="col-group inv-header-group-damage" colspan="7">DAMAGE</th>
+
+                    </tr>
+                    <tr>
+                      <!-- BOX QUANTITY 7 -->
+                      <th class="col-group">PALLET</th>
+                      <th class="col-group">SLEEVE</th>
+                      <th class="col-group">LID</th>
+                      <th class="col-group">INSERTS</th>
+                      <th class="col-group">SEPARATOR</th>
+                      <th class="col-group">CRATES</th>
+                      <th class="col-group">DUMMY</th>
+
+                      <!-- Warehouse stock 7 -->
+                      <th class="col-group">PALLET</th>
+                      <th class="col-group">SLEEVE</th>
+                      <th class="col-group">LID</th>
+                      <th class="col-group">INSERTS</th>
+                      <th class="col-group">SEPARATOR</th>
+                      <th class="col-group">CRATES</th>
+                      <th class="col-group">DUMMY</th>
+
+                      <!-- Inward 7 -->
+                      <th class="col-group inward-group">PALLET</th>
+                      <th class="col-group inward-group">SLEEVE</th>
+                      <th class="col-group inward-group">LID</th>
+                      <th class="col-group inward-group">INSERTS</th>
+                      <th class="col-group inward-group">SEPARATOR</th>
+                      <th class="col-group inward-group">CRATES</th>
+                      <th class="col-group inward-group">DUMMY</th>
+
+                      <!-- Outward 7 -->
+                      <th class="col-group shortage-group">PALLET</th>
+                      <th class="col-group shortage-group">SLEEVE</th>
+                      <th class="col-group shortage-group">LID</th>
+                      <th class="col-group shortage-group">INSERTS</th>
+                      <th class="col-group shortage-group">SEPARATOR</th>
+                      <th class="col-group shortage-group">CRATES</th>
+                      <th class="col-group shortage-group">DUMMY</th>
+
+                      <th class="col-group damage-group">PALLET</th>
+                      <!-- damage 7 -->
+                      <th class="col-group damage-group">SLEEVE</th>
+                      <th class="col-group damage-group">LID</th>
+                      <th class="col-group damage-group">INSERTS</th>
+                      <th class="col-group damage-group">SEPARATOR</th>
+                      <th class="col-group damage-group">CRATES</th>
+                      <th class="col-group damage-group">DUMMY</th>
+
+                    </tr>
+                  </thead>
+                  <tbody id="invTbody">
+                    <!-- Example row (no S.NO). Each group has 7 numeric inputs now -->
+                    <tr>
+                      <td class="col-customer">Cust A</td>
+                      <td class="col-oem">OEM A</td>
+                      <td class="col-part">Part X</td>
+
+                      <!-- BOX QUANTITY inputs (7) -->
+                      <td><input class="inv-input" id="bx_1_0" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="bx_1_1" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="bx_1_2" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="bx_1_3" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="bx_1_4" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="bx_1_5" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="bx_1_6" inputmode="numeric" pattern="\d*" readonly /></td>
+
+                      <!-- Warehouse stock inputs (7) -->
+                      <td><input class="inv-input" id="ws_1_0" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="ws_1_1" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="ws_1_2" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="ws_1_3" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="ws_1_4" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="ws_1_5" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="ws_1_6" inputmode="numeric" pattern="\d*" readonly /></td>
+
+                      <!-- Inward inputs (7) -->
+                      <td><input class="inv-input" id="in_1_0" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="in_1_1" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="in_1_2" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="in_1_3" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="in_1_4" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="in_1_5" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="in_1_6" inputmode="numeric" pattern="\d*" readonly /></td>
+
+                      <!-- Outward inputs (7) -->
+                      <td><input class="inv-input" id="out_1_0" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="out_1_1" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="out_1_2" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="out_1_3" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="out_1_4" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="out_1_5" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="out_1_6" inputmode="numeric" pattern="\d*" readonly /></td>
+
+                      <!-- damage inputs (7) -->
+                      <td><input class="inv-input" id="dam_1_0" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="dam_1_1" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="dam_1_2" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="dam_1_3" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="dam_1_4" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="dam_1_5" inputmode="numeric" pattern="\d*" readonly /></td>
+                      <td><input class="inv-input" id="dam_1_6" inputmode="numeric" pattern="\d*" readonly /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+        </section>
+
+        <!-- OUTWARD HISTORY -->
+        <section id="outwardHistoryView" class="panel view hidden" aria-hidden="true">
+          <div class="oh-header">OUTWARD&nbsp;&nbsp;HISTORY</div>
+
+          <div class="oh-controls" role="toolbar" aria-label="Controls">
+            <div class="oh-left">
+              
+
+
+
+              <div class="history-filter-wrap" style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+                <input id="oh_filter_input" class="history-filter-input" type="text" placeholder="Search..."
+                  aria-label="Search in outwardHistoryView"
+                  style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
+                <button id="oh_filter_clear" class="history-filter-clear" type="button"
+                  style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
+
+                <div class="history-export-wrap" style="display:flex;gap:8px;margin-left:auto;align-items:center;">
+                  <button id="btnExcelOut" class="history-export-btn">Excel (.xlsx)</button>
+                  <button id="btnCsvOut" class="history-export-btn">CSV</button>
+                  <button id="btnPrintOut" class="history-export-btn">Print</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div id="ohDataOut" class="oh-data-wrap" role="region" aria-live="polite">
+            <table id="ohFullTableOut" class="oh-table" aria-label="Outward table">
+              <thead>
+                <tr>
+                  <th class="col-dispatch" rowspan="2">DISPATCH DATE</th>
+                  <th class="col-receive" rowspan="2">RECEIVE DATE</th>
+                  <th class="col-invno" rowspan="2">INVOICE NO</th>
+                  <th class="col-vehicle" rowspan="2">VEHICLE NO</th>
+                  <th class="col-location" rowspan="2">LOCATION</th>
+                  <th class="col-customer" rowspan="2">CUSTOMER</th>
+                  <th class="col-oem" rowspan="2">OEM</th>
+                  <th class="col-partname" rowspan="2">PARTNAME</th>
+                  <th class="inward-group" colspan="7">OUTWARD</th>
+                </tr>
+                <tr>
+                  <th class="small inward-group">PALLET</th>
+                  <th class="small inward-group">SLEEVE</th>
+                  <th class="small inward-group">LID</th>
+                  <th class="small inward-group">INSERTS</th>
+                  <th class="small inward-group">SEPARATOR</th>
+                  <th class="small inward-group">CRATES</th>
+                  <th class="small inward-group">DUMMY</th>
+                </tr>
+              </thead>
+              <tbody id="ohTbodyOut"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- INWARD HISTORY -->
+        <section id="inwardHistoryView" class="panel view hidden" aria-hidden="true">
+          <div class="oh-header">INWARD&nbsp;&nbsp;HISTORY</div>
+
+          <div class="oh-controls" role="toolbar" aria-label="Controls">
+            <div class="oh-left">
+              
+
+
+
+              <div class="history-filter-wrap" style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+                <input id="ih_filter_input" class="history-filter-input" type="text" placeholder="Search..."
+                  aria-label="Search in inwardHistoryView"
+                  style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
+                <button id="ih_filter_clear" class="history-filter-clear" type="button"
+                  style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
+
+                <div class="history-export-wrap" style="display:flex;gap:8px;margin-left:auto;align-items:center;">
+                  <button id="btnExcelIn" class="history-export-btn">Excel (.xlsx)</button>
+                  <button id="btnCsvIn" class="history-export-btn">CSV</button>
+                  <button id="btnPrintIn" class="history-export-btn">Print</button>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div id="ohDataIn" class="oh-data-wrap" role="region" aria-live="polite">
+            <table id="ohFullTableIn" class="oh-table" aria-label="Inward table">
+              <thead>
+                <tr>
+                  <th class="col-dispatch" rowspan="2">DISPATCH DATE</th>
+                  <th class="col-receive" rowspan="2">RECEIVE DATE</th>
+                  <th class="col-invno" rowspan="2">INVOICE NO</th>
+                  <th class="col-vehicle" rowspan="2">VEHICLE NO</th>
+                  <th class="col-location" rowspan="2">LOCATION</th>
+                  <th class="col-customer" rowspan="2">CUSTOMER</th>
+                  <th class="col-oem" rowspan="2">OEM</th>
+                  <th class="col-partname" rowspan="2">PARTNAME</th>
+                  <th class="inward-group" colspan="7">INWARD</th>
+                  <th class="col-sets" rowspan="2">SETS</th>
+
+                  <th class="shortage-group" colspan="7">SHORTAGE</th>
+                </tr>
+                <tr>
+                  <th class="small inward-group">PALLET</th>
+                  <th class="small inward-group">SLEEVE</th>
+                  <th class="small inward-group">LID</th>
+                  <th class="small inward-group">INSERTS</th>
+                  <th class="small inward-group">SEPARATOR</th>
+                  <th class="small inward-group">CRATES</th>
+                  <th class="small inward-group">DUMMY</th>
+
+                  <th class="small shortage-group">PALLET</th>
+                  <th class="small shortage-group">SLEEVE</th>
+                  <th class="small shortage-group">LID</th>
+                  <th class="small shortage-group">INSERTS</th>
+                  <th class="small shortage-group">SEPARATOR</th>
+                  <th class="small shortage-group">CRATES</th>
+                  <th class="small shortage-group">DUMMY</th>
+                </tr>
+              </thead>
+              <tbody id="ohTbodyIn"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- OEM HISTORY -->
+        <section id="oemHistoryView" class="panel view hidden" aria-hidden="true">
+          <div class="oh-header">OEM&nbsp;&nbsp;HISTORY</div>
+
+          <div class="oh-controls" role="toolbar" aria-label="Controls">
+            <div class="oh-left">
+              
+
+
+
+              <div class="history-filter-wrap" style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+                <input id="oem_filter_input" class="history-filter-input" type="text" placeholder="Search..."
+                  aria-label="Search in oemHistoryView"
+                  style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
+                <button id="oem_filter_clear" class="history-filter-clear" type="button"
+                  style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
+
+                <div class="history-export-wrap" style="display:flex;gap:8px;margin-left:auto;align-items:center;">
+                  <button id="btnExcelOem" class="history-export-btn">Excel (.xlsx)</button>
+                  <button id="btnCsvOem" class="history-export-btn">CSV</button>
+                  <button id="btnPrintOem" class="history-export-btn">Print</button>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div id="ohDataOem" class="oh-data-wrap" role="region" aria-live="polite">
+            <table id="ohFullTableOem" class="oh-table" aria-label="OEM table">
+              <thead>
+                <tr>
+                  <th class="col-dispatch" rowspan="2">DISPATCH DATE</th>
+                  <th class="col-receive" rowspan="2">RECEIVE DATE</th>
+                  <th class="col-invno" rowspan="2">INVOICE NO</th>
+                  <th class="col-vehicle" rowspan="2">VEHICLE NO</th>
+                  <th class="col-location" rowspan="2">LOCATION</th>
+                  <th class="col-customer" rowspan="2">CUSTOMER</th>
+                  <th class="col-oem" rowspan="2">OEM</th>
+                  <th class="col-partname" rowspan="2">PARTNAME</th>
+                  <th class="inward-group" colspan="7">INWARD</th>
+                  <th class="col-sets" rowspan="2">SETS</th>
+
+                  <th class="shortage-group" colspan="7">SHORTAGE</th>
+                </tr>
+                <tr>
+                  <th class="small inward-group">PALLET</th>
+                  <th class="small inward-group">SLEEVE</th>
+                  <th class="small inward-group">LID</th>
+                  <th class="small inward-group">INSERTS</th>
+                  <th class="small inward-group">SEPARATOR</th>
+                  <th class="small inward-group">CRATES</th>
+                  <th class="small inward-group">DUMMY</th>
+
+                  <th class="small shortage-group">PALLET</th>
+                  <th class="small shortage-group">SLEEVE</th>
+                  <th class="small shortage-group">LID</th>
+                  <th class="small shortage-group">INSERTS</th>
+                  <th class="small shortage-group">SEPARATOR</th>
+                  <th class="small shortage-group">CRATES</th>
+                  <th class="small shortage-group">DUMMY</th>
+                </tr>
+              </thead>
+              <tbody id="ohTbodyOem"></tbody>
+            </table>
+          </div>
+        </section>
+        <!-- STOCK TRANSFER HISTORY -->
+        <section id="stockTransferHistoryView" class="panel view hidden" aria-hidden="true">
+          <div class="oh-header">TRANSFER&nbsp;&nbsp;HISTORY</div>
+
+          <div id="ohDataOem" class="oh-data-wrap" role="region" aria-live="polite">
+            <table id="ohFullTableOem" class="oh-table" aria-label="OEM table">
+              <thead>
+                <tr>
+                  <th class="col-receive">TRANSFER DATE</th>
+                  <th class="col-from" >FROM</th>
+                  <th class="col-customer">CUSTOMER</th>
+                  <th class="col-oem" >OEM</th>
+                  <th class="col-partname" >PARTNAME</th>
+                  <th class="col-to" >TO</th>
+                  <th class="col-customer">CUSTOMER</th>
+                  <th class="col-oem">OEM</th>
+                  <th class="col-partname" >PARTNAME</th>
+                  <th class="inward-group" >PALLET</th>
+                  <th class="inward-group" >SLEEVE</th>
+                  <th class="inward-group" >LID</th>
+                  <th class="inward-group" >INSERTS</th>
+                  <th class="inward-group" >SEPARATOR</th>
+                  <th class="inward-group" >CRATES</th>
+                  <th class="inward-group" >DUMMY</th>
+                </tr>
+                
+              </thead>
+              <tbody id="ohTbodytransfer"></tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+
+  <script src="js/script.js"></script>
+  <script src="/assets/js/inventory_adapter.js"></script>
+  <script src="/assets/js/fill_inputs.js"></script>
+  <script src="/assets/js/co_autofill.js"></script>
+  <script src="/assets/js/co_submit.js"></script>
+  <script src="/assets/js/co_inward_submit.js"></script>
+  <script src="/assets/js/co_oem_inward_submit.js"></script>
+  <script src="js/stock_transfer.js"></script>
+
+
+  <!-- Patch: remove extra tiny blocks in SHORTAGE cells (inward & OEM history) -->
+
+
+
+  <!-- Filter + spinner script for history tables -->
+  <style>
+    /* small spinner overlay for page-load effect when applying filter */
+    .history-spinner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: 50;
+    }
+
+    .history-spinner {
+      width: 30px;
+      height: 30px;
+      border: 4px solid #ccc;
+      border-top-color: #333;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ensure the controls area positions relative for overlay placement */
+    .oh-controls {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    /* ensure filter sits on the right */
+    .history-filter-wrap {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    /* orange clear button */
+    .history-filter-clear {
+      background: #ff8c00;
+      border: 1px solid #d36c00;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .history-filter-clear {
+      background: #ff8c00;
+      border: 1px solid #d36c00;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+
+    /* FORCE filter wrapper to right and style Clear button */
+    .oh-controls {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+
+    .history-filter-wrap {
+      margin-left: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .history-filter-input {
+      padding: 8px 12px !important;
+      border: 1px solid #ccc !important;
+      border-radius: 4px !important;
+      min-width: 260px !important;
+      background: #f5f5f5;
+    }
+
+    .history-filter-clear {
+      background: #ff8c00 !important;
+      border: 1px solid #d36c00 !important;
+      color: #ffffff !important;
+      padding: 8px 14px !important;
+      border-radius: 6px !important;
+      cursor: pointer !important;
+      font-weight: 600 !important;
+      min-width: 70px !important;
+    }
+
+    .history-filter-clear:focus {
+      outline: 2px solid rgba(255, 140, 0, 0.25) !important;
+    }
+  </style>
+
+  <script>
+    (function () {
+      // Utility: case-insensitive contains check
+      function rowMatchesText(row, text) {
+        text = text.trim().toLowerCase();
+        if (!text) return true;
+        // check each cell text
+        for (var i = 0; i < row.cells.length; i++) {
+          var c = row.cells[i];
+          var t = (c.textContent || c.innerText || "").trim().toLowerCase();
+          if (t.indexOf(text) !== -1) return true;
+        }
+        return false;
+      }
+
+      // Generic filter function for a tbody element id
+      function applyFilter(tbodyId, inputId, overlayEl) {
+        var tb = document.getElementById(tbodyId);
+        var input = document.getElementById(inputId);
+        if (!tb || !input) return;
+        var q = input.value.trim().toLowerCase();
+        // show spinner overlay
+        if (overlayEl) { overlayEl.style.display = 'flex'; }
+        // small delay to show spinner and simulate page-load feel
+        setTimeout(function () {
+          var rows = tb.rows;
+          var anyVisible = false;
+          for (var r = 0; r < rows.length; r++) {
+            var row = rows[r];
+            var visible = rowMatchesText(row, q);
+            row.style.display = visible ? '' : 'none';
+            if (visible) anyVisible = true;
+          }
+          // hide spinner
+          if (overlayEl) { overlayEl.style.display = 'none'; }
+          // If empty query, ensure all rows visible (already covered)
+        }, 220); // 220ms small page-load
+      }
+
+      function clearFilter(tbodyId, inputId) {
+        var tb = document.getElementById(tbodyId);
+        var input = document.getElementById(inputId);
+        if (input) input.value = '';
+        if (!tb) return;
+        var rows = tb.rows;
+        for (var r = 0; r < rows.length; r++) { rows[r].style.display = ''; }
+      }
+
+      // Prepare overlays for each controls area (to show spinner centered)
+      function ensureOverlayForControls(controlSelector) {
+        var ctrl = document.querySelector(controlSelector);
+        if (!ctrl) return null;
+        var ov = ctrl.querySelector('.history-spinner-overlay');
+        if (!ov) {
+          ov = document.createElement('div');
+          ov.className = 'history-spinner-overlay';
+          ov.innerHTML = '<div class="history-spinner" aria-hidden="true"></div>';
+          // make overlay cover the controls area
+          ctrl.style.position = ctrl.style.position || 'relative';
+          ov.style.position = 'absolute';
+          ov.style.top = '0'; ov.style.left = '0'; ov.style.right = '0'; ov.style.bottom = '0';
+          ctrl.appendChild(ov);
+        }
+        return ov;
+      }
+
+      // Wire up for outward
+      document.addEventListener('DOMContentLoaded', function () {
+        // mapping: inputId -> tbodyId -> controls selector
+        var maps = [
+          { input: 'oh_filter_input', tbody: 'ohTbodyOut', ctrl: '#outwardHistoryView .oh-controls' },
+          { input: 'ih_filter_input', tbody: 'ohTbodyIn', ctrl: '#inwardHistoryView .oh-controls' },
+          { input: 'oem_filter_input', tbody: 'ohTbodyOem', ctrl: '#oemHistoryView .oh-controls' }
+        ];
+        maps.forEach(function (m) {
+          var input = document.getElementById(m.input);
+          var clearBtn = document.getElementById(m.input.replace('_input', '_clear')) || document.getElementById(m.input.replace('filter_input', 'filter_clear'));
+          var overlay = ensureOverlayForControls(m.ctrl);
+          if (input) {
+            input.addEventListener('input', function () {
+              applyFilter(m.tbody, m.input, overlay);
+            });
+            // also support pressing Enter to reapply quickly (no-op since input event handles)
+            input.addEventListener('keyup', function (e) {
+              if (e.key === 'Enter') applyFilter(m.tbody, m.input, overlay);
+            });
+          }
+          if (clearBtn) {
+            clearBtn.addEventListener('click', function () {
+              clearFilter(m.tbody, m.input);
+            });
+          }
+        });
+      });
+    })();
+  </script>
+
+
+  <script>
+    /* Export helpers using SheetJS (XLSX must be loaded) */
+
+    /* Clone a table and remove rows that are hidden (display:none) so export includes only visible rows */
+    function cloneTableWithVisibleRows(table) {
+      var clone = table.cloneNode(true);
+      // remove any scripts/inputs inside clone (safety)
+      var inputs = clone.querySelectorAll('input,button,select,textarea');
+      inputs.forEach(function (n) { n.remove(); });
+      // remove rows that are hidden or have display:none inline or computed style on original
+      var origRows = table.rows;
+      var cloneRows = clone.rows;
+      for (var i = cloneRows.length - 1; i >= 0; i--) {
+        var origRow = origRows[i];
+        var cloneRow = cloneRows[i];
+        if (!origRow) continue;
+        var style = window.getComputedStyle(origRow);
+        if (style && style.display === 'none') {
+          cloneRow.parentNode.removeChild(cloneRow);
+        }
+      }
+      return clone;
+    }
+
+    /* Export visible table to XLSX */
+    function exportTableToExcel(table, filename) {
+      if (typeof XLSX === 'undefined') {
+        alert('SheetJS (XLSX) not loaded');
+        return;
+      }
+      var cloned = cloneTableWithVisibleRows(table);
+      // convert cloned table to worksheet
+      var ws = XLSX.utils.table_to_sheet(cloned, { raw: true, cellDates: true });
+      // preserve merges from the cloned table (table_to_sheet sets !merges)
+      var wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+      XLSX.writeFile(wb, filename || 'export.xlsx');
+    }
+
+    /* Export visible table to CSV */
+    function exportTableToCSV(table, filename) {
+      if (typeof XLSX === 'undefined') {
+        alert('SheetJS (XLSX) not loaded');
+        return;
+      }
+      var cloned = cloneTableWithVisibleRows(table);
+      var ws = XLSX.utils.table_to_sheet(cloned, { raw: true, cellDates: true });
+      var csv = XLSX.utils.sheet_to_csv(ws);
+      var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      var link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = filename || 'export.csv';
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(function () { URL.revokeObjectURL(link.href); link.remove(); }, 1000);
+    }
+
+    /* Print visible table */
+    function printTable(table, title) {
+      var cloned = cloneTableWithVisibleRows(table);
+      var w = window.open('', '_blank');
+      var style = document.querySelector('head').innerHTML;
+      w.document.write('<html><head>' + style + '<title>' + (title || 'Print') + '</title></head><body>');
+      w.document.write('<h3>' + (title || '') + '</h3>');
+      w.document.write(cloned.outerHTML);
+      w.document.write('</body></html>');
+      w.document.close();
+      w.focus();
+      setTimeout(function () { w.print(); /*w.close();*/ }, 400);
+    }
+
+    /* wiring for the three tables */
+    document.addEventListener('DOMContentLoaded', function () {
+      // mappings: table selector and button ids
+      var map = [
+        { tableSelector: '#outwardHistoryView table.oh-table', excel: 'btnExcelOut', csv: 'btnCsvOut', print: 'btnPrintOut' },
+        { tableSelector: '#inwardHistoryView table.ih-table', excel: 'btnExcelIn', csv: 'btnCsvIn', print: 'btnPrintIn' },
+        { tableSelector: '#oemHistoryView table.oem-table', excel: 'btnExcelOem', csv: 'btnCsvOem', print: 'btnPrintOem' }
+      ];
+
+      map.forEach(function (m) {
+        var table = document.querySelector(m.tableSelector);
+        if (!table) {
+          // try fallback to first table in the section
+          var sec = document.querySelector(m.tableSelector.replace(/ table\..*/, ''));
+          if (sec) table = sec.querySelector('table');
+        }
+        if (!table) return;
+        var btnExcel = document.getElementById(m.excel);
+        var btnCsv = document.getElementById(m.csv);
+        var btnPrint = document.getElementById(m.print);
+        if (btnExcel) btnExcel.addEventListener('click', function () { exportTableToExcel(table, (m.excel + '.xlsx')); });
+        if (btnCsv) btnCsv.addEventListener('click', function () { exportTableToCSV(table, (m.csv + '.csv')); });
+        if (btnPrint) btnPrint.addEventListener('click', function () { printTable(table, document.querySelector(m.tableSelector.replace(/ table\..*/, '') + ' .oh-header') ? document.querySelector(m.tableSelector.replace(/ table\..*/, '') + ' .oh-header').innerText : 'Print'); });
+      });
+    });
+  </script>
+
+
+
+</body>
+
+</html>

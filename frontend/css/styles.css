@@ -1,0 +1,480 @@
+:root{
+  --bg:#071f4d; --card:#e0e0e0; --accent-green:#21863a; --maroon:#4d0b09;
+  --top-green:#1e7a45; --nav-navy:#07204a; --sidebar:#e6e6e6; --panel-bg:#3f5262;
+  --inward-yellow: #fff9c4; /* light yellow */
+  --shortage-pink: #ffe4e1; /* light pink */
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Arial;color:#fff}
+.hidden{display:none !important}
+
+/* layout/header/sidebar */
+header{display:flex;align-items:center;justify-content:space-between;background:var(--top-green);padding:20px 36px;font-size:28px;letter-spacing:1px}
+header .title{font-weight:600}
+header .user{font-weight:500}
+.app-root{display:flex;flex-direction:column;height:100vh;background:var(--nav-navy)}
+.layout{display:flex;flex:1 1 auto;height:calc(100vh - 72px);overflow:hidden}
+.nav-strip{width:24px;background:var(--nav-navy)}
+.sidebar{width:240px;background:var(--sidebar);border-right:3px solid rgba(0,0,0,0.15);display:flex;flex-direction:column;align-items:stretch;padding:0 12px}
+.menu{margin-top:8px;display:flex;flex-direction:column;gap:0;border-top:3px solid rgba(0,0,0,0.2);border-bottom:3px solid rgba(0,0,0,0.08)}
+.menu button{background:white;border:none;padding:20px 16px;text-align:left;font-size:18px;color:#111;cursor:pointer;outline:1px solid rgba(0,0,0,0.08)}
+.menu button.active{background:#a69f9f;color:#0f0f0f;font-weight:600}
+.menu button.disabled{ color:#6b6b6b; background:#f2f2f2; cursor:default; pointer-events:none; }
+.spacer{flex:1}
+.logout-wrap{padding:20px;display:flex;justify-content:center}
+.logout{background:#5b1211;color:#fff;border-radius:28px;padding:10px 28px;border:none;font-size:14px;cursor:pointer;letter-spacing:1px}
+
+/* login */
+.page-login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.login-wrap{width:680px;max-width:92vw;background:var(--card);border-radius:8px;padding:64px 72px}
+.brand{text-align:center;font-size:34px;letter-spacing:2px;font-weight:700;color:var(--accent-green);margin:10px 0 64px 0}
+.form{display:flex;flex-direction:column;gap:34px;align-items:center}
+.input{width:80%;max-width:520px;height:56px;background:var(--maroon);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 20px}
+.input input{width:100%;border:0;background:transparent;color:#fff;font-size:20px;text-align:center;letter-spacing:12px;text-transform:uppercase}
+.btn{background:var(--accent-green);border:none;color:#fff;padding:12px 36px;border-radius:28px;cursor:pointer;font-weight:600;letter-spacing:2px}
+
+/* main content */
+.main{flex:1;padding:28px;overflow:auto}
+.panel{background:var(--panel-bg);height:auto;border-radius:6px;padding:18px 24px 36px 24px;position:relative}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;align-items:start;padding:28px}
+.tile{border-radius:12px;height:160px;padding:20px;position:relative;box-shadow:0 2px 0 rgba(0,0,0,0.25);border:1px solid rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:flex-start;cursor:pointer}
+.tile h3{margin:0;font-weight:500;font-size:18px;letter-spacing:1px;color:#fff}
+.tile .underline{position:absolute;left:24px;right:24px;bottom:24px;height:2px;background:rgba(255,255,255,0.7)}
+.t-inv{background:#9aa06b}
+.t-create-out{background:#0ca0d2}
+.t-create-in{background:#c98b8b}
+.t-oem{background:#4f8e8b}
+.t-stock{background:#9a5e5e}
+.t-shortage{background:#d48ac8}
+
+/* generic form elements */
+.form-title{background:#e6e6e6;color:#111;padding:16px 18px;border-radius:4px;margin-bottom:22px;font-size:18px}
+.co-panel{background:#445567;padding:22px;border-radius:6px;color:#fff;flex:1;overflow:visible}
+.row{display:flex;gap:18px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+.field{flex:1;min-width:180px;display:flex;flex-direction:column;gap:8px}
+.label{font-size:14px;letter-spacing:1px}
+input[type="text"], select, input[type="date"]{height:36px;padding:6px 10px;border-radius:2px;border:0;background:#dedede;color:#111}
+select{appearance:none;padding-right:32px;background-color:#dedede;background-repeat:no-repeat;background-position:calc(100% - 10px) center;background-size:12px 12px}
+.with-arrow{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" viewBox="0 0 14 10"><path fill="%23000" d="M7 10L0 0h14z"/></svg>');background-repeat:no-repeat;background-position:calc(100% - 12px) center;background-size:12px 10px;padding-right:36px}
+select.with-arrow::-ms-expand{display:none}
+
+/* small numeric boxes */
+.small-inputs{display:flex;gap:18px;flex-wrap:wrap;margin:18px 0 32px}
+.small-box{width:84px;height:36px;background:#dedede;border-radius:4px;border:0;text-align:center}
+.blue-btn{background:#63a6f7;color:#093240;padding:12px 18px;border-radius:8px;border:none;cursor:pointer;margin-right:18px}
+.clear-btn{background:#5b1211;color:#fff;padding:8px 12px;border-radius:4px;border:none;cursor:pointer}
+.submit-wrap{display:flex;justify-content:flex-end;padding:20px}
+.submit-btn{background:#e41313;color:#fff;padding:12px 28px;border-radius:4px;border:none;cursor:pointer;font-weight:600}
+.extra-block{background:rgba(255,255,255,0.03);padding:12px;margin-top:12px;border-radius:6px;border:1px solid rgba(0,0,0,0.08);position:relative}
+/* Keep dynamically-added select wrappers from expanding existing dropdowns */
+.extra-block{box-sizing:border-box;max-width:100%;overflow:visible}
+.extra-block > div{max-width:420px;box-sizing:border-box}
+.extra-block select.with-arrow{width:100%;max-width:420px;box-sizing:border-box}
+.extra-block .small-inputs{flex-wrap:wrap}
+
+.extra-top-right{position:absolute;right:10px;top:10px;display:flex;gap:8px;align-items:center}
+.remove-btn{background:#a33;color:#fff;padding:6px 10px;border-radius:6px;border:none;cursor:pointer}
+
+/* history area - fixed header inside grey panel */
+.oh-header{background:#bfeaf4;color:#07202f;padding:14px 18px;margin:10px 0 18px 0;border-radius:2px;font-weight:600}
+.oh-controls{display:flex;align-items:center;gap:12px;padding:12px;background:#fff;border-radius:4px;margin-bottom:12px}
+.oh-left{display:flex;align-items:center;gap:10px}
+.oh-left label{color:#333;font-size:14px}
+.oh-left select{height:32px;padding:6px 8px;border-radius:4px;border:1px solid #cfcfcf;background:white;color:#111}
+.oh-actions{display:flex;gap:8px}
+.oh-actions button{background:#f0f0f0;border:1px solid #d0d0d0;padding:8px 12px;border-radius:4px;cursor:pointer;color:#222}
+.oh-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.oh-right .oh-location-label{color:#111;font-size:14px}
+.oh-right select{height:32px;padding:6px 8px;border-radius:4px;border:1px solid #cfcfcf;background:white;color:#111}
+.oh-clear{background:#5b1211;color:#fff;padding:8px 12px;border-radius:4px;border:none;cursor:pointer}
+
+/* table container inside panel: header sticky and table scroll inside container */
+.oh-data-wrap{background:#fff;max-height:520px;overflow:auto;border-radius:4px;border:1px solid rgba(0,0,0,0.06);padding:0 0 8px 0}
+.oh-table{width:100%;border-collapse:collapse;margin:0}
+.oh-table th, .oh-table td{border:1px solid rgba(0,0,0,0.12);background:#dedede;color:#111;padding:8px 6px;font-size:12px;text-align:center;white-space:nowrap}
+.oh-table thead th{background:#dedede}
+.oh-table thead th.small{min-width:56px;padding:6px 6px;font-size:11px}
+
+/* header rows font size 9 and bold, both rows fit */
+.oh-table thead th{position:sticky; top:0; z-index:3; font-size:9px; font-weight:700;}
+.oh-table thead tr:first-child th{top:0; z-index:4}
+.oh-table thead tr:nth-child(2) th{top:28px; z-index:4; background:#dedede}
+
+/* ---------- New styles for INWARD / SHORTAGE visual groups ---------- */
+/* applied to both header th and data td */
+.oh-table th.inward-group,
+.oh-table td.inward-group { background: var(--inward-yellow) !important; }
+
+.oh-table th.shortage-group,
+.oh-table td.shortage-group { background: var(--shortage-pink) !important; }
+
+/* Column width adjustments requested for history tables */
+/* base left columns widths (no sticky) */
+.oh-table th.col-dispatch, .oh-table td.col-dispatch { min-width:90px; width:90px; text-align:center; }
+.oh-table th.col-receive, .oh-table td.col-receive { min-width:90px; width:90px; text-align:center; }
+/* INVOICE NO increased by 5px -> 95px */
+.oh-table th.col-invno, .oh-table td.col-invno { min-width:95px; width:95px; text-align:center; }
+/* VEHICLE keep default */
+.oh-table th.col-vehicle, .oh-table td.col-vehicle { min-width:80px; width:80px; }
+/* LOCATION increased by 15px -> 85px */
+.oh-table th.col-location, .oh-table td.col-location { min-width:85px; width:85px; }
+/* CUSTOMER, OEM, PARTNAME adjustments */
+.oh-table th.col-customer, .oh-table td.col-customer { min-width:90px; width:90px; text-align:left; padding-left:8px; }
+.oh-table th.col-oem, .oh-table td.col-oem { min-width:100px; width:100px; text-align:left; padding-left:8px; }
+/* PARTNAME increased by 15px -> set to 115px */
+.oh-table th.col-partname, .oh-table td.col-partname { min-width:115px; width:115px; text-align:left; padding-left:8px; }
+
+/* NOTE: Removed sticky positioning for the first 3 columns (dispatch, receive, invno)
+   so they will move with the horizontal scrollbar as you requested. */
+
+/* INVENTORY table specific */
+.inv-panel{background:#fff;padding:14px;border-radius:6px;color:#111}
+#invTableOuter{overflow-x:scroll;overflow-y:auto; scrollbar-gutter:stable; border:1px solid rgba(0,0,0,0.06); background:#fff; padding:6px; border-radius:4px;}
+/* force horizontal scrollbar always visible */
+#invTableOuter{overflow-x:scroll;}
+
+/* table layout and column sizing */
+.inv-table{border-collapse:collapse;width:100%}
+.inv-table th, .inv-table td{border:1px solid rgba(0,0,0,0.12);padding:8px;font-size:13px;background:#fff;color:#111;text-align:center;white-space:nowrap}
+.inv-table thead th{background:#f2f2f2;position:sticky;top:0;z-index:4}
+
+/* header two rows font-size 9 and bold */
+.inv-table thead th{font-size:9px;font-weight:700}
+
+/* set explicit sticky offsets so the two header rows fit inside */
+.inv-table thead tr:first-child th{top:0}
+.inv-table thead tr:nth-child(2) th{top:28px}
+
+/* fixed widths as requested (adjusted: decreased 10px each earlier now preserved) */
+.col-customer{min-width:120px;width:120px;text-align:left;padding-left:8px;}
+.col-oem{min-width:100px;width:100px;text-align:left;padding-left:8px}
+.col-part{min-width:160px;width:160px;text-align:left;padding-left:8px}
+
+/* make group columns compact so primary columns remain visible */
+.col-group{min-width:44px;width:44px}
+
+/* input style for inventory numeric boxes */
+.inv-input{width:40px;min-width:40px;height:26px;padding:4px;border:1px solid #ccc;border-radius:4px;text-align:center;font-size:12px}
+
+/* highlight header rows for visual groups */
+.inv-header-group-inward{background:var(--inward-yellow)}
+.inv-header-group-outward{background:var(--shortage-pink)}
+
+/* sticky left columns (customer, oem, partname) — pinned while horizontally scrolling for inventory table */
+.inv-table th.col-customer,
+.inv-table td.col-customer{
+  position:sticky;
+  left:0;
+  z-index:6;
+  background:#fff;
+  text-align:left;
+}
+.inv-table th.col-oem,
+.inv-table td.col-oem{
+  position:sticky;
+  left:120px; /* width of customer */
+  z-index:6;
+  background:#fff;
+  text-align:left;
+}
+.inv-table th.col-part,
+.inv-table td.col-part{
+  position:sticky;
+  left:220px; /* 120 + 100 */
+  z-index:6;
+  background:#fff;
+  text-align:left;
+}
+
+/* ensure header cells for sticky columns sit above row cells */
+.inv-table thead th.col-customer,
+.inv-table thead th.col-oem,
+.inv-table thead th.col-part{ z-index:8 }
+
+/* Ensure the container allows horizontal scroll inside grey panel area */
+.inv-wrapper{background:#f5f5f5;padding:12px;border-radius:6px}
+
+/* responsive tweaks */
+@media (max-width:1000px){ .tiles{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:760px){
+  .sidebar{width:76px}
+  .menu button{padding:12px;font-size:14px}
+  .tiles{grid-template-columns:1fr}
+}
+
+/* Prevent add-more blocks from overflowing the grey container */
+.extra-block{box-sizing:border-box;max-width:100%;overflow:hidden}
+.extra-block select.with-arrow{width:420px;box-sizing:border-box}
+.extra-block .small-inputs{flex-wrap:wrap}
+
+/* Ensure the seven small inputs stay in a single row */
+.small-inputs{display:flex;flex-wrap:nowrap;gap:18px;align-items:center}
+.small-inputs .small-field{min-width:78px;max-width:78px;width:78px;box-sizing:border-box}
+/* Keep select widths consistent */
+.select-row .with-arrow{width:420px;max-width:420px}
+
+
+/* Ensure outer panels can expand when add-more blocks are appended */
+.panel{height:auto !important}
+
+/* Force the seven small inputs in each added block to stay in a single row */
+.extra-block .small-inputs{display:flex;flex-wrap:nowrap;gap:18px;align-items:center;overflow:visible}
+.extra-block .small-inputs > div{flex:0 0 84px;min-width:84px;max-width:84px;box-sizing:border-box}
+.extra-block .small-inputs .small-box{width:78px;box-sizing:border-box}
+
+/* Ensure added blocks do not push existing select widths */
+.extra-block{box-sizing:border-box;overflow:visible}
+.extra-block > div{max-width:420px;box-sizing:border-box}
+.extra-block .with-arrow{width:420px;max-width:420px}
+
+.th col-customer{
+  color: red;
+}
+
+/* INVENTORY CHART controls + layout */
+.inv-controls{
+  margin: 10px 0 8px 0;
+}
+.inv-actions{
+  display:flex;
+  gap:8px;
+}
+.oh-actions button,
+.inv-actions button{
+  background:#f0f0f0;
+  border:1px solid #d0d0d0;
+  padding:8px 12px;
+  border-radius:4px;
+  cursor:pointer;
+  color:#222;
+}
+
+/* When viewing INVENTORY, keep main area fixed and scroll only inside the data panel */
+.main.inv-fixed{
+  overflow:hidden;
+}
+
+/* Make inventory panel fill available height so that the internal scrollbars stay within the data region */
+#inventoryView .co-panel{
+  display:flex;
+  flex-direction:column;
+}
+
+/* Ensure the wrapper + table container expand and the scrollbars stay inside */
+#inventoryView .inv-wrapper{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Vertical scroll lives inside invTableOuter; limit its height relative to the viewport */
+#invTableOuter{
+  max-height: calc(100vh - 260px);
+  overflow-y:auto;
+}
+
+
+/* Make INVENTORY CHART title + controls more compact so the data area is taller */
+#inventoryView .form-title{
+  padding:10px 14px;
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+#inventoryView .inv-controls{
+  margin:4px 0 6px 0;
+}
+
+/* Give the data container a bit more height within the viewport */
+#inventoryView #invTableOuter{
+  max-height: calc(100vh - 190px);
+}
+
+
+/* Inventory title bar with actions on the right */
+#inventoryView .form-title.inv-title-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+#inventoryView .inv-title-text{
+  flex:1;
+}
+
+/* Ensure buttons inside the title bar are compact and aligned right */
+#inventoryView .inv-title-bar .inv-actions{
+  display:flex;
+  gap:8px;
+  margin:0;
+}
+
+
+/* INVENTORY: make header + data look like one flat white block */
+#inventoryView .form-title{
+  background:#ffffff;
+}
+
+/* Remove inner rounded/light-gray wrapper feeling for Inventory so data area feels larger */
+#inventoryView .co-panel{
+  background:transparent;
+  padding:0;
+  border-radius:0;
+}
+
+#inventoryView .inv-wrapper{
+  background:transparent;
+  padding:0;
+  border-radius:0;
+}
+
+/* Make the inner white panel edges straight for Inventory */
+#inventoryView .inv-panel{
+  border-radius:0;
+}
+/*************************************************
+ * INVENTORY CHART – Correct column coloring
+ * BOX QUANTITY = light blue
+ * WAREHOUSE STOCK = light yellow
+ *************************************************/
+
+/* 1) DATA CELLS (tbody) – full column background */
+
+/* BOX QUANTITY: columns 4–10 */
+#inventoryView #invTable tbody td:nth-child(4),
+#inventoryView #invTable tbody td:nth-child(5),
+#inventoryView #invTable tbody td:nth-child(6),
+#inventoryView #invTable tbody td:nth-child(7),
+#inventoryView #invTable tbody td:nth-child(8),
+#inventoryView #invTable tbody td:nth-child(9),
+#inventoryView #invTable tbody td:nth-child(10){
+  background-color: #d9ecff !important; /* light blue */
+}
+/* WAREHOUSE STOCK: columns 11–17 */
+#inventoryView #invTable tbody td:nth-child(11),
+#inventoryView #invTable tbody td:nth-child(12),
+#inventoryView #invTable tbody td:nth-child(13),
+#inventoryView #invTable tbody td:nth-child(14),
+#inventoryView #invTable tbody td:nth-child(15),
+#inventoryView #invTable tbody td:nth-child(16),
+#inventoryView #invTable tbody td:nth-child(17){
+  background-color: #fff7c2 !important; /* light yellow */
+}
+#inventoryView #invTable tbody td:nth-child(18),
+#inventoryView #invTable tbody td:nth-child(19),
+#inventoryView #invTable tbody td:nth-child(20),
+#inventoryView #invTable tbody td:nth-child(21),
+#inventoryView #invTable tbody td:nth-child(22),
+#inventoryView #invTable tbody td:nth-child(23),
+#inventoryView #invTable tbody td:nth-child(24){
+  background-color: #f599d6 !important; /* light yellow */
+}
+#inventoryView #invTable tbody td:nth-child(25),
+#inventoryView #invTable tbody td:nth-child(26),
+#inventoryView #invTable tbody td:nth-child(27),
+#inventoryView #invTable tbody td:nth-child(28),
+#inventoryView #invTable tbody td:nth-child(29),
+#inventoryView #invTable tbody td:nth-child(30),
+#inventoryView #invTable tbody td:nth-child(31){
+  background-color: #a5b6f6 !important; /* light yellow */
+}
+
+
+/* 2) HEADER ROWS – handle colspans correctly */
+
+/* Row 1 (group headers):
+   th[1] = CUSTOMER
+   th[2] = OEM
+   th[3] = PARTNAME
+   th[4] = BOX QUANTITY  (colspan=7)
+   th[5] = WAREHOUSE STOCK (colspan=7)
+   th[6] = INWARD
+   th[7] = OUTWARD
+*/
+
+/* BOX QUANTITY group header (top row) */
+#inventoryView #invTable thead tr:first-child th:nth-child(4){
+  background-color: #d9ecff !important;
+}
+
+/* WAREHOUSE STOCK group header (top row) */
+#inventoryView #invTable thead tr:first-child th:nth-child(5){
+  background-color: #fff7c2 !important;
+}
+#inventoryView #invTable thead tr:first-child th:nth-child(6){
+  background-color: #f599d6 !important;
+}
+#inventoryView #invTable thead tr:first-child th:nth-child(7){
+  background-color: #a5b6f6  !important;
+}
+
+
+/* Row 2 (subheaders) has only the 4×7 small headers:
+   1–7   = BOX QUANTITY PALLET..DUMMY
+   8–14  = WAREHOUSE STOCK PALLET..DUMMY
+   15–21 = INWARD
+   22–28 = OUTWARD
+*/
+
+/* BOX QUANTITY subheaders (row 2, cells 1–7) */
+#inventoryView #invTable thead tr:nth-child(2) th:nth-child(-n+7){
+  background-color: #d9ecff !important;
+}
+
+/* WAREHOUSE STOCK subheaders (row 2, cells 8–14) */
+#inventoryView #invTable thead tr:nth-child(2) th:nth-child(n+8):nth-child(-n+14){
+  background-color: #fff7c2 !important;
+}
+/* INWARD STOCK subheaders (row 2, cells 15–21) */
+#inventoryView #invTable thead tr:nth-child(2) th:nth-child(n+15):nth-child(-n+21){
+  background-color: #f599d6 !important;
+}
+/* OUTWARD STOCK subheaders (row 2, cells 22–28) */
+#inventoryView #invTable thead tr:nth-child(2) th:nth-child(n+22):nth-child(-n+28){
+  background-color: #a5b6f6 !important;
+}
+
+
+/* Stock Transfer From/To width */
+.st-wide { width: 180px !important; }
+
+
+/* Shortage Summary UI adjustments */
+.ss-from-wide { width: 70% !important; }
+.ss-date-narrow { width: 90% !important; }
+.ss-date-stock { width: 60% !important; }
+
+.ss-wide-40 { width: 100% !important; }
+
+.ss-orange-btn {
+  background-color: orange !important;
+  border-color: orange !important;
+  color: #fff !important;
+}
+
+/* Shortage Summary Table Scroll */
+#ssScrollContainer {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-top: 10px;
+  padding-bottom: 8px;
+}
+
+
+
+/* Prevent page-level horizontal scrolling */
+html, body {
+  overflow-x: hidden !important;
+}
+
+
+/* Orange Calculate Shortage Button */
+.btn-orange {
+  background-color: #f4a000 !important;
+  border-color: #f4a000 !important;
+  color: #fff !important;
+}
