@@ -200,6 +200,8 @@ select.with-arrow::-ms-expand{display:none}
 @media (max-width:1000px){ .tiles{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:760px){
   .sidebar{width:76px}
+  .menu button{padding:12px;font-size:14px}
+  .tiles{grid-template-columns:1fr}
 }
 
 /* Prevent add-more blocks from overflowing the grey container */
@@ -208,7 +210,7 @@ select.with-arrow::-ms-expand{display:none}
 .extra-block .small-inputs{flex-wrap:wrap}
 
 /* Ensure the seven small inputs stay in a single row */
-.small-inputs{display:flex;flex-wrap:nowrap;gap:18px;align-items:center}
+
 .small-inputs .small-field{min-width:78px;max-width:78px;width:78px;box-sizing:border-box}
 /* Keep select widths consistent */
 .select-row .with-arrow{width:420px;max-width:420px}
@@ -218,7 +220,7 @@ select.with-arrow::-ms-expand{display:none}
 .panel{height:auto !important}
 
 /* Force the seven small inputs in each added block to stay in a single row */
-.extra-block .small-inputs{display:flex;flex-wrap:nowrap;gap:18px;align-items:center;overflow:visible}
+
 .extra-block .small-inputs > div{flex:0 0 84px;min-width:84px;max-width:84px;box-sizing:border-box}
 .extra-block .small-inputs .small-box{width:78px;box-sizing:border-box}
 
@@ -478,38 +480,46 @@ html, body {
 }
 
 
-/* =====================================================
-   FINAL MOBILE LAYOUT FIX – VALIDATED
-   ===================================================== */
-@media (max-width: 768px) {
-  .layout {
-    flex-direction: column;
-    height: auto !important;
-    overflow: visible !important;
+/* ================= MOBILE HAMBURGER MENU ================= */
+.hamburger{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  color:#fff;
+}
+
+@media (max-width:768px){
+
+  .hamburger{ display:block; }
+
+  .sidebar{
+    position:fixed;
+    top:72px;
+    left:-100%;
+    width:260px;
+    height:calc(100vh - 72px);
+    background:var(--sidebar);
+    transition:left .3s ease;
+    z-index:1000;
   }
 
-  .nav-strip { display: none; }
+  .sidebar.open{ left:0; }
 
-  .sidebar {
-    width: 100% !important;
-    height: auto !important;
-    border-right: none;
-    padding: 0;
+  /* FIX SMALL INPUT BOXES */
+  .small-inputs{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
   }
 
-  .menu button {
-    width: 100%;
-    padding: 14px 16px;
-    font-size: 16px;
+  .small-box{ width:100%; }
+
+  /* FIX ADD MORE BUTTONS */
+  .blue-btn,
+  .submit-btn{
+    width:100%;
+    margin:10px 0;
   }
 
-  .main {
-    width: 100% !important;
-    padding: 16px !important;
-    overflow: visible !important;
-  }
-
-  .tiles {
-    grid-template-columns: 1fr !important;
-  }
+  .submit-wrap{ justify-content:center; }
 }
