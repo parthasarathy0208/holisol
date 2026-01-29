@@ -264,7 +264,7 @@ alert('Outward submitted and inventory updated.');
           }catch(e){ console.error('build payload error',e); }
           return arr;
         })() };
-        fetch('/api/inventory/outward', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+        fetch('https://holisol.onrender.com/api/inventory/outward', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) })
           .then(r=>r.json()).then(j=>{ if(!j.ok){ console.error('persist outward failed', j); alert('Warning: failed to persist outward to server.'); } }).catch(err=>{ console.error('persist outward error', err); alert('Warning: failed to persist outward to server.'); });
       }catch(e){ console.error('send outward error', e); }
       
@@ -284,7 +284,7 @@ alert('Outward submitted and inventory updated.');
 
 async function fetchOutwardHistory(){
   try{
-    const resp = await fetch('/api/inventory/outward');
+    const resp = await fetch('https://holisol.onrender.com/api/inventory/outward');
     const j = await resp.json();
     if(!j.ok || !Array.isArray(j.docs)) return;
     const ohTbody = document.getElementById('ohTbodyOut');
@@ -356,7 +356,7 @@ function resetCreateOutwardForm(){
 // Load Outward History from server and render into table body #ohTbodyOut
 async function loadOutwardHistoryFromServer(){
   try{
-    const resp = await fetch('/api/inventory/outward');
+    const resp = await fetch('https://holisol.onrender.com/api/inventory/outward');
     if(!resp.ok) return;
     const data = await resp.json();
     if(!data.ok) return;
