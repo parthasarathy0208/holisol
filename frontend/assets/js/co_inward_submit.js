@@ -279,7 +279,7 @@ function addToTotals(customer,oem,part,vals){
               });
             }
             // send to server; if server not available, this will fail silently but app will continue to work locally
-            const resp = await fetch('/api/inventory/inward', {
+            const resp = await fetch('https://holisol.onrender.com/api/inventory/inward', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ entries })
@@ -332,7 +332,7 @@ function addToTotals(customer,oem,part,vals){
 // Load Inward History from server and render into table body #ohTbodyIn
 async function loadInwardHistoryFromServer(){
   try{
-    const resp = await fetch('/api/inventory/inward');
+    const resp = await fetch('https://holisol.onrender.com/api/inventory/inward');
     if(!resp.ok) return;
     const data = await resp.json();
     if(!data.ok) return;
