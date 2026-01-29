@@ -523,56 +523,76 @@ html, body {
 
 
 /* Orange Calculate Shortage Button */
-.btn-orange {
+.st_submit_btn {
   background-color: #f4a000 !important;
   border-color: #f4a000 !important;
   color: #fff !important;
 }
-/* ===============================
-   MOBILE RESPONSIVE FIX (CRITICAL)
-   =============================== */
+/* =====================================
+   REAL MOBILE FIX – CORRECT CONTAINER
+   ===================================== */
 @media (max-width: 768px) {
 
-  /* BODY */
-  body {
+  /* CHANGE MAIN LAYOUT FLOW */
+  .layout {
     flex-direction: column;
-    overflow-x: hidden;
+    height: auto;
+    overflow: visible;
   }
 
-  /* SIDEBAR */
+  /* HIDE NAV STRIP (BLUE BAR) */
+  .nav-strip {
+    display: none;
+  }
+
+  /* SIDEBAR SHOULD BECOME TOP BAR */
   .sidebar {
-    position: relative;
-    width: 100%;
+    width: 100% !important;
     height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 8px;
     border-right: none;
   }
 
-  .sidebar ul {
-    display: flex;
+  .menu {
+    flex-direction: row;
     flex-wrap: wrap;
+    border: none;
   }
 
-  .sidebar li {
+  .menu button {
     width: 50%;
+    font-size: 14px;
+    padding: 12px;
     text-align: center;
   }
 
-  /* MAIN CONTENT */
-  .main,
-  .content,
-  .container {
+  /* MAIN CONTENT FULL WIDTH */
+  .main {
     width: 100% !important;
-    margin-left: 0 !important;
     padding: 12px;
   }
 
-  /* DASHBOARD CARDS */
-  .dashboard-cards {
+  /* PANELS */
+  .panel {
+    padding: 14px;
+  }
+
+  /* DASHBOARD TILES */
+  .tiles {
     grid-template-columns: 1fr !important;
+    padding: 12px;
+    gap: 16px;
   }
 
   /* FORMS */
-  form {
+  .row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .field {
     width: 100%;
   }
 
@@ -583,14 +603,15 @@ html, body {
     width: 100% !important;
   }
 
-  /* TABLE FIX */
-  .table-wrapper,
-  .table-container {
+  /* TABLES – MOBILE SCROLL */
+  .oh-data-wrap,
+  #invTableOuter,
+  #ssScrollContainer {
     overflow-x: auto;
   }
 
   table {
-    min-width: 700px;
+    min-width: 720px;
   }
 
   /* HEADER */
@@ -598,13 +619,13 @@ html, body {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    font-size: 20px;
   }
 
   /* LOGOUT BUTTON */
-  .logout {
-    position: relative;
+  .logout-wrap {
     width: 100%;
-    margin-top: 10px;
+    justify-content: center;
   }
 }
 
