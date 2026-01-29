@@ -2,7 +2,7 @@
 (function () {
   // Fetch and normalize API data, then fill first-row inputs on the page
   function getData(cb) {
-    fetch('/api/inventory').then(r => {
+    fetch('https://holisol.onrender.com/api/inventory').then(r => {
       if (!r.ok) throw new Error('API returned ' + r.status);
       return r.json();
     }).then(data => {
