@@ -4,7 +4,7 @@
   let inventory = [];
 
   function fetchInventory() {
-    return fetch('/api/inventory')
+    return fetch('https://holisol.onrender.com/api/inventory')
       .then(r => r.json())
       .then(d => inventory = d || []);
   }
@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("STOCK TRANSFER PAYLOAD 👉", body);
 
     try {
-      const res = await fetch("/api/inventory/transfer", {
+      const res = await fetch("https://holisol.onrender.com/api/inventory/transfer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body)
@@ -196,7 +196,7 @@ async function loadTransferHistory() {
   const tbody = document.getElementById("ohTbodytransfer");
   if (!tbody) return;
   tbody.innerHTML = "";
-  const res = await fetch("/api/inventory/transfer");
+  const res = await fetch("https://holisol.onrender.com/api/inventory/transfer");
   const rows = await res.json();
   rows.forEach(r => {
     const tr = document.createElement("tr");
