@@ -170,7 +170,7 @@ function __normalize_history_row_ohTbodyIn(tr){
         });
       }
       // POST to backend
-      fetch('/api/inventory/oem-inward', {
+      fetch('https://holisol.onrender.com/api/inventory/oem-inward', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ entries })
