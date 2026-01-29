@@ -121,7 +121,7 @@
   }
 
   window.loadInventoryChart = function () {
-    fetch('/api/inventory')
+    fetch('https://holisol.onrender.com/api/inventory')
       .then(res => res.ok ? res.json() : Promise.reject(new Error('status ' + res.status)))
       .then(records => {
         console.log('inventory records (raw):', records);
@@ -241,7 +241,7 @@
 })();
 // 🔄 Expose inventory refresh for stock transfer
 window.refreshInventoryChart = async function () {
-  const res = await fetch("/api/inventory");
+  const res = await fetch("https://holisol.onrender.com/api/inventory");
   const data = await res.json();
 
   // 🔁 reuse existing render logic
