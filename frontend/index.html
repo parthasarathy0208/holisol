@@ -21,7 +21,10 @@
       <h1 id="brand" class="brand">HOLISOL LOGISTICS PVT.LTD</h1>
       <form id="loginForm" class="form" autocomplete="off">
         <label class="input"><input id="username" name="username" placeholder="USER NAME" /></label>
-        <label class="input"><input id="password" name="password" type="password" placeholder="PASSWORD" /></label>
+        <label class="input password-wrap">
+          <input id="password" name="password" type="password" placeholder="PASSWORD" />
+          <span class="toggle-eye" onclick="togglePassword()">👁</span>
+        </label>
         <div class="actions"><button id="signInBtn" class="btn" type="submit">S I G N &nbsp; I N →</button></div>
       </form>
 
@@ -1241,6 +1244,10 @@
         if (btnPrint) btnPrint.addEventListener('click', function () { printTable(table, document.querySelector(m.tableSelector.replace(/ table\..*/, '') + ' .oh-header') ? document.querySelector(m.tableSelector.replace(/ table\..*/, '') + ' .oh-header').innerText : 'Print'); });
       });
     });
+    function togglePassword() {
+      const pwd = document.getElementById("password");
+      pwd.type = pwd.type === "password" ? "text" : "password";
+    }
   </script>
 
 
