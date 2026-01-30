@@ -32,8 +32,12 @@
 
   <!-- APP -->
   <div id="app" class="app-root hidden" aria-hidden="true">
-    <header>
+    <header class="app-header">
       <div class="title">ULMS CHENNAI WAREHOUSE</div>
+
+      <!-- MOBILE MENU ICON -->
+      <span id="hamburgerMenu" class="hamburger">&#9776;</span>
+
       <div class="user" id="headerUser">USER NAME</div>
     </header>
 
@@ -160,7 +164,7 @@
                   inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
             </div>
 
-            <div class="note-row" style="margin-bottom:28px;">
+            <div class="note-row add-more-buttons" style="margin-bottom:28px;">
               <button id="co_addSame" class="blue-btn" type="button">ADD MORE FOR SAME CUSTOMER/OEM</button>
               <button id="co_addDiff" class="blue-btn" type="button">ADD MORE FOR DIFFERENT OEM</button>
             </div>
@@ -242,7 +246,7 @@
                   inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
             </div>
 
-            <div class="note-row" style="margin-bottom:28px;">
+            <div class="note-row add-more-buttons" style="margin-bottom:28px;">
               <button id="ci_addSame" class="blue-btn" type="button">ADD MORE FOR SAME CUSTOMER /OEM</button>
               <button id="ci_addDiff" class="blue-btn" type="button">ADD MORE FOR DIFFERENT CUSTOMER /OEM</button>
               <button id="ci_addDiffOem" class="blue-btn" type="button">ADD MORE FOR DIFFERENT OEM</button>
@@ -329,7 +333,7 @@
                   inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
             </div>
 
-            <div class="note-row" style="margin-bottom:28px;">
+            <div class="note-row add-more-buttons" style="margin-bottom:28px;">
               <button id="oem_addSame" class="blue-btn" type="button">ADD MORE FOR SAME CUSTOMER/OEM</button>
               <button id="oem_addDiff" class="blue-btn" type="button">ADD MORE FOR DIFFERENT CUSTOMER</button>
             </div>
@@ -716,14 +720,14 @@
 
 
 
-              <div class="history-filter-wrap" style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+              <div class="history-filter-wrap">
                 <input id="oh_filter_input" class="history-filter-input" type="text" placeholder="Search..."
                   aria-label="Search in outwardHistoryView"
                   style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
                 <button id="oh_filter_clear" class="history-filter-clear" type="button"
                   style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
 
-                <div class="history-export-wrap" style="display:flex;gap:8px;margin-left:auto;align-items:center;">
+                <div class="history-export-wrap">
                   <button id="btnExcelOut" class="history-export-btn">Excel (.xlsx)</button>
                   <button id="btnCsvOut" class="history-export-btn">CSV</button>
                   <button id="btnPrintOut" class="history-export-btn">Print</button>
@@ -772,14 +776,14 @@
 
 
 
-              <div class="history-filter-wrap" style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+              <div class="history-filter-wrap">
                 <input id="ih_filter_input" class="history-filter-input" type="text" placeholder="Search..."
                   aria-label="Search in inwardHistoryView"
                   style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
                 <button id="ih_filter_clear" class="history-filter-clear" type="button"
                   style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
 
-                <div class="history-export-wrap" style="display:flex;gap:8px;margin-left:auto;align-items:center;">
+                <div class="history-export-wrap">
                   <button id="btnExcelIn" class="history-export-btn">Excel (.xlsx)</button>
                   <button id="btnCsvIn" class="history-export-btn">CSV</button>
                   <button id="btnPrintIn" class="history-export-btn">Print</button>
@@ -840,14 +844,14 @@
 
 
 
-              <div class="history-filter-wrap" style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+              <div class="history-filter-wrap">
                 <input id="oem_filter_input" class="history-filter-input" type="text" placeholder="Search..."
                   aria-label="Search in oemHistoryView"
                   style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
                 <button id="oem_filter_clear" class="history-filter-clear" type="button"
                   style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
 
-                <div class="history-export-wrap" style="display:flex;gap:8px;margin-left:auto;align-items:center;">
+                <div class="history-export-wrap">
                   <button id="btnExcelOem" class="history-export-btn">Excel (.xlsx)</button>
                   <button id="btnCsvOem" class="history-export-btn">CSV</button>
                   <button id="btnPrintOem" class="history-export-btn">Print</button>
