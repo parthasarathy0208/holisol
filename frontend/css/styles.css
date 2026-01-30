@@ -868,27 +868,52 @@ html, body {
   }
 }
 
-/* ===============================
-   INVENTORY TABLE – STICKY HEADERS (DESKTOP)
-   =============================== */
+/* =====================================
+   INVENTORY TABLE – DESKTOP STICKY FIX
+   ===================================== */
 
-.inv-panel {
-  position: relative;
-  overflow: auto;
-  max-height: calc(100vh - 220px); /* adjust if needed */
-}
-
-/* Make entire THEAD sticky */
-.inv-table thead {
+/* Sticky header */
+.inv-table thead th {
   position: sticky;
   top: 0;
-  z-index: 20;
+  z-index: 30;
+  background: #f2f2f2;
 }
 
-/* Header cells styling */
-.inv-table thead th {
-  background: #f2f2f2;
-  border-bottom: 1px solid #ccc;
+/* FIRST 3 COLUMNS STICKY (HEADER + BODY) */
+
+/* CUSTOMER */
+.inv-table th.col-customer,
+.inv-table td.col-customer {
+  position: sticky;
+  left: 0;
+  z-index: 40;
+  background: #ffffff;
+}
+
+/* OEM */
+.inv-table th.col-oem,
+.inv-table td.col-oem {
+  position: sticky;
+  left: 120px; /* width of CUSTOMER */
+  z-index: 40;
+  background: #ffffff;
+}
+
+/* PART NAME */
+.inv-table th.col-part,
+.inv-table td.col-part {
+  position: sticky;
+  left: 220px; /* 120 + 100 */
+  z-index: 40;
+  background: #ffffff;
+}
+
+/* Ensure header cells are ABOVE body cells */
+.inv-table thead th.col-customer,
+.inv-table thead th.col-oem,
+.inv-table thead th.col-part {
+  z-index: 50;
 }
 
 
