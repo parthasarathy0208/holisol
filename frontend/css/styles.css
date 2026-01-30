@@ -723,10 +723,16 @@ html, body {
     min-width: 900px;
   }
 
-  /* ---------------- HISTORY TOOLBAR (MOBILE) ---------------- */
+  /* ==============================
+   HISTORY TOOLBAR – MOBILE FIX
+   ============================== */
+@media (max-width: 768px) {
+
+  /* Search + Clear in ONE row */
   .history-filter-wrap {
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
     width: 100%;
   }
 
@@ -736,30 +742,32 @@ html, body {
   }
 
   .history-filter-clear {
-    width: 100%;
+    white-space: nowrap;
+    padding: 10px 14px;
   }
 
+  /* Export buttons in NEXT row */
   .history-export-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     width: 100%;
+    margin-top: 10px;
   }
 
   .history-export-btn {
-    flex: 1 1 48%;
-    max-width: 48%;
-    font-size: 13px;
-    padding: 8px;
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
     white-space: nowrap;
   }
 
-  /* ---------------- BUTTONS ---------------- */
-  button {
-    font-size: 14px;
-    padding: 10px;
+  /* If there are 3 buttons, make last one full width */
+  .history-export-wrap .history-export-btn:last-child:nth-child(3) {
+    grid-column: span 2;
   }
 }
+
 /* =====================================================
    🔥 FIX: ADD MORE BLOCK INPUT OVERLAP (MOBILE ONLY)
    Applies to:
