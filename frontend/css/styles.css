@@ -736,7 +736,7 @@ html, body {
     width: 100%;
   }
 
-  /* 🔍 Search + Clear → SAME ROW */
+  /* 🔍 Search + Clear (SAME LINE, NO OVERFLOW) */
   .history-search-row {
     display: flex;
     gap: 8px;
@@ -745,15 +745,19 @@ html, body {
 
   .history-filter-input {
     flex: 1;
-    min-width: 0;
+    min-width: 0;              /* 🔥 VERY IMPORTANT */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
 
   .history-filter-clear {
-    white-space: nowrap;
+    flex-shrink: 0;
     padding: 10px 14px;
+    white-space: nowrap;
   }
 
-  /* 📤 Export buttons → NEXT ROW */
+  /* 📤 Export buttons (NEXT LINE) */
   .history-export-wrap {
     display: flex;
     gap: 8px;
@@ -762,8 +766,8 @@ html, body {
 
   .history-export-btn {
     flex: 1;
+    padding: 10px;
     font-size: 13px;
-    padding: 8px;
     white-space: nowrap;
   }
 }
