@@ -542,14 +542,7 @@ html, body {
     display: none;
   }
 
-  /* ---------------- HAMBURGER ---------------- */
-  .hamburger {
-    display: block !important;
-    font-size: 26px;
-    cursor: pointer;
-    color: #ffffff;
-    line-height: 1;
-  }
+ 
 
   /* ---------------- LAYOUT ---------------- */
   #app,
@@ -1005,3 +998,61 @@ html, body {
     font-size: 18px;
   }
 }
+@media (max-width: 768px) {
+
+  .input {
+    height: 56px; /* ensure container height */
+  }
+
+  .input input {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important; /* 🔥 MOST IMPORTANT */
+    
+    background-color: transparent;
+    font-size: 16px;
+    letter-spacing: 0 !important;  /* 🔥 disable spacing on mobile */
+    text-align: left;
+    
+    height: 100%;
+    line-height: 56px;             /* 🔥 vertically center text */
+    padding: 0 14px;
+  }
+}
+@media (max-width: 768px) {
+
+  header,
+  .app-header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Title always first (left) */
+  .title,
+  .header-title {
+    order: 1;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  /* Username second (right side) */
+  .user {
+    order: 2;
+    display: block !important;
+    margin-left: auto;
+    margin-right: 12px;
+    font-size: 14px;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  /* Menu icon last (corner) */
+  .hamburger {
+    order: 3;
+    display: block !important;
+    font-size: 26px;
+    cursor: pointer;
+    color: #fff;
+  }
+}
+
