@@ -724,11 +724,11 @@ html, body {
   }
 
 /* ===============================
-   HISTORY TOOLBAR – MOBILE (FINAL FIX)
+   HISTORY TOOLBAR – MOBILE (FINAL)
    =============================== */
 @media (max-width: 768px) {
 
-  /* Main wrapper */
+  /* Wrapper */
   .history-filter-wrap {
     display: flex;
     flex-direction: column;
@@ -736,7 +736,7 @@ html, body {
     width: 100%;
   }
 
-  /* 🔍 Search + Clear (SAME LINE, NO OVERFLOW) */
+  /* 🔍 Search + Clear (ONE LINE, NO OVERLAP) */
   .history-search-row {
     display: flex;
     gap: 8px;
@@ -745,10 +745,7 @@ html, body {
 
   .history-filter-input {
     flex: 1;
-    min-width: 0;              /* 🔥 VERY IMPORTANT */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    min-width: 0; /* 🔥 critical for real mobile */
   }
 
   .history-filter-clear {
@@ -766,8 +763,8 @@ html, body {
 
   .history-export-btn {
     flex: 1;
-    padding: 10px;
     font-size: 13px;
+    padding: 8px;
     white-space: nowrap;
   }
 }
