@@ -723,12 +723,12 @@ html, body {
     min-width: 900px;
   }
 
- /* ===============================
-   HISTORY TOOLBAR – MOBILE (FINAL v2)
+/* ===============================
+   HISTORY TOOLBAR – MOBILE (FINAL FIX)
    =============================== */
 @media (max-width: 768px) {
 
-  /* Wrapper */
+  /* Main wrapper */
   .history-filter-wrap {
     display: flex;
     flex-direction: column;
@@ -736,24 +736,16 @@ html, body {
     width: 100%;
   }
 
-  /* 🔍 Search + Clear in ONE ROW */
-  .history-filter-wrap > input,
-  .history-filter-wrap > button {
-    width: auto;
-  }
-
-  .history-filter-wrap {
-    align-items: stretch;
-  }
-
-  .history-filter-wrap {
-    display: grid;
-    grid-template-columns: 1fr auto;
+  /* 🔍 Search + Clear → SAME ROW */
+  .history-search-row {
+    display: flex;
     gap: 8px;
+    width: 100%;
   }
 
   .history-filter-input {
-    width: 100% !important;
+    flex: 1;
+    min-width: 0;
   }
 
   .history-filter-clear {
@@ -761,12 +753,11 @@ html, body {
     padding: 10px 14px;
   }
 
-  /* 📤 Export buttons in NEXT ROW */
+  /* 📤 Export buttons → NEXT ROW */
   .history-export-wrap {
     display: flex;
     gap: 8px;
     width: 100%;
-    grid-column: 1 / -1; /* force next line */
   }
 
   .history-export-btn {
