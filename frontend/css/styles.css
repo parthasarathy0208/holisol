@@ -30,7 +30,7 @@ header .user{font-weight:500}
 .brand{text-align:center;font-size:34px;letter-spacing:2px;font-weight:700;color:var(--accent-green);margin:10px 0 64px 0}
 .form{display:flex;flex-direction:column;gap:34px;align-items:center}
 .input{width:80%;max-width:520px;height:56px;background:var(--maroon);border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 20px}
-.input input{width:100%;border:0;background:transparent;color:#fff;font-size:20px;text-align:center;letter-spacing:12px;text-transform:uppercase}
+.input input{width:100%;border:0;background:transparent;color:#fff;font-size:20px;text-align:center;letter-spacing:12px;text-transform:none}
 .btn{background:var(--accent-green);border:none;color:#fff;padding:12px 36px;border-radius:28px;cursor:pointer;font-weight:600;letter-spacing:2px}
 
 /* main content */
