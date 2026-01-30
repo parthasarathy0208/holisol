@@ -818,3 +818,45 @@ html, body {
   }
 }
 
+/* =====================================
+   MOBILE: FULL WIDTH CONTENT (ONLY)
+   ===================================== */
+@media (max-width: 768px) {
+
+  /* Remove side gaps */
+  .layout {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 12px; /* small inner spacing only */
+  }
+
+  /* Panels stretch fully */
+  .panel {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .co-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Dashboard tiles full width */
+  .tiles {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .tile {
+    width: 100%;
+  }
+}
