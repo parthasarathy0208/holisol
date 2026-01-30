@@ -537,13 +537,6 @@ html, body {
     white-space: nowrap;
     line-height: 1.2;
   }
-
-  .user {
-    display: none;
-  }
-
- 
-
   /* ---------------- LAYOUT ---------------- */
   #app,
   .app-root,
