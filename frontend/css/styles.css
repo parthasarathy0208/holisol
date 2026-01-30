@@ -951,4 +951,57 @@ html, body {
     border: none;
   }
 }
+/* ===============================
+   LOGIN – PASSWORD EYE
+   =============================== */
+.password-wrap {
+  position: relative;
+}
 
+.password-wrap .toggle-eye {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  cursor: pointer;
+  color: #fff;
+  user-select: none;
+}
+
+/* ===============================
+   LOGIN – MOBILE FIX ONLY
+   =============================== */
+@media (max-width: 768px) {
+
+  .login-wrap {
+    width: 100%;
+    padding: 36px 20px;
+  }
+
+  .page-login .input {
+    width: 100% !important;
+    max-width: 100%;
+    height: 56px;
+  }
+
+  .page-login .input input {
+    width: 100%;
+    font-size: 18px;
+    letter-spacing: normal;   /* IMPORTANT */
+    text-align: left;
+  }
+
+  /* Brand single line */
+  .brand {
+    white-space: nowrap;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    font-size: 18px;
+  }
+}
