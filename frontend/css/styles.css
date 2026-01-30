@@ -200,6 +200,8 @@ select.with-arrow::-ms-expand{display:none}
 @media (max-width:1000px){ .tiles{grid-template-columns:repeat(2,1fr)} }
 @media (max-width:760px){
   .sidebar{width:76px}
+  .menu button{padding:12px;font-size:14px}
+  .tiles{grid-template-columns:1fr}
 }
 
 /* Prevent add-more blocks from overflowing the grey container */
@@ -471,45 +473,348 @@ html, body {
 
 
 /* Orange Calculate Shortage Button */
-.btn-orange {
+.st_submit_btn {
   background-color: #f4a000 !important;
   border-color: #f4a000 !important;
   color: #fff !important;
 }
-
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
 
 /* =====================================================
-   FINAL MOBILE LAYOUT FIX – VALIDATED
-   ===================================================== */
+   GLOBAL
+===================================================== */
+.hamburger {
+  display: none; /* desktop default */
+}
+
+.app-header {
+  position: relative;
+  z-index: 10002;
+}
+
+/* =====================================================
+   HISTORY TOOLBAR – DESKTOP
+===================================================== */
+.history-filter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.history-export-wrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.history-filter-input {
+  min-width: 220px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* =====================================================
+   MOBILE (≤ 768px)
+===================================================== */
 @media (max-width: 768px) {
-  .layout {
-    flex-direction: column;
-    height: auto !important;
-    overflow: visible !important;
+
+  /* ---------------- HEADER ---------------- */
+  header,
+  .app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
   }
 
-  .nav-strip { display: none; }
-
-  .sidebar {
-    width: 100% !important;
-    height: auto !important;
-    border-right: none;
-    padding: 0;
-  }
-
-  .menu button {
-    width: 100%;
-    padding: 14px 16px;
+  .header-title,
+  .title {
     font-size: 16px;
+    white-space: nowrap;
+    line-height: 1.2;
   }
 
+  .user {
+    display: none;
+  }
+
+  /* ---------------- HAMBURGER ---------------- */
+  .hamburger {
+    display: block !important;
+    font-size: 26px;
+    cursor: pointer;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  /* ---------------- LAYOUT ---------------- */
+  #app,
+  .app-root,
+  .layout,
   .main {
-    width: 100% !important;
-    padding: 16px !important;
-    overflow: visible !important;
+    margin-left: 0 !important;
+    padding: 10px;
   }
 
-  .tiles {
-    grid-template-columns: 1fr !important;
+  /* ---------------- SIDEBAR (DRAWER) ---------------- */
+  .nav-strip {
+    display: none !important;
+  }
+
+  aside.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #ffffff;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+  }
+
+  aside.sidebar.open {
+    left: 0;
+  }
+
+  aside.sidebar .spacer {
+    display: none !important;
+  }
+
+  aside.sidebar nav.menu {
+    display: flex !important;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+
+  aside.sidebar nav.menu button {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 15px;
+    text-align: left;
+    background: transparent;
+    color: #111;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  aside.sidebar nav.menu button.active {
+    background: #0d47a1;
+    color: #fff;
+  }
+
+  .logout-wrap {
+    margin-top: auto;
+    padding: 16px;
+  }
+
+  .logout {
+    width: 100%;
+    border-radius: 20px;
+    background: #7a0f0f;
+    color: #fff;
+  }
+
+  /* ---------------- PANELS ---------------- */
+  .panel {
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 14px;
+  }
+
+  /* ---------------- FORMS ---------------- */
+  .form-row,
+  .select-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-row input,
+  .form-row select,
+  .select-row select {
+    width: 100% !important;
+  }
+
+  /* ---------------- SMALL INPUT STRIP ---------------- */
+  .small-inputs {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .small-inputs > div {
+    min-width: 70px;
+    flex: 0 0 auto;
+  }
+
+  .small-box {
+    width: 100%;
+  }
+
+  /* ---------------- ADD MORE BLOCK ---------------- */
+  .extra-block {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+
+  .extra-block select,
+  .extra-block input,
+  .extra-block .with-arrow {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .extra-top-right {
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .extra-top-right button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  /* ---------------- ADD MORE BUTTONS ---------------- */
+  .add-more-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .add-more-buttons button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* ---------------- DASHBOARD ---------------- */
+  .dashboard-tiles {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .dashboard-tile {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  /* ---------------- TABLES ---------------- */
+  .table-wrapper,
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 900px;
+  }
+
+  /* ---------------- HISTORY TOOLBAR (MOBILE) ---------------- */
+  .history-filter-wrap {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .history-filter-input {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .history-filter-clear {
+    width: 100%;
+  }
+
+  .history-export-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .history-export-btn {
+    flex: 1 1 48%;
+    max-width: 48%;
+    font-size: 13px;
+    padding: 8px;
+    white-space: nowrap;
+  }
+
+  /* ---------------- BUTTONS ---------------- */
+  button {
+    font-size: 14px;
+    padding: 10px;
   }
 }
+/* =====================================================
+   🔥 FIX: ADD MORE BLOCK INPUT OVERLAP (MOBILE ONLY)
+   Applies to:
+   - Create Outward
+   - Create Inward
+   - OEM Inward Collection
+===================================================== */
+@media (max-width: 768px) {
+
+  /* Each dynamically added block must stack vertically */
+  .extra-block {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Force every row inside add-more to be column-based */
+  .extra-block .form-row,
+  .extra-block .select-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  /* All inputs & dropdowns */
+  .extra-block input,
+  .extra-block select {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Clear / Remove buttons container */
+  .extra-top-right {
+    position: static !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  /* Quantity buttons row */
+  .extra-block .small-inputs {
+    display: flex !important;
+    gap: 10px !important;
+    overflow-x: auto !important;
+    padding-bottom: 6px;
+  }
+
+  .extra-block .small-inputs > div {
+    min-width: 70px;
+    flex: 0 0 auto;
+  }
+}
+
