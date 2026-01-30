@@ -891,10 +891,7 @@ html, body {
   border-bottom: 1px solid #ccc;
 }
 
-/* Ensure no individual th is sticky */
-.inv-table thead th {
-  position: static !important;
-}
+
 /* ===============================
    HISTORY TOOLBAR – MOBILE (FINAL STABLE)
    =============================== */
