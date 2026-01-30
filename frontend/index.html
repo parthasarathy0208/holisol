@@ -716,25 +716,22 @@
 
           <div class="oh-controls" role="toolbar" aria-label="Controls">
             <div class="oh-left">
-              
+               <div class="history-filter-wrap">
 
+                 <!-- Search + Clear (SAME LINE) -->
+                 <div class="history-search-row">
+                    <input id="oh_filter_input" class="history-filter-input" type="text" placeholder="Search..." aria-label="Search in outwardHistoryView" />
+                     <button id="oh_filter_clear" class="history-filter-clear" type="button">Clear</button>
+                 </div>
 
-
-              <div class="history-filter-wrap">
-                <input id="oh_filter_input" class="history-filter-input" type="text" placeholder="Search..."
-                  aria-label="Search in outwardHistoryView"
-                  style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
-                <button id="oh_filter_clear" class="history-filter-clear" type="button"
-                  style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
-
-                <div class="history-export-wrap">
-                  <button id="btnExcelOut" class="history-export-btn">Excel (.xlsx)</button>
-                  <button id="btnCsvOut" class="history-export-btn">CSV</button>
-                  <button id="btnPrintOut" class="history-export-btn">Print</button>
+                   <!-- Export buttons (NEXT LINE) -->
+                  <div class="history-export-wrap">
+                     <button id="btnExcelOut" class="history-export-btn">Excel (.xlsx)</button>
+                     <button id="btnCsvOut" class="history-export-btn">CSV</button>
+                      <button id="btnPrintOut" class="history-export-btn">Print</button>
+                   </div>
                 </div>
-              </div>
             </div>
-
           </div>
 
           <div id="ohDataOut" class="oh-data-wrap" role="region" aria-live="polite">
@@ -770,28 +767,22 @@
         <section id="inwardHistoryView" class="panel view hidden" aria-hidden="true">
           <div class="oh-header">INWARD&nbsp;&nbsp;HISTORY</div>
 
-          <div class="oh-controls" role="toolbar" aria-label="Controls">
+           <div class="oh-controls" role="toolbar" aria-label="Controls">
             <div class="oh-left">
-              
-
-
-
               <div class="history-filter-wrap">
-                <input id="ih_filter_input" class="history-filter-input" type="text" placeholder="Search..."
-                  aria-label="Search in inwardHistoryView"
-                  style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
-                <button id="ih_filter_clear" class="history-filter-clear" type="button"
-                  style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
-
+                <!-- Search + Clear (SAME LINE) -->
+                <div class="history-search-row">
+                   <input id="ih_filter_input" class="history-filter-input" type="text" placeholder="Search..."  aria-label="Search in inwardHistoryView"/>
+                   <button id="ih_filter_clear" class="history-filter-clear" type="button">Clear</button>
+                </div>
+                     <!-- Export buttons (NEXT LINE) -->
                 <div class="history-export-wrap">
                   <button id="btnExcelIn" class="history-export-btn">Excel (.xlsx)</button>
                   <button id="btnCsvIn" class="history-export-btn">CSV</button>
                   <button id="btnPrintIn" class="history-export-btn">Print</button>
                 </div>
-              </div>
+             </div>
             </div>
-
-
           </div>
 
           <div id="ohDataIn" class="oh-data-wrap" role="region" aria-live="polite">
@@ -840,26 +831,20 @@
 
           <div class="oh-controls" role="toolbar" aria-label="Controls">
             <div class="oh-left">
-              
-
-
-
               <div class="history-filter-wrap">
-                <input id="oem_filter_input" class="history-filter-input" type="text" placeholder="Search..."
-                  aria-label="Search in oemHistoryView"
-                  style="padding:6px 10px;border:1px solid #ccc;border-radius:4px;min-width:220px;" />
-                <button id="oem_filter_clear" class="history-filter-clear" type="button"
-                  style="padding:6px 10px;border-radius:4px;border:1px solid #888;background:#fff;cursor:pointer;">Clear</button>
-
-                <div class="history-export-wrap">
-                  <button id="btnExcelOem" class="history-export-btn">Excel (.xlsx)</button>
-                  <button id="btnCsvOem" class="history-export-btn">CSV</button>
-                  <button id="btnPrintOem" class="history-export-btn">Print</button>
-                </div>
+                <!-- Search + Clear (SAME LINE) -->
+               <div class="history-search-row">
+                 <input id="oem_filter_input" class="history-filter-input" type="text" placeholder="Search..." aria-label="Search in oemHistoryView"/>
+                 <button id="oem_filter_clear" class="history-filter-clear" type="button">Clear</button>
+               </div>
+                <!-- Export buttons (NEXT LINE) -->
+               <div class="history-export-wrap">
+                 < button id="btnExcelOem" class="history-export-btn">Excel (.xlsx)</button>
+                 <button id="btnCsvOem" class="history-export-btn">CSV</button>
+                <button id="btnPrintOem" class="history-export-btn">Print</button>
               </div>
+             </div>
             </div>
-
-
           </div>
 
           <div id="ohDataOem" class="oh-data-wrap" role="region" aria-live="polite">
