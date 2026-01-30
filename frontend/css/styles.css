@@ -724,7 +724,7 @@ html, body {
   }
 
  /* ===============================
-   HISTORY TOOLBAR – MOBILE (FINAL)
+   HISTORY TOOLBAR – MOBILE (FINAL v2)
    =============================== */
 @media (max-width: 768px) {
 
@@ -736,17 +736,37 @@ html, body {
     width: 100%;
   }
 
-  /* Search + Clear in ONE row */
+  /* 🔍 Search + Clear in ONE ROW */
   .history-filter-wrap > input,
   .history-filter-wrap > button {
-    width: 100%;
+    width: auto;
   }
 
-  /* Export buttons in NEXT row */
+  .history-filter-wrap {
+    align-items: stretch;
+  }
+
+  .history-filter-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .history-filter-input {
+    width: 100% !important;
+  }
+
+  .history-filter-clear {
+    white-space: nowrap;
+    padding: 10px 14px;
+  }
+
+  /* 📤 Export buttons in NEXT ROW */
   .history-export-wrap {
     display: flex;
     gap: 8px;
     width: 100%;
+    grid-column: 1 / -1; /* force next line */
   }
 
   .history-export-btn {
