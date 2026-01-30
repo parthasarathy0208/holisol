@@ -723,54 +723,6 @@ html, body {
     min-width: 900px;
   }
 }
-/* ===============================
-   HISTORY TOOLBAR – MOBILE (SAFE FINAL)
-   =============================== */
-@media (max-width: 768px) {
-
-  * {
-    box-sizing: border-box;
-  }
-
-  .history-filter-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-  }
-
-  /* Search – full width */
-  .history-filter-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-
-  /* Buttons row */
-  .history-action-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    width: 100%;
-  }
-
-  .history-filter-clear {
-    flex: 1 1 48%;
-    padding: 10px;
-    border-radius: 6px;
-    background: #ff8c00;
-    color: #fff;
-    border: none;
-  }
-
-  .history-export-btn {
-    flex: 1 1 48%;
-    padding: 8px;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-}
 
 
 /* =====================================================
@@ -957,3 +909,46 @@ html, body {
 .inv-table thead th {
   position: static !important;
 }
+/* ===============================
+   HISTORY TOOLBAR – MOBILE (FINAL STABLE)
+   =============================== */
+@media (max-width: 768px) {
+
+  .history-filter-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  /* Search – full width */
+  .history-filter-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+
+  /* Buttons – NEXT LINE */
+  .history-action-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .history-action-row button {
+    width: 100%;
+    padding: 10px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .history-filter-clear {
+    background: #ff8c00;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+  }
+}
+
