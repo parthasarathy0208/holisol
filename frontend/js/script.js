@@ -5,6 +5,20 @@ const appRoot = document.getElementById('app');
 const headerUser = document.getElementById('headerUser');
 const logoutBtn = document.getElementById('logoutBtn');
 const API_BASE = 'https://holisol.onrender.com';
+const hamburger = document.getElementById('hamburgerMenu');
+const sidebar = document.querySelector('aside.sidebar');
+
+if (hamburger && sidebar) {
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+  });
+
+  sidebar.querySelectorAll('.menu button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+  });
+}
 
 
 loginForm.addEventListener('submit', (e)=>{
@@ -88,10 +102,30 @@ document.getElementById('createOemTile').addEventListener('click', ()=> showView
 document.getElementById('tileInventory').addEventListener('click', ()=> showView('inventory'));
 
 /* Sidebar nav */
-document.getElementById('menuDashboard').addEventListener('click', ()=> showView('dashboard'));
-document.getElementById('menuOutward').addEventListener('click', ()=> showView('outwardHistory'));
-document.getElementById('menuInward').addEventListener('click', ()=> showView('inwardHistory'));
-document.getElementById('menuOEM').addEventListener('click', ()=> showView('oemHistory'));
+document.getElementById('menuDashboard').addEventListener('click', () => {
+  showView('dashboard');
+  setActiveMenu('menuDashboard');
+});
+
+document.getElementById('menuOutward').addEventListener('click', () => {
+  showView('outwardHistory');
+  setActiveMenu('menuOutward');
+});
+
+document.getElementById('menuInward').addEventListener('click', () => {
+  showView('inwardHistory');
+  setActiveMenu('menuInward');
+});
+
+document.getElementById('menuOEM').addEventListener('click', () => {
+  showView('oemHistory');
+  setActiveMenu('menuOEM');
+});
+document.getElementById('menuTransferHistory')
+  .addEventListener('click', () => {
+    showView('stockTransferHistory');
+    setActiveMenu('menuTransferHistory');
+  });
 
 /* ---------- Numeric-only enforcement for small boxes and inventory inputs ---------- */
 document.addEventListener('input', function(e){
@@ -128,7 +162,7 @@ document.getElementById('co_addSame').addEventListener('click', ()=>{
 
   const partLab = document.createElement('div'); partLab.className='label'; partLab.style.marginBottom='8px'; partLab.textContent='PART NAME *';
   block.appendChild(partLab);
-  const pw = document.createElement('div'); pw.style.width='420px';
+  const pw = document.createElement('div'); 
 
   const inventory = window._inventory_normalized || [];
   const selCustomer = document.getElementById('co_customerSel') ? document.getElementById('co_customerSel').value : '';
@@ -250,7 +284,7 @@ document.getElementById('oem_addSame').addEventListener('click', ()=>{
 
   const partLab = document.createElement('div'); partLab.className='label'; partLab.style.marginBottom='8px'; partLab.textContent='PART NAME *';
   block.appendChild(partLab);
-  const pw = document.createElement('div'); pw.style.width='420px';
+  const pw = document.createElement('div');
 
   const inventory = window._inventory_normalized || [];
   const selCustomer = document.getElementById('oem_customerSel') ? document.getElementById('oem_customerSel').value : '';
@@ -346,7 +380,7 @@ document.getElementById('ci_addDiff').addEventListener('click', () => {
   block.appendChild(custLab);
 
   const custWrap = document.createElement('div');
-  custWrap.style.width = '420px';
+  
   const custSel = createSelect(`ci_diff_customer_${idx}`, availableCustomers);
   custWrap.appendChild(custSel);
   block.appendChild(custWrap);
@@ -359,7 +393,7 @@ document.getElementById('ci_addDiff').addEventListener('click', () => {
   block.appendChild(oemLab);
 
   const oemWrap = document.createElement('div');
-  oemWrap.style.width = '420px';
+  
   const oemSel = createSelect(`ci_diff_oem_${idx}`, []);
   oemWrap.appendChild(oemSel);
   block.appendChild(oemWrap);
@@ -372,7 +406,7 @@ document.getElementById('ci_addDiff').addEventListener('click', () => {
   block.appendChild(partLab);
 
   const partWrap = document.createElement('div');
-  partWrap.style.width = '420px';
+ 
   const partSel = createSelect(`ci_diff_part_${idx}`, []);
   partWrap.appendChild(partSel);
   block.appendChild(partWrap);
@@ -492,7 +526,7 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
 
   const oemLab = document.createElement('div'); oemLab.className='label'; oemLab.style.marginBottom='8px'; oemLab.textContent='OEM *';
   block.appendChild(oemLab);
-  const ow = document.createElement('div'); ow.style.width='420px';
+  const ow = document.createElement('div');
 
   const inventory = window._inventory_normalized || [];
   const selCustomer = document.getElementById('co_customerSel') ? document.getElementById('co_customerSel').value : '';
@@ -523,7 +557,7 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
 
   const partLab = document.createElement('div'); partLab.className='label'; partLab.style.marginBottom='8px'; partLab.textContent='PART NAME *';
   block.appendChild(partLab);
-  const pw = document.createElement('div'); pw.style.width='420px';
+  const pw = document.createElement('div'); 
 
   // If there is at least one OEM option, pre-populate parts for the first OEM option excluding already selectedParts; otherwise leave empty
   let parts = [];
@@ -641,7 +675,7 @@ document.getElementById('ci_addDiffOem').addEventListener('click', () => {
   block.appendChild(oemLab);
 
   const oemWrap = document.createElement('div');
-  oemWrap.style.width = '420px';
+  
   const oemSel = createSelect(`ci_diff_oem_${idx}`, oems);
   oemWrap.appendChild(oemSel);
   block.appendChild(oemWrap);
@@ -655,7 +689,7 @@ document.getElementById('ci_addDiffOem').addEventListener('click', () => {
   block.appendChild(partLab);
 
   const partWrap = document.createElement('div');
-  partWrap.style.width = '420px';
+  
   const partSel = createSelect(`ci_diff_part_${idx}`, []);
   partWrap.appendChild(partSel);
   block.appendChild(partWrap);
@@ -797,7 +831,7 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
   block.appendChild(custLab);
 
   const custWrap = document.createElement('div');
-  custWrap.style.width = '420px';
+ 
   const custSel = createSelect(`oem_diff_cust_${idx}`, availableCustomers);
   custWrap.appendChild(custSel);
   block.appendChild(custWrap);
@@ -811,7 +845,7 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
   block.appendChild(partLab);
 
   const partWrap = document.createElement('div');
-  partWrap.style.width = '420px';
+  
   const partSel = createSelect(`oem_diff_part_${idx}`, []);
   partWrap.appendChild(partSel);
   block.appendChild(partWrap);
