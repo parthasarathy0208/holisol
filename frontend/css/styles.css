@@ -860,6 +860,7 @@ html, body {
     width: 100%;
   }
 }
+
 /* =========================================
    INVENTORY TABLE – MOBILE STICKY PART NAME
    ========================================= */
@@ -886,6 +887,9 @@ html, body {
     overflow-x: auto;
   }
 }
+/* =========================================
+   INVENTORY HEADER – MOBILE FIX
+   ========================================= */
 @media (max-width: 768px) {
 
   .inv-title-bar {
@@ -911,4 +915,32 @@ html, body {
     font-size: 13px;
     padding: 8px;
   }
+}
+
+/* ===============================
+   INVENTORY TABLE – STICKY HEADERS (DESKTOP)
+   =============================== */
+
+.inv-panel {
+  position: relative;
+  overflow: auto;
+  max-height: calc(100vh - 220px); /* adjust if needed */
+}
+
+/* Make entire THEAD sticky */
+.inv-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Header cells styling */
+.inv-table thead th {
+  background: #f2f2f2;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Ensure no individual th is sticky */
+.inv-table thead th {
+  position: static !important;
 }
