@@ -1780,3 +1780,57 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+
+document.getElementById('co_clearFilter')?.addEventListener('click', () => {
+
+  document.getElementById('co_dispatchDate').value = '';
+  document.getElementById('co_invoiceNo').value = '';
+  document.getElementById('co_vehicleNo').value = '';
+
+  document.getElementById('co_locationSel').selectedIndex = 0;
+  document.getElementById('co_customerSel').selectedIndex = 0;
+  document.getElementById('co_oemSel').selectedIndex = 0;
+  document.getElementById('co_partSel').selectedIndex = 0;
+
+  document.querySelectorAll('#createOutwardView .small-box')
+    .forEach(i => i.value = '');
+
+  document.getElementById('co_extraSameContainer').innerHTML = '';
+  document.getElementById('co_extraDiffContainer').innerHTML = '';
+});
+document.getElementById('ci_clearFilter')?.addEventListener('click', () => {
+
+  document.getElementById('ci_dispatchDate').value = '';
+  document.getElementById('ci_invoiceNo').value = '';
+  document.getElementById('ci_vehicleNo').value = '';
+
+  document.getElementById('ci_locationSel').selectedIndex = 0;
+  document.getElementById('ci_customerSel').selectedIndex = 0;
+  document.getElementById('ci_oemSel').selectedIndex = 0;
+  document.getElementById('ci_partSel').selectedIndex = 0;
+
+  document.querySelectorAll('#createInwardView .small-box')
+    .forEach(i => i.value = '');
+
+  document.getElementById('ci_extraSameContainer').innerHTML = '';
+  document.getElementById('ci_extraDiffContainer').innerHTML = '';
+  document.getElementById('ci_extraDiffOemContainer').innerHTML = '';
+});
+document.getElementById('oem_clearFilter')?.addEventListener('click', () => {
+
+  document.getElementById('oem_dispatchDate').value = '';
+  document.getElementById('oem_invoiceNo').value = '';
+  document.getElementById('oem_vehicleNo').value = '';
+
+  document.getElementById('oem_locationSel').selectedIndex = 0;
+  document.getElementById('oem_customerSel').selectedIndex = 0;
+  document.getElementById('oem_oemSel').selectedIndex = 0;
+  document.getElementById('oem_partSel').selectedIndex = 0;
+
+  document.querySelectorAll('#createOemView .small-box')
+    .forEach(i => i.value = '');
+
+  document.getElementById('oem_extraSameContainer').innerHTML = '';
+  document.getElementById('oem_extraDiffContainer').innerHTML = '';
+});
+
