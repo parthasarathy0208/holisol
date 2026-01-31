@@ -1076,6 +1076,26 @@ html, body {
     display: block !important;
     font-size: 26px;
     cursor: pointer;
+
+    /* REMOVE ALL BROWSER INPUT BOXES */
+input {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* WHEN CLICKED */
+input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* CHROME / EDGE EXTRA FIX */
+input:focus-visible {
+  outline: none !important;
+}
+
     color: #fff;
   }
 }
