@@ -5,7 +5,6 @@ const InwardHistory = require('../models/InwardHistory');
 const OEMInwardHistory = require('../models/OEMInwardHistory');
 const OutwardHistory = require('../models/OutwardHistory');
 const StockTransfer = require('../models/StockTransfer');
-const auth = require("../middleware/auth");
 
 
 // GET /api/inventory/  -> list inventory docs
@@ -20,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // Endpoint to accept outward submissions from frontend
-router.post('/outward',auth, async (req, res) => {
+router.post('/outward', async (req, res) => {
   try {
     const { entries } = req.body;
     if (!Array.isArray(entries)) return res.status(400).json({ error: 'entries must be an array' });
@@ -114,7 +113,7 @@ router.post('/outward',auth, async (req, res) => {
 });
 
 // Endpoint to accept inward submissions from frontend
-router.post('/inward',auth, async (req, res) => {
+router.post('/inward', async (req, res) => {
   try {
     const { entries } = req.body;
     if (!Array.isArray(entries)) return res.status(400).json({ error: 'entries must be an array' });
@@ -210,7 +209,7 @@ router.post('/inward',auth, async (req, res) => {
 
 
 // POST /oem-inward - store OEM Inward entries in separate collection and update inventory
-router.post('/oem-inward',auth, async (req, res) => {
+router.post('/oem-inward', async (req, res) => {
   try {
     const { entries } = req.body;
     if (!Array.isArray(entries)) return res.status(400).json({ error: 'entries must be an array' });
@@ -308,7 +307,7 @@ router.post('/oem-inward',auth, async (req, res) => {
 });
 
 // Endpoint to fetch inward history
-router.get('/inward',auth, async (req, res) => {
+router.get('/inward', async (req, res) => {
   try {
     const q = {};
     if (req.query.customer) q.customer = req.query.customer;
@@ -323,7 +322,7 @@ router.get('/inward',auth, async (req, res) => {
 });
 
 // Endpoint to fetch outward history
-router.get('/outward',auth, async (req, res) => {
+router.get('/outward', async (req, res) => {
   try {
     const q = {};
     if (req.query.customer) q.customer = req.query.customer;
@@ -339,7 +338,7 @@ router.get('/outward',auth, async (req, res) => {
 
 
 // Endpoint to fetch OEM inward history
-router.get('/oem-inward',auth, async (req, res) => {
+router.get('/oem-inward', async (req, res) => {
   try {
     const q = {};
     if (req.query.customer) q.customer = req.query.customer;
@@ -356,7 +355,7 @@ router.get('/oem-inward',auth, async (req, res) => {
 
 
 // POST /refresh - set inward and outward fields to zero for all inventory items
-router.post('/refresh',auth, async (req, res) => {
+router.post('/refresh', async (req, res) => {
   try {
     // Build zero object matching SubSchema
     const zero = { pallet: 0, sleeve: 0, lid: 0, inserts: 0, separator: 0, crates: 0, dummy: 0 };
@@ -528,7 +527,7 @@ router.get('/oem-inward-summary', async (req, res) => {
 
 
 // STOCK TRANSFER
-router.post('/transfer',auth, async (req, res) => {
+router.post('/transfer', async (req, res) => {
   try {
     const { fromType, toType, transferDate, from, to, quantities } = req.body;
 
