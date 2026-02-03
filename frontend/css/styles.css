@@ -34,7 +34,7 @@ header .user{font-weight:500}
 .btn{background:var(--accent-green);border:none;color:#fff;padding:12px 36px;border-radius:28px;cursor:pointer;font-weight:600;letter-spacing:2px}
 
 /* main content */
-.main{flex:1;padding:28px;overflow:auto}
+.main{flex:1;padding:5px;overflow:auto}
 .panel{background:var(--panel-bg);height:auto;border-radius:6px;padding:18px 24px 36px 24px;position:relative}
 
 /* tiles */
@@ -48,6 +48,7 @@ header .user{font-weight:500}
 .t-oem{background:#4f8e8b}
 .t-stock{background:#9a5e5e}
 .t-shortage{background:#d48ac8}
+.t-parts{background:#d48ac8}
 
 /* generic form elements */
 .form-title{background:#e6e6e6;color:#111;padding:16px 18px;border-radius:4px;margin-bottom:22px;font-size:18px}
