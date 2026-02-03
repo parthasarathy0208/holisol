@@ -1181,7 +1181,7 @@ input:focus-visible {
 #excelTable td:nth-child(7) { width: 130px; }  /* LID */
 
 #excelTable th:nth-child(8),
-#excelTable td:nth-child(8) { width: 180px; }  /* INSERTS */
+#excelTable td:nth-child(8) { width: 160px; }  /* INSERTS */
 
 #excelTable th:nth-child(9),
 #excelTable td:nth-child(9) { width: 140px; }  /* SEPARATOR */
