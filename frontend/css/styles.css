@@ -1099,4 +1099,160 @@ input:focus-visible {
     color: #fff;
   }
 }
+#excelTable th input {
+  width: 95%;
+  padding: 3px;
+}
+/* =====================================
+   PARTS SIZE – DESKTOP & MOBILE (FINAL)
+===================================== */
+
+/* Main container uses full space */
+#partsSizeView {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove panel background & spacing */
+#partsSizeView.panel,
+#partsSizeView .co-panel {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Scroll container fills blue area */
+#partsSizeView #psScrollContainer {
+  width: 100%;
+  height: calc(100vh - 120px); /* header + menu */
+  overflow: auto;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Remove grey wrapper */
+#partsSizeView .oh-data-wrap {
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+/* Table full width */
+#excelTable {
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+/* Text wrapping */
+#excelTable th,
+#excelTable td {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.3;
+  vertical-align: middle;
+}
+
+/* ===== COLUMN WIDTHS (DESKTOP) ===== */
+#excelTable th:nth-child(1),
+#excelTable td:nth-child(1) { width: 90px; }   /* CUSTOMER */
+
+#excelTable th:nth-child(2),
+#excelTable td:nth-child(2) { width: 70px; }   /* OEM */
+
+#excelTable th:nth-child(3),
+#excelTable td:nth-child(3) { width: 90px; }   /* PARTNAME */
+
+#excelTable th:nth-child(4),
+#excelTable td:nth-child(4) { width: 140px; }  /* PSB */
+
+#excelTable th:nth-child(5),
+#excelTable td:nth-child(5) { width: 130px; }  /* PALLET */
+
+#excelTable th:nth-child(6),
+#excelTable td:nth-child(6) { width: 140px; }  /* SLEEVE */
+
+#excelTable th:nth-child(7),
+#excelTable td:nth-child(7) { width: 130px; }  /* LID */
+
+#excelTable th:nth-child(8),
+#excelTable td:nth-child(8) { width: 180px; }  /* INSERTS */
+
+#excelTable th:nth-child(9),
+#excelTable td:nth-child(9) { width: 140px; }  /* SEPARATOR */
+
+#excelTable th:nth-child(10),
+#excelTable td:nth-child(10) { width: 100px; } /* CRATES */
+
+
+/* =====================================
+   MOBILE VIEW (≤768px)
+===================================== */
+@media (max-width: 768px) {
+
+  #partsSizeView #psScrollContainer {
+    height: calc(100vh - 100px);
+  }
+
+  /* Table scroll horizontally on mobile */
+  #excelTable {
+    min-width: 900px;
+  }
+
+  #excelTable th,
+  #excelTable td {
+    font-size: 12px;
+    padding: 6px;
+  }
+}
+#psScrollContainer {
+  height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+/* Sticky filter + header */
+#excelTable thead th {
+  position: sticky;
+  background: #e6e6e6;
+  z-index: 10;
+}
+
+/* Filter row */
+#excelTable thead tr:first-child th {
+  top: 0;
+  z-index: 20;
+}
+
+/* Header row */
+#excelTable thead tr:nth-child(2) th {
+  top: 38px;
+  z-index: 15;
+}
+
+#excelTable th input {
+  width: 95%;
+  padding: 4px;
+}
+/* FILTER ROW (first row in thead) - ORANGE */
+#excelTable thead tr:first-child th {
+  background-color: rgba(255, 166, 0, 0.795) !important;
+  color: #000; /* black text */
+}
+
+/* Filter input box style */
+#excelTable thead tr:first-child th input {
+  background-color: #fff;
+  border: 1px solid #333;
+  color: #000;
+}
+
+/* HEADER ROW (second row in thead) - MAROON */
+#excelTable thead tr:nth-child(2) th {
+  background-color: #0c506d !important; /* maroon */
+  color: #ffffff; /* white text */
+}
 
