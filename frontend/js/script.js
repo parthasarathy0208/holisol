@@ -1834,3 +1834,128 @@ document.getElementById('oem_clearFilter')?.addEventListener('click', () => {
   document.getElementById('oem_extraDiffContainer').innerHTML = '';
 });
 
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const partsTile = document.getElementById("partssizeTile");
+
+  partsTile.addEventListener("click", function () {
+
+    // hide all other views
+    document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
+
+    // show Parts Size view
+    const partsView = document.getElementById("partsSizeView");
+    partsView.classList.remove("hidden");
+    partsView.setAttribute("aria-hidden", "false");
+
+    // load table
+    loadExcelData();
+  });
+
+});
+
+let tableData = [];
+
+function loadExcelData() {
+  fetch("assets/inventory_chart.xlsx")
+    .then(response => response.arrayBuffer())
+    .then(data => {
+      const workbook = XLSX.read(data, { type: "array" });
+      const sheet = workbook.Sheets[workbook.SheetNames[0]];
+      tableData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      buildTable(tableData);
+    })
+    .catch(() => alert("Excel file not found in assets folder"));
+}
+
+function buildTable(data) {
+  const table = document.getElementById("excelTable");
+  table.innerHTML = "";
+
+  const thead = document.createElement("thead");
+  const tbody = document.createElement("tbody");
+
+  const headerRow = data[0];
+
+  /* ======================
+     FILTER ROW (thead)
+  ====================== */
+  const filterRow = document.createElement("tr");
+
+  headerRow.forEach(() => {
+    const th = document.createElement("th");
+    const input = document.createElement("input");
+
+    input.placeholder = "Filter";
+    input.addEventListener("keyup", filterTable);
+
+    th.appendChild(input);
+    filterRow.appendChild(th);
+  });
+
+  thead.appendChild(filterRow);
+
+  /* ======================
+     HEADER ROW (thead)
+  ====================== */
+  const headerTr = document.createElement("tr");
+
+  headerRow.forEach(header => {
+    const th = document.createElement("th");
+    th.textContent = header;
+    headerTr.appendChild(th);
+  });
+
+  thead.appendChild(headerTr);
+
+  /* ======================
+     DATA ROWS (tbody)
+  ====================== */
+  for (let i = 1; i < data.length; i++) {
+    const tr = document.createElement("tr");
+
+    data[i].forEach(cell => {
+      const td = document.createElement("td");
+      td.textContent = cell || "";
+      tr.appendChild(td);
+    });
+
+    tbody.appendChild(tr);
+  }
+
+  table.appendChild(thead);
+  table.appendChild(tbody);
+}
+
+/* ======================
+   FILTER FUNCTION
+====================== */
+function filterTable() {
+  const table = document.getElementById("excelTable");
+
+  const filterInputs = table.querySelectorAll("thead tr:first-child input");
+  const rows = table.querySelectorAll("tbody tr");
+
+  rows.forEach(row => {
+    let showRow = true;
+    const cells = row.querySelectorAll("td");
+
+    filterInputs.forEach((input, index) => {
+      const filterValue = input.value.toLowerCase().trim();
+      const cellText = (cells[index]?.textContent || "").toLowerCase();
+
+      if (filterValue) {
+        const keywords = filterValue.split(" ");
+        for (let word of keywords) {
+          if (!cellText.includes(word)) {
+            showRow = false;
+            break;
+          }
+        }
+      }
+    });
+
+    row.style.display = showRow ? "" : "none";
+  });
+}
