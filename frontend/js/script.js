@@ -109,16 +109,19 @@ document.getElementById('menuDashboard').addEventListener('click', () => {
 
 document.getElementById('menuOutward').addEventListener('click', () => {
   showView('outwardHistory');
+  loadOutwardHistory();
   setActiveMenu('menuOutward');
 });
 
 document.getElementById('menuInward').addEventListener('click', () => {
   showView('inwardHistory');
+  loadInwardHistory();
   setActiveMenu('menuInward');
 });
 
 document.getElementById('menuOEM').addEventListener('click', () => {
   showView('oemHistory');
+  loadOemHistory();
   setActiveMenu('menuOEM');
 });
 document.getElementById('menuTransferHistory')
