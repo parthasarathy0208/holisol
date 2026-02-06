@@ -121,8 +121,8 @@ document.getElementById('menuInward').addEventListener('click', () => {
 
 document.getElementById('menuOEM').addEventListener('click', () => {
   showView('oemHistory');
+  // setActiveMenu('menuOEM'); // temporarily disabled
   loadOemHistory();
-  setActiveMenu('menuOEM');
 });
 document.getElementById('menuTransferHistory')
   .addEventListener('click', () => {
@@ -917,48 +917,59 @@ const outwardDataset = [
 const inwardDataset = [
   {dispatch:'01-01-2025', receive:'02-01-2025', invoice:'IN-2001', vehicle:'KA-02-BB-2222', location:'Loc A', customer:'Cust B', oem:'OEM B', part:'Part Y', inward:[8,4,1,0,0,0,0], shortage:[1,0,0,0,1,0,0], sets:''}
 ];
+
 let oemDataset = [];
-// load OEM dataset from server (replaces hardcoded sample)
-(function loadOemDataset(){
-  try{
-    fetch('https://holisol.onrender.com/api/inventory/oem-inward').then(r=>r.json()).then(resp=>{
-      if(resp && resp.ok && Array.isArray(resp.docs)){
-        oemDataset = resp.docs.map(d=>{
-          const boxes = d.boxes || {};
-          const shortages = d.shortages || {};
-          return {
-            dispatch: d.dispatchDate || '',
-            receive: d.receiveDate || '',
-            invoice: d.invoice || '',
-            vehicle: d.vehicle || '',
-            location: d.location || '',
-            customer: d.customer || '',
-            oem: d.oem || '',
-            part: d.partName || '',
-            inward: [Number(boxes.pallet||0), Number(boxes.sleeve||0), Number(boxes.lid||0), Number(boxes.inserts||0), Number(boxes.separator||0), Number(boxes.crates||0), Number(boxes.dummy||0)],
-            shortage: [Number(shortages.pallet||0), Number(shortages.sleeve||0), Number(shortages.lid||0), Number(shortages.inserts||0), Number(shortages.separator||0), Number(shortages.crates||0), Number(shortages.dummy||0)],
-            sets: d.sets || ''
-          };
-        });
-        // render and populate filters once data loaded
-        try{ renderHistoryRows(oemDataset,'ohTbodyOem'); }catch(e){}
-        try{ populateFilters(oemDataset,'oem'); }catch(e){}
-        // attach event listeners for filters (re-attach to ensure they use loaded dataset)
-        try{
-          document.getElementById('oh_location_oem').addEventListener('change', ()=> { renderHistoryRows(getFilteredRows(oemDataset,'oem'),'ohTbodyOem'); });
-          document.getElementById('oh_customer_oem').addEventListener('change', ()=> { renderHistoryRows(getFilteredRows(oemDataset,'oem'),'ohTbodyOem'); });
-          document.getElementById('oh_oem_oem').addEventListener('change', ()=> { renderHistoryRows(getFilteredRows(oemDataset,'oem'),'ohTbodyOem'); });
-        }catch(e){}
-      } else {
-        console.warn('No OEM docs returned', resp);
-      }
-    }).catch(e=>{ console.error('Fetch OEM inward error', e); });
-  }catch(e){
-    console.error('loadOemDataset error', e);
+async function loadOemHistory() {
+  const tbody = document.getElementById('ohTbodyOem');
+  if (tbody) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="25" style="text-align:center; padding:20px;">
+          Loading...
+        </td>
+      </tr>
+    `;
   }
-})();
 
+  try {
+    const res = await fetch(
+      'https://holisol.onrender.com/api/inventory/oem-inward',
+      { cache: 'no-store' }
+    );
 
+    const resp = await res.json();
+
+    oemDataset = (resp.docs || []).map(d => {
+      const b = d.boxes || {};
+      const s = d.shortages || {};
+      return {
+        dispatch: d.dispatchDate || '',
+        receive: d.receiveDate || '',
+        invoice: d.invoice || '',
+        vehicle: d.vehicle || '',
+        location: d.location || '',
+        customer: d.customer || '',
+        oem: d.oem || '',
+        part: d.partName || '',
+        inward: [
+          b.pallet||0,b.sleeve||0,b.lid||0,
+          b.inserts||0,b.separator||0,b.crates||0,b.dummy||0
+        ],
+        shortage: [
+          s.pallet||0,s.sleeve||0,s.lid||0,
+          s.inserts||0,s.separator||0,s.crates||0,s.dummy||0
+        ],
+        sets: d.sets || ''
+      };
+    });
+
+    renderHistoryRows(oemDataset, 'ohTbodyOem');
+    populateFilters(oemDataset, 'oem');
+
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 /* render helpers — now render INWARD (7) and SHORTAGE (8, with sets first); add classes for sticky columns + partname/location widths */
 function renderHistoryRows(dataset, tbodyId){
