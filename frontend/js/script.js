@@ -116,7 +116,6 @@ document.getElementById('menuOutward').addEventListener('click', () => {
 document.getElementById('menuInward').addEventListener('click', () => {
   showView('inwardHistory');
   loadInwardHistory();
-  setActiveMenu('menuInward');
 });
 
 document.getElementById('menuOEM').addEventListener('click', () => {
@@ -914,9 +913,71 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
 const outwardDataset = [
   {dispatch:'02-02-2025', receive:'03-02-2025', invoice:'OUT-1001', vehicle:'KA-01-AA-1111', location:'Loc A', customer:'Cust A', oem:'OEM A', part:'Part X', inward:[10,5,2,0,0,1,0], shortage:[0,0,0,0,0,0,0], sets:''}
 ];
-const inwardDataset = [
-  {dispatch:'01-01-2025', receive:'02-01-2025', invoice:'IN-2001', vehicle:'KA-02-BB-2222', location:'Loc A', customer:'Cust B', oem:'OEM B', part:'Part Y', inward:[8,4,1,0,0,0,0], shortage:[1,0,0,0,1,0,0], sets:''}
-];
+let inwardDataset = [];
+
+async function loadInwardHistory() {
+  const tbody = document.getElementById('ohTbodyIn');
+  if (tbody) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="25" style="text-align:center; padding:20px;">
+          Loading...
+        </td>
+      </tr>
+    `;
+  }
+
+  try {
+    const res = await fetch(
+      'https://holisol.onrender.com/api/inventory/inward',
+      { cache: 'no-store' }
+    );
+
+    const resp = await res.json();
+
+    inwardDataset = (resp.docs || []).map(d => {
+      const b = d.boxes || {};
+      const s = d.shortages || {};
+
+      return {
+        dispatch: d.dispatchDate || '',
+        receive: d.receiveDate || '',
+        invoice: d.invoice || '',
+        vehicle: d.vehicle || '',
+        location: d.location || '',
+        customer: d.customer || '',
+        oem: d.oem || '',
+        part: d.partName || '',
+        inward: [
+          b.pallet || 0,
+          b.sleeve || 0,
+          b.lid || 0,
+          b.inserts || 0,
+          b.separator || 0,
+          b.crates || 0,
+          b.dummy || 0
+        ],
+        shortage: [
+          s.pallet || 0,
+          s.sleeve || 0,
+          s.lid || 0,
+          s.inserts || 0,
+          s.separator || 0,
+          s.crates || 0,
+          s.dummy || 0
+        ],
+        sets: d.sets || ''
+      };
+    });
+
+    renderHistoryRows(inwardDataset, 'ohTbodyIn');
+    populateFilters(inwardDataset, 'in');
+
+  } catch (e) {
+    console.error('loadInwardHistory error', e);
+  }
+}
+
 
 let oemDataset = [];
 async function loadOemHistory() {
