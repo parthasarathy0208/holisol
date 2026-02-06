@@ -99,7 +99,10 @@ function showView(name){
 document.getElementById('createOutwardTile').addEventListener('click', ()=> showView('createOutward'));
 document.getElementById('createInwardTile').addEventListener('click', ()=> showView('createInward'));
 document.getElementById('createOemTile').addEventListener('click', ()=> showView('createOem'));
-document.getElementById('tileInventory').addEventListener('click', ()=> showView('inventory'));
+document.getElementById('tileInventory').addEventListener('click', () => {
+  showView('inventory');
+  loadInventoryChart();
+});
 
 /* Sidebar nav */
 document.getElementById('menuDashboard').addEventListener('click', () => {
@@ -908,6 +911,83 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
   document.getElementById('oem_extraDiffContainer').appendChild(block);
   block.scrollIntoView({ behavior: 'smooth', block: 'center' });
 });
+
+
+let inventoryDataset = [];
+
+async function loadInventoryChart() {
+  const tbody = document.getElementById('invTbody');
+
+  if (tbody) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="38" style="text-align:center; padding:20px;">
+          Loading inventory...
+        </td>
+      </tr>
+    `;
+  }
+
+  try {
+    const res = await fetch(
+      'https://holisol.onrender.com/api/inventory',
+      { cache: 'no-store' }
+    );
+
+    const resp = await res.json();
+    inventoryDataset = resp.docs || [];
+
+    renderInventoryRows(inventoryDataset);
+
+    // ensure scroll reset after render
+    setTimeout(() => {
+      const invOuter = document.getElementById('invTableOuter');
+      if (invOuter) invOuter.scrollLeft = 0;
+    }, 50);
+
+  } catch (err) {
+    console.error('Inventory load error', err);
+    if (tbody) {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="38" style="text-align:center; color:red;">
+            Failed to load inventory
+          </td>
+        </tr>
+      `;
+    }
+  }
+}
+function renderInventoryRows(rows) {
+  const tbody = document.getElementById('invTbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+
+  rows.forEach(r => {
+    const tr = document.createElement('tr');
+
+    const box = r.boxQuantity || [];
+    const wh  = r.warehouse || [];
+    const inn = r.inward || [];
+    const out = r.outward || [];
+    const dmg = r.damage || [];
+
+    tr.innerHTML = `
+      <td>${r.customer || ''}</td>
+      <td>${r.oem || ''}</td>
+      <td>${r.part || ''}</td>
+
+      ${box.map(v => `<td><input class="inv-input" value="${v || 0}"></td>`).join('')}
+      ${wh.map(v => `<td><input class="inv-input" value="${v || 0}"></td>`).join('')}
+      ${inn.map(v => `<td><input class="inv-input" value="${v || 0}"></td>`).join('')}
+      ${out.map(v => `<td><input class="inv-input" value="${v || 0}"></td>`).join('')}
+      ${dmg.map(v => `<td><input class="inv-input" value="${v || 0}"></td>`).join('')}
+    `;
+
+    tbody.appendChild(tr);
+  });
+}
 
 /* ---------- Each history has its own sample dataset (so backend can write separately) ---------- */
 let outwardDataset = [];
