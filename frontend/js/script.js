@@ -110,7 +110,7 @@ document.getElementById('menuDashboard').addEventListener('click', () => {
 document.getElementById('menuOutward').addEventListener('click', () => {
   showView('outwardHistory');
   loadOutwardHistory();
-  setActiveMenu('menuOutward');
+  
 });
 
 document.getElementById('menuInward').addEventListener('click', () => {
@@ -910,9 +910,61 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
 });
 
 /* ---------- Each history has its own sample dataset (so backend can write separately) ---------- */
-const outwardDataset = [
-  {dispatch:'02-02-2025', receive:'03-02-2025', invoice:'OUT-1001', vehicle:'KA-01-AA-1111', location:'Loc A', customer:'Cust A', oem:'OEM A', part:'Part X', inward:[10,5,2,0,0,1,0], shortage:[0,0,0,0,0,0,0], sets:''}
-];
+let outwardDataset = [];
+
+async function loadOutwardHistory() {
+  const tbody = document.getElementById('ohTbodyOut');
+  if (tbody) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="15" style="text-align:center; padding:20px;">
+          Loading...
+        </td>
+      </tr>
+    `;
+  }
+
+  try {
+    const res = await fetch(
+      'https://holisol.onrender.com/api/inventory/outward',
+      { cache: 'no-store' }
+    );
+
+    const resp = await res.json();
+
+    outwardDataset = (resp.docs || []).map(d => {
+      const b = d.boxes || {};
+
+      return {
+        dispatch: d.dispatchDate || '',
+        receive: d.receiveDate || '',
+        invoice: d.invoice || '',
+        vehicle: d.vehicle || '',
+        location: d.location || '',
+        customer: d.customer || '',
+        oem: d.oem || '',
+        part: d.partName || '',
+        inward: [
+          b.pallet || 0,
+          b.sleeve || 0,
+          b.lid || 0,
+          b.inserts || 0,
+          b.separator || 0,
+          b.crates || 0,
+          b.dummy || 0
+        ]
+        // ❌ no shortage
+        // ❌ no sets
+      };
+    });
+
+    renderHistoryRows(outwardDataset, 'ohTbodyOut');
+    populateFilters(outwardDataset, 'out');
+
+  } catch (e) {
+    console.error('loadOutwardHistory error', e);
+  }
+}
 let inwardDataset = [];
 
 async function loadInwardHistory() {
