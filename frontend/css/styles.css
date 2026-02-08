@@ -49,6 +49,7 @@ header .user{font-weight:500}
 .t-stock{background:#9a5e5e}
 .t-shortage{background:#d48ac8}
 .t-parts{background:#f28b99}
+.t-set{background:#9fd4f3}
 
 /* generic form elements */
 .form-title{background:#e6e6e6;color:#111;padding:16px 18px;border-radius:4px;margin-bottom:22px;font-size:18px}
