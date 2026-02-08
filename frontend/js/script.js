@@ -2222,7 +2222,7 @@ async function analyze() {
   const data = await res.json();
 
   let html = `
-    <h3>Partname: ${data.partName}</h3>
+    <h3>PARTNAME: ${data.partName}</h3>
     <p><b>Max Dispatchable Sets:</b> ${data.maxDispatchableSets}</p>
     <p><b>Limiting Factors:</b> ${data.limitingFactors.join(", ")}</p>
   `;
