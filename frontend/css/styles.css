@@ -1287,4 +1287,40 @@ input:focus-visible {
 .set-filter-row button {
   width: 100%;
 }
+/* 🔴 SHORTAGE BOX */
+.shortage-box {
+  background-color: #2a0000;
+  border: 1px solid #ff4d4d;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 6px;
+}
+
+.shortage-box h4 {
+  color: #ff6b6b;
+  margin-bottom: 10px;
+}
+
+.shortage-text {
+  color: #ff4d4d;
+  font-weight: bold;
+}
+
+/* 🔵 TRANSFER BOX */
+.transfer-box {
+  background-color: #001f33;
+  border: 1px solid #00bfff;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 6px;
+}
+
+.transfer-box h4 {
+  color: #4dc3ff;
+  margin-bottom: 10px;
+}
+
+.transfer-box p {
+  color: #e0f4ff;
+}
 
