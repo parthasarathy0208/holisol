@@ -92,6 +92,8 @@ function showView(name){
   } else if(name === 'oemHistory'){
     document.getElementById('oemHistoryView').classList.remove('hidden');
     document.getElementById('menuOEM').classList.add('active');
+  }else if (name === 'setavailability') {
+    document.getElementById('setavailabilityView').classList.remove('hidden');
   }
 }
 
@@ -102,6 +104,9 @@ document.getElementById('createOemTile').addEventListener('click', ()=> showView
 document.getElementById('tileInventory').addEventListener('click', () => {
   showView('inventory');
   loadInventoryChart();
+});
+document.getElementById('setavailabilityTile').addEventListener('click', () => {
+  showView('setavailability');
 });
 
 /* Sidebar nav */
@@ -2166,3 +2171,62 @@ function filterTable() {
     row.style.display = showRow ? "" : "none";
   });
 }
+
+async function analyze() {
+  const partName = document.getElementById("partNameDropdown").value;
+
+  if (!partName) {
+    alert("Please select a Part Name");
+    return;
+  }
+
+  const res = await fetch(
+    `/api/set-availability/analyze/${encodeURIComponent(partName)}`
+  );
+  const data = await res.json();
+  let html = `
+    <h3>Partname: ${data.partName}</h3>
+    <p><b>Max Dispatchable Sets:</b> ${data.maxDispatchableSets}</p>
+    <p><b>Limiting Factors:</b> ${data.limitingFactors.join(", ")}</p>
+  `;
+
+  // 🔴 SHORTAGE DETAILS
+  if (data.shortages && data.shortages.length > 0) {
+    html += `<h4>Shortage Details</h4>`;
+    data.shortages.forEach(s => {
+      html += `
+        <p>
+          <b>${s.component}</b> →
+          Required: ${s.required},
+          Available: ${s.available},
+          Shortage: <span style="color:red;">${s.shortage}</span>
+        </p>
+      `;
+    });
+  }
+
+  // 🔁 TRANSFER SUGGESTIONS
+  if (data.transfers && data.transfers.length > 0) {
+    html += `<h4>Suggested Transfers</h4>`;
+    data.transfers.forEach(t => {
+      html += `<p>${t.component} → from ${t.fromPart} → Available (${t.quantity})</p>`;
+    });
+  }
+
+  document.getElementById("result").innerHTML = html;
+}
+
+
+loadParts();
+document.getElementById("clearFilterset").addEventListener("click", () => {
+  // 🔹 Clear result section
+  document.getElementById("result").innerHTML = "";
+
+  // 🔹 Reset dropdown to SELECT
+  const dropdown = document.getElementById("partNameDropdown");
+  dropdown.selectedIndex = 0; // SELECT option
+
+  // 🔹 Optional: scroll back to top of panel
+  dropdown.blur();
+});
+
