@@ -7,6 +7,8 @@ const logoutBtn = document.getElementById('logoutBtn');
 const API_BASE = 'https://holisol.onrender.com';
 const hamburger = document.getElementById('hamburgerMenu');
 const sidebar = document.querySelector('aside.sidebar');
+const API_BASE_URL = "https://holisol.onrender.com";
+
 
 if (hamburger && sidebar) {
   hamburger.addEventListener('click', () => {
@@ -2171,6 +2173,40 @@ function filterTable() {
     row.style.display = showRow ? "" : "none";
   });
 }
+document.getElementById("clearFilterset").addEventListener("click", () => {
+  // 🔹 Clear result section
+  document.getElementById("result").innerHTML = "";
+
+  // 🔹 Reset dropdown to SELECT
+  const dropdown = document.getElementById("partNameDropdown");
+  dropdown.selectedIndex = 0; // SELECT option
+
+  // 🔹 Optional: scroll back to top of panel
+  dropdown.blur();
+});
+
+
+async function loadParts() {
+  const res = await fetch(`${API_BASE_URL}/api/inventory`);
+  const data = await res.json();
+
+  const dropdown = document.getElementById("partNameDropdown");
+  dropdown.innerHTML = "";
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "SELECT";
+  defaultOption.selected = true;
+  defaultOption.disabled = true;
+  dropdown.appendChild(defaultOption);
+
+  data.forEach(item => {
+    const option = document.createElement("option");
+    option.value = item.partName;
+    option.textContent = item.partName;
+    dropdown.appendChild(option);
+  });
+}
 
 async function analyze() {
   const partName = document.getElementById("partNameDropdown").value;
@@ -2181,16 +2217,16 @@ async function analyze() {
   }
 
   const res = await fetch(
-    `/api/set-availability/analyze/${encodeURIComponent(partName)}`
+    `${API_BASE_URL}/api/set-availability/analyze/${encodeURIComponent(partName)}`
   );
   const data = await res.json();
+
   let html = `
     <h3>Partname: ${data.partName}</h3>
     <p><b>Max Dispatchable Sets:</b> ${data.maxDispatchableSets}</p>
     <p><b>Limiting Factors:</b> ${data.limitingFactors.join(", ")}</p>
   `;
 
-  // 🔴 SHORTAGE DETAILS
   if (data.shortages && data.shortages.length > 0) {
     html += `<h4>Shortage Details</h4>`;
     data.shortages.forEach(s => {
@@ -2205,7 +2241,6 @@ async function analyze() {
     });
   }
 
-  // 🔁 TRANSFER SUGGESTIONS
   if (data.transfers && data.transfers.length > 0) {
     html += `<h4>Suggested Transfers</h4>`;
     data.transfers.forEach(t => {
@@ -2216,17 +2251,5 @@ async function analyze() {
   document.getElementById("result").innerHTML = html;
 }
 
-
 loadParts();
-document.getElementById("clearFilterset").addEventListener("click", () => {
-  // 🔹 Clear result section
-  document.getElementById("result").innerHTML = "";
-
-  // 🔹 Reset dropdown to SELECT
-  const dropdown = document.getElementById("partNameDropdown");
-  dropdown.selectedIndex = 0; // SELECT option
-
-  // 🔹 Optional: scroll back to top of panel
-  dropdown.blur();
-});
 
