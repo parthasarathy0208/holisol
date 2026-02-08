@@ -2200,7 +2200,9 @@ async function loadParts() {
   defaultOption.disabled = true;
   dropdown.appendChild(defaultOption);
 
-  data.forEach(item => {
+  data
+    .sort((a, b) => a.partName.localeCompare(b.partName))
+    .forEach(item => {
     const option = document.createElement("option");
     option.value = item.partName;
     option.textContent = item.partName;
