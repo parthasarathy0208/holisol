@@ -2250,14 +2250,14 @@ async function analyze() {
     if (data.shortages?.length) {
       html += `<h4>Shortage Details</h4>`;
       data.shortages.forEach(s => {
-        html += `<p>${s.component} →  Available ${s.available},Required ${s.required}, Shortage: <span style="color:red;">${s.shortage}</span></p>`;
+        html += `<p>${s.component} →  Available ${s.available}, Required ${s.required}, Shortage: <span style="color:red;">${s.shortage}</span></p>`;
       });
     }
 
     if (data.transfers?.length) {
       html += `<h4>Suggested Transfers</h4>`;
       data.transfers.forEach(t => {
-        html += `<p>${t.component} → from ${t.fromPart} (${t.quantity})</p>`;
+        html += `<p>${t.component} → from ${t.fromPart} → Available (${t.quantity})</p>`;
       });
     }
 
