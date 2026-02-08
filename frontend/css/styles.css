@@ -1266,12 +1266,12 @@ input:focus-visible {
 
 /* PART NAME — make it wider */
 .set-filter-row .part-field {
-  flex: 0 0 45%; /* ~20% wider than before */
+  flex: 0 0 30%; /* ~20% wider than before */
 }
 
 /* ANALYZE BUTTON — make it narrower */
 .set-filter-row .analyze-field {
-  flex: 0 0 20%; /* ~20% smaller */
+  flex: 0 0 15%; /* ~20% smaller */
   display: flex;
   justify-content: center;
 }
