@@ -1323,4 +1323,9 @@ input:focus-visible {
 .transfer-box p {
   color: #e0f4ff;
 }
+.highlight-sets {
+  color: #ffcc00;      /* yellow */
+  font-weight: bold;
+  font-size: 18px;
+}
 
