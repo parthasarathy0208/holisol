@@ -2242,7 +2242,7 @@ async function analyze() {
     const data = JSON.parse(text);   // 👈 parse manually
 
     let html = `
-      <h3>Partname: ${data.partName}</h3>
+      <h3>PARTNAME: ${data.partName}</h3>
       <p><b>Max Dispatchable Sets:</b> ${data.maxDispatchableSets}</p>
       <p><b>Limiting Factors:</b> ${data.limitingFactors.join(", ")}</p>
     `;
@@ -2250,7 +2250,7 @@ async function analyze() {
     if (data.shortages?.length) {
       html += `<h4>Shortage Details</h4>`;
       data.shortages.forEach(s => {
-        html += `<p>${s.component} → Required ${s.required}, Available ${s.available}, Shortage ${s.shortage}</p>`;
+        html += `<p>${s.component} →  Available ${s.available},Required ${s.required}, Shortage: <span style="color:red;">${s.shortage}</span></p>`;
       });
     }
 
