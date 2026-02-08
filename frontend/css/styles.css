@@ -1256,4 +1256,34 @@ input:focus-visible {
   background-color: #0c506d !important; /* maroon */
   color: #ffffff; /* white text */
 }
+.co-panelset{background:#010101;padding:22px;border-radius:6px;color:#fff;flex:1;overflow:visible}
+/* 🔹 SET AVAILABILITY FILTER ROW */
+.set-filter-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px; /* controls spacing between elements */
+}
+
+/* PART NAME — make it wider */
+.set-filter-row .part-field {
+  flex: 0 0 45%; /* ~20% wider than before */
+}
+
+/* ANALYZE BUTTON — make it narrower */
+.set-filter-row .analyze-field {
+  flex: 0 0 20%; /* ~20% smaller */
+  display: flex;
+  justify-content: center;
+}
+
+/* CLEAR FILTER — push to right */
+.set-filter-row .clear-field {
+  margin-left: auto;
+}
+
+/* Inputs & buttons fill their containers */
+.set-filter-row select,
+.set-filter-row button {
+  width: 100%;
+}
 
