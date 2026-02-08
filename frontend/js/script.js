@@ -2247,19 +2247,37 @@ async function analyze() {
       <p><b>Limiting Factors:</b> ${data.limitingFactors.join(", ")}</p>
     `;
 
-    if (data.shortages?.length) {
-      html += `<h4>Shortage Details</h4>`;
-      data.shortages.forEach(s => {
-        html += `<p>${s.component} →  Available ${s.available}, Required ${s.required}, Shortage: <span style="color:red;">${s.shortage}</span></p>`;
-      });
-    }
+    // 🔴 SHORTAGE DETAILS
+if (data.shortages && data.shortages.length > 0) {
+  html += `<div class="shortage-box">
+    <h4>Shortage Details</h4>`;
+    
+  data.shortages.forEach(s => {
+    html += `
+      <p>
+        <b>${s.component}</b> →
+        Required: ${s.required},
+        Available: ${s.available},
+        <span class="shortage-text">Shortage: ${s.shortage}</span>
+      </p>
+    `;
+  });
 
-    if (data.transfers?.length) {
-      html += `<h4>Suggested Transfers</h4>`;
-      data.transfers.forEach(t => {
-        html += `<p>${t.component} → from ${t.fromPart} → Available (${t.quantity})</p>`;
-      });
-    }
+  html += `</div>`;
+}
+
+// 🔁 TRANSFER SUGGESTIONS
+if (data.transfers && data.transfers.length > 0) {
+  html += `<div class="transfer-box">
+    <h4>Suggested Transfers</h4>`;
+
+  data.transfers.forEach(t => {
+    html += `<p>${t.component} → from <b>${t.fromPart}</b> → Available (${t.quantity})</p>`;
+  });
+
+  html += `</div>`;
+}
+
 
     resultDiv.innerHTML = html;
 
