@@ -2243,7 +2243,7 @@ async function analyze() {
 
     let html = `
       <h3>PARTNAME: ${data.partName}</h3>
-      <p><b>Max Dispatchable:</b><span class="highlight-sets">${data.maxDispatchableSets} Sets</span></p>
+      <p><b>Max Dispatchable: </b><span class="highlight-sets"> ${data.maxDispatchableSets} Sets</span></p>
       <p><b>Limiting Factors:</b> ${data.limitingFactors.join(", ")}</p>
     `;
 
