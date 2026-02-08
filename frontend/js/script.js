@@ -2243,7 +2243,7 @@ async function analyze() {
 
     let html = `
       <h3>PARTNAME: ${data.partName}</h3>
-      <p><b>Max Dispatchable Sets:</b> ${data.maxDispatchableSets}</p>
+      <p><b>Max Dispatchable:</b> ${data.maxDispatchableSets} Sets</p>
       <p><b>Limiting Factors:</b> ${data.limitingFactors.join(", ")}</p>
     `;
 
@@ -2256,9 +2256,7 @@ if (data.shortages && data.shortages.length > 0) {
     html += `
       <p>
         <b>${s.component}</b> →
-        Required: ${s.required},
-        Available: ${s.available},
-        <span class="shortage-text">Shortage: ${s.shortage}</span>
+        Available: ${s.available}, Required: ${s.required}, <span class="shortage-text">Shortage: ${s.shortage}</span>
       </p>
     `;
   });
