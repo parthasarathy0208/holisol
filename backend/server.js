@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const inventoryRoutes = require('./routes/inventory');
+const setAvailabilityRoute = require('./routes/setAvailability');
+
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +17,8 @@ app.use(cors());
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/inventory', inventoryRoutes);
+app.use('/api/set-availability', setAvailabilityRoute);
+
 
 // Health check (VERY IMPORTANT for Render testing)
 app.get('/', (req, res) => {
