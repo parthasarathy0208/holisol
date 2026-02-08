@@ -581,6 +581,35 @@
             </div>
           </div>
         </section>
+        <!-- set availability -->
+        <section id="setavailabilityView" class="panel view hidden" aria-hidden="true">
+          <div class="form-title">SET</div>
+
+          <div class="co-panelset">
+            <div class="row set-filter-row">
+              <div class="field part-field">
+                <div class="label">PART NAME</div>
+                <select id="partNameDropdown" class="ss-input with-arrow">
+                  <option value="">SELECT</option>
+                </select>
+              </div>
+
+              <div class="field analyze-field">
+                <button class="btn-primary ss-orange-btn" onclick="analyze()">Analyze</button>
+              </div>
+
+              <div class="field clear-field">
+                <button id="clearFilterset" class="clear-btn">CLEAR FILTER</button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div id="result"></div>
+              </div>
+            </div>
+          </div>
+        </section>
 
 
 
