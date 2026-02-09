@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         },
         {
-            partSelectId: "st_part_from",
+            partSelectId: "st_from_part",
             inputs: {
                 pallet: "from_pallet",
                 sleeve: "from_sleeve",
