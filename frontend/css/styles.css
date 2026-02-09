@@ -1328,4 +1328,55 @@ input:focus-visible {
   font-weight: bold;
   font-size: 18px;
 }
+/* ===== SMALL INPUT ROW ===== */
+
+.small-inputs {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+/* Each column */
+.small-input-item {
+  width: 84px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: 50px;
+}
+
+/* Quantity input */
+.small-box {
+  width: 84px;
+  height: 36px;
+}
+
+/* Part size text */
+.part-size-text {
+  min-height: 26px;       /* 🔥 alignment lock */
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 13px;
+  color: #d0d0d0;
+  text-align: center;
+  width: 100%;
+  word-break: break-word;
+}
+
+/* Keep space even when NIL */
+.part-size-text:empty::after {
+  content: "";
+  display: block;
+  height: 26px;
+}
+
+/* Add more buttons */
+.add-more-row {
+  margin-top: 6px !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+}
 
