@@ -197,18 +197,31 @@ document.getElementById('co_addSame').addEventListener('click', ()=>{
   ));
 
   pw.appendChild(createSelect(`co_same_part_${idx}`, parts));
+  const partSel = pw.querySelector('select');
+  bindPartSizeForBlock(block, partSel);
   block.appendChild(pw);
 
   const labels = ['Pallet','Sleeve','Lid','Inserts','Separator','Crates','Dummy'];
   const qtyRow = document.createElement('div'); qtyRow.className='small-inputs'; qtyRow.style.marginTop='14px';
   labels.forEach((lbl,i)=>{
     const cell = document.createElement('div');
-    cell.style.textAlign='center'; cell.style.width='84px'; cell.style.color='#fff';
-    const input = document.createElement('input'); input.className='small-box';
+    cell.className = 'small-input-item';
+    cell.dataset.key = lbl;
+
+    const input = document.createElement('input');
+    input.className = 'small-box';
     input.id = `co_qty_${idx}_${i}`;
-    input.setAttribute('inputmode','numeric'); input.setAttribute('pattern','\\d*'); input.setAttribute('autocomplete','off');
+    input.setAttribute('inputmode', 'numeric');
+    input.setAttribute('pattern', '\\d*');
+    input.setAttribute('autocomplete', 'off');
     input.placeholder = lbl;
-    cell.appendChild(input); qtyRow.appendChild(cell);
+
+    const sizeDiv = document.createElement('div');
+    sizeDiv.className = 'part-size-text';
+
+    cell.appendChild(input);
+    cell.appendChild(sizeDiv);
+    qtyRow.appendChild(cell);
   });
 
   block.appendChild(qtyRow);
@@ -216,6 +229,7 @@ document.getElementById('co_addSame').addEventListener('click', ()=>{
   clearBtn.addEventListener('click', () => {
     block.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
     block.querySelectorAll('input.small-box').forEach(i => i.value = '');
+    clearPartSizeText(block);
   });
   removeBtn.addEventListener('click', () => block.remove());
 
@@ -259,18 +273,32 @@ document.getElementById('ci_addSame').addEventListener('click', ()=>{
   ));
 
   pw.appendChild(createSelect(`ci_same_part_${idx}`, parts));
+  const partSel = pw.querySelector('select');
+  bindPartSizeForBlock(block, partSel);
   block.appendChild(pw);
 
   const labels = ['Pallet','Sleeve','Lid','Inserts','Separator','Crates','Dummy'];
   const qtyRow = document.createElement('div'); qtyRow.className='small-inputs'; qtyRow.style.marginTop='14px';
   labels.forEach((lbl,i)=>{
     const cell = document.createElement('div');
-    cell.style.textAlign='center'; cell.style.width='84px'; cell.style.color='#fff';
-    const input = document.createElement('input'); input.className='small-box';
+    cell.className = 'small-input-item';
+    cell.dataset.key = lbl; // pallet, sleeve, lid, inserts, separator, crates, dummy
+
+    const input = document.createElement('input');
+    input.className = 'small-box';
     input.id = `ci_qty_${idx}_${i}`;
-    input.setAttribute('inputmode','numeric'); input.setAttribute('pattern','\\d*'); input.setAttribute('autocomplete','off');
+    input.setAttribute('inputmode', 'numeric');
+    input.setAttribute('pattern', '\\d*');
+    input.setAttribute('autocomplete', 'off');
     input.placeholder = lbl;
-    cell.appendChild(input); qtyRow.appendChild(cell);
+
+    const sizeDiv = document.createElement('div');
+    sizeDiv.className = 'part-size-text';
+
+    cell.appendChild(input);
+    cell.appendChild(sizeDiv);
+    qtyRow.appendChild(cell);
+
   });
 
   block.appendChild(qtyRow);
@@ -278,6 +306,7 @@ document.getElementById('ci_addSame').addEventListener('click', ()=>{
   clearBtn.addEventListener('click', () => {
     block.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
     block.querySelectorAll('input.small-box').forEach(i => i.value = '');
+    clearPartSizeText(block);
   });
   removeBtn.addEventListener('click', () => block.remove());
 
@@ -319,18 +348,31 @@ document.getElementById('oem_addSame').addEventListener('click', ()=>{
   ));
 
   pw.appendChild(createSelect(`oem_same_part_${idx}`, parts));
+  const partSel = pw.querySelector('select');
+  bindPartSizeForBlock(block, partSel);
   block.appendChild(pw);
 
   const labels = ['Pallet','Sleeve','Lid','Inserts','Separator','Crates','Dummy'];
   const qtyRow = document.createElement('div'); qtyRow.className='small-inputs'; qtyRow.style.marginTop='14px';
   labels.forEach((lbl,i)=>{
-    const cell = document.createElement('div');
-    cell.style.textAlign='center'; cell.style.width='84px'; cell.style.color='#fff';
-    const input = document.createElement('input'); input.className='small-box';
+   const cell = document.createElement('div');
+    cell.className = 'small-input-item';
+    cell.dataset.key = lbl;
+
+    const input = document.createElement('input');
+    input.className = 'small-box';
     input.id = `oem_qty_${idx}_${i}`;
-    input.setAttribute('inputmode','numeric'); input.setAttribute('pattern','\\d*'); input.setAttribute('autocomplete','off');
+    input.setAttribute('inputmode', 'numeric');
+    input.setAttribute('pattern', '\\d*');
+    input.setAttribute('autocomplete', 'off');
     input.placeholder = lbl;
-    cell.appendChild(input); qtyRow.appendChild(cell);
+
+    const sizeDiv = document.createElement('div');
+    sizeDiv.className = 'part-size-text';
+
+    cell.appendChild(input);
+    cell.appendChild(sizeDiv);
+    qtyRow.appendChild(cell);
   });
 
   block.appendChild(qtyRow);
@@ -338,6 +380,7 @@ document.getElementById('oem_addSame').addEventListener('click', ()=>{
   clearBtn.addEventListener('click', () => {
     block.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
     block.querySelectorAll('input.small-box').forEach(i => i.value = '');
+    clearPartSizeText(block);
   });
   removeBtn.addEventListener('click', () => block.remove());
 
@@ -422,6 +465,7 @@ document.getElementById('ci_addDiff').addEventListener('click', () => {
   const partSel = createSelect(`ci_diff_part_${idx}`, []);
   partWrap.appendChild(partSel);
   block.appendChild(partWrap);
+  bindPartSizeForBlock(block, partSel);
 
   // Seven small quantity inputs
   const labels = ['Pallet','Sleeve','Lid','Inserts','Separator','Crates','Dummy'];
@@ -431,9 +475,8 @@ document.getElementById('ci_addDiff').addEventListener('click', () => {
 
   labels.forEach((lbl, i) => {
     const cell = document.createElement('div');
-    cell.style.textAlign = 'center';
-    cell.style.width = '84px';
-    cell.style.color = '#fff';
+    cell.className = 'small-input-item';
+    cell.dataset.key = lbl;
 
     const input = document.createElement('input');
     input.className = 'small-box';
@@ -443,7 +486,11 @@ document.getElementById('ci_addDiff').addEventListener('click', () => {
     input.setAttribute('autocomplete', 'off');
     input.placeholder = lbl;
 
+    const sizeDiv = document.createElement('div');
+    sizeDiv.className = 'part-size-text';
+
     cell.appendChild(input);
+    cell.appendChild(sizeDiv);
     qtyRow.appendChild(cell);
   });
 
@@ -455,6 +502,7 @@ document.getElementById('ci_addDiff').addEventListener('click', () => {
     oemSel.innerHTML = '<option value="">Select</option>';
     partSel.innerHTML = '<option value="">Select</option>';
     block.querySelectorAll('input.small-box').forEach(i => { i.value = ''; });
+    clearPartSizeText(block);
   });
 
   removeBtn.addEventListener('click', () => {
@@ -607,12 +655,24 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
   const qtyRow = document.createElement('div'); qtyRow.className='small-inputs'; qtyRow.style.marginTop='14px';
   labels.forEach((lbl,i)=>{
     const cell = document.createElement('div');
-    cell.style.textAlign='center'; cell.style.width='84px'; cell.style.color='#ffffffff';
-    const input = document.createElement('input'); input.className='small-box';
+    cell.className = 'small-input-item';
+    cell.dataset.key = lbl;
+
+    const input = document.createElement('input');
+    input.className = 'small-box';
     input.id = `co_qty_${idx}_${i}`;
-    input.setAttribute('inputmode','numeric'); input.setAttribute('pattern','\\d*'); input.setAttribute('autocomplete','off');
+    input.setAttribute('inputmode', 'numeric');
+    input.setAttribute('pattern', '\\d*');
+    input.setAttribute('autocomplete', 'off');
     input.placeholder = lbl;
-    cell.appendChild(input); qtyRow.appendChild(cell);
+
+    const sizeDiv = document.createElement('div');
+    sizeDiv.className = 'part-size-text';
+
+    cell.appendChild(input);
+    cell.appendChild(sizeDiv);
+    qtyRow.appendChild(cell);
+
   });
 
   block.appendChild(qtyRow);
@@ -620,6 +680,7 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
   clearBtn.addEventListener('click', () => {
     block.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
     block.querySelectorAll('input.small-box').forEach(i => i.value = '');
+    clearPartSizeText(block);
   });
   removeBtn.addEventListener('click', () => block.remove());
 
@@ -705,6 +766,7 @@ document.getElementById('ci_addDiffOem').addEventListener('click', () => {
   const partSel = createSelect(`ci_diff_part_${idx}`, []);
   partWrap.appendChild(partSel);
   block.appendChild(partWrap);
+  bindPartSizeForBlock(block, partSel);
 
   // Prepare exclusion set for parts (avoid repeating parts across main + extras)
   const computeSelectedParts = () => {
@@ -756,9 +818,9 @@ document.getElementById('ci_addDiffOem').addEventListener('click', () => {
   qtyRow.style.marginTop = '14px';
   labels.forEach((lbl, i) => {
     const cell = document.createElement('div');
-    cell.style.textAlign = 'center';
-    cell.style.width = '84px';
-    cell.style.color = '#fff';
+    cell.className = 'small-input-item';
+    cell.dataset.key = lbl; // pallet, sleeve, lid, etc.
+
     const input = document.createElement('input');
     input.className = 'small-box';
     input.id = `ci_qty_${idx}_${i}`;
@@ -766,7 +828,12 @@ document.getElementById('ci_addDiffOem').addEventListener('click', () => {
     input.setAttribute('pattern', '\\d*');
     input.setAttribute('autocomplete', 'off');
     input.placeholder = lbl;
+
+    const sizeDiv = document.createElement('div');
+    sizeDiv.className = 'part-size-text';
+
     cell.appendChild(input);
+    cell.appendChild(sizeDiv);
     qtyRow.appendChild(cell);
   });
   block.appendChild(qtyRow);
@@ -775,6 +842,7 @@ document.getElementById('ci_addDiffOem').addEventListener('click', () => {
     oemSel.selectedIndex = 0;
     partSel.innerHTML = '<option value="">Select</option>';
     block.querySelectorAll('input.small-box').forEach(i => { i.value = ''; });
+    clearPartSizeText(block);
   });
 
   removeBtn.addEventListener('click', () => {
@@ -861,6 +929,7 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
   const partSel = createSelect(`oem_diff_part_${idx}`, []);
   partWrap.appendChild(partSel);
   block.appendChild(partWrap);
+  bindPartSizeForBlock(block, partSel);
 
   // Small quantity inputs (7 boxes)
   const labels = ['Pallet','Sleeve','Lid','Inserts','Separator','Crates','Dummy'];
@@ -869,9 +938,9 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
   qtyRow.style.marginTop = '14px';
   labels.forEach((lbl, i) => {
     const cell = document.createElement('div');
-    cell.style.textAlign = 'center';
-    cell.style.width = '84px';
-    cell.style.color = '#fff';
+    cell.className = 'small-input-item';
+    cell.dataset.key = lbl;
+
     const input = document.createElement('input');
     input.className = 'small-box';
     input.id = `qty_${idx}_${i}`;
@@ -879,8 +948,14 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
     input.setAttribute('pattern', '\\d*');
     input.setAttribute('autocomplete', 'off');
     input.placeholder = lbl;
+
+    const sizeDiv = document.createElement('div');
+    sizeDiv.className = 'part-size-text';
+
     cell.appendChild(input);
+    cell.appendChild(sizeDiv);
     qtyRow.appendChild(cell);
+
   });
 
   block.appendChild(qtyRow);
@@ -911,6 +986,7 @@ document.getElementById('oem_addDiff').addEventListener('click', () => {
     custSel.selectedIndex = 0;
     partSel.innerHTML = '<option value="">Select</option>';
     block.querySelectorAll('input.small-box').forEach(i => i.value = '');
+    clearPartSizeText(block);
   });
 
   removeBtn.addEventListener('click', () => block.remove());
@@ -2293,4 +2369,85 @@ if (data.transfers && data.transfers.length > 0) {
 }
 
 loadParts();
+
+document.getElementById("clearFilterset").addEventListener("click", () => {
+  // 🔹 Clear result section
+  document.getElementById("result").innerHTML = "";
+
+  // 🔹 Reset dropdown to SELECT
+  const dropdown = document.getElementById("partNameDropdown");
+  dropdown.selectedIndex = 0; // SELECT option
+
+  // 🔹 Optional: scroll back to top of panel
+  dropdown.blur();
+});
+// STEP 2 — place FIRST
+function normalizePartSizeHeights(container) {
+  const sizeEls = container.querySelectorAll('.part-size-text');
+  let maxHeight = 0;
+
+  sizeEls.forEach(el => el.style.minHeight = 'auto');
+
+  sizeEls.forEach(el => {
+    maxHeight = Math.max(maxHeight, el.offsetHeight);
+  });
+
+  sizeEls.forEach(el => {
+    el.style.minHeight = maxHeight + 'px';
+  });
+}
+
+// STEP 3 — below it
+function bindPartSizeForBlock(block, partSelect) {
+  partSelect.addEventListener('change', () => {
+
+    const sizes = partSizes[partSelect.value];
+
+    block.querySelectorAll('.small-input-item').forEach(item => {
+      const key = item.dataset.key;
+      const sizeDiv = item.querySelector('.part-size-text');
+
+      if (sizeDiv) {
+        sizeDiv.innerText = sizes ? (sizes[key] || '') : '';
+      }
+    });
+
+    // 🔥 THIS LINE IS THE FIX
+    normalizePartSizeHeights(block);
+  });
+}
+document.getElementById('co_clearFilter').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+document.getElementById('co_submit').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+document.getElementById('ci_clearFilter').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+
+document.getElementById('ci_submit').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+document.getElementById('oem_clearFilter').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+
+document.getElementById('oem_submit').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+document.getElementById('st_clear_btn').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+
+document.querySelector('.st_submit_btn').addEventListener('click', () => {
+  clearPartSizeText(document);
+});
+
+function clearPartSizeText(scope) {
+  if (!scope) return;
+  scope.querySelectorAll('.part-size-text').forEach(el => {
+    el.innerText = '';
+  });
+}
 
