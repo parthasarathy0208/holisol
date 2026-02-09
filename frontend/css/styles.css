@@ -1379,24 +1379,5 @@ input:focus-visible {
   margin-bottom: 0 !important;
   padding: 0 !important;
 }
-/* 🔥 FIX: Create Inward PART NAME overlap (mobile only) */
-@media (max-width: 768px) {
 
-  /* Allow vertical flow inside Create Inward blocks */
-  #createInwardView .extra-block {
-    overflow: visible !important;
-  }
-
-  /* Let small-inputs take its own line height */
-  #createInwardView .small-inputs {
-    flex-wrap: nowrap !important;
-    margin-top: 14px !important;   /* 🔑 creates separation */
-  }
-
-  /* Ensure PART NAME field never overlaps */
-  #createInwardView .field {
-    position: relative;
-    z-index: 1;
-  }
-}
 
