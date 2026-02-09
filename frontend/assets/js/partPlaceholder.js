@@ -56,22 +56,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!partSelect) return;
 
     partSelect.addEventListener("change", function () {
-
       const partValue = this.value;
-      const sizes = partSizes[partValue] || {};
+
+      // clear sizes
+      if (!partValue) {
+        Object.values(config.inputs).forEach(inputId => {
+          const input = document.getElementById(inputId);
+          if (!input) return;
+
+          const sizeDiv = input
+            .closest(".small-input-item")
+            ?.querySelector(".part-size-text");
+
+          if (sizeDiv) sizeDiv.innerText = "";
+        });
+        return;
+      }
+
+      // show sizes
+      const sizes = partSizes[partValue];
+      if (!sizes) return;
 
       Object.entries(config.inputs).forEach(([key, inputId]) => {
         const input = document.getElementById(inputId);
         if (!input) return;
 
-        // 🔥 THIS IS THE FIX
         const sizeDiv = input
           .closest(".small-input-item")
           ?.querySelector(".part-size-text");
 
-        if (!sizeDiv) return;
-
-        sizeDiv.innerText = partValue ? (sizes[key] || "") : "";
+        if (sizeDiv) {
+          sizeDiv.innerText = sizes[key] || "";
+        }
       });
     });
   });
