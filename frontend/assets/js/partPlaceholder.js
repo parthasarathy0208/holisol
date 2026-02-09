@@ -38,15 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         },
         {
-            partSelectId: "st_from_part",
+            partSelectId: "st_part_from",
             inputs: {
-                pallet: "from_pallet",
-                sleeve: "from_sleeve",
-                lid: "from_lid",
-                inserts: "from_inserts",  
-                separator: "from_separator",
-                crates: "from_crates",
-                dummy: "from_dummy"
+                Pallet: "from_pallet",
+                Sleeve: "from_sleeve",
+                Lid: "from_lid",
+                Inserts: "from_inserts",  
+                Separator: "from_separator",
+                Crates: "from_crates",
+                Dummy: "from_dummy"
             }
         }
 
