@@ -161,23 +161,48 @@
             </div>
 
             <div class="small-inputs" style="margin-top:22px;">
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_palletQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Pallet" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_sleeveQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Sleeve" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_lidQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Lid" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_insertQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Inserts" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_separatorQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Separator" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_cratesQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Crates" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="co_dummyQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
+              <div class="small-inputs" style="margin-top:22px;">
+
+                <div class="small-input-item">
+                  <input class="small-box" id="co_palletQty" inputmode="numeric" pattern="\d*" placeholder="Pallet">
+                  <div id="co_palletSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="co_sleeveQty" inputmode="numeric" pattern="\d*" placeholder="Sleeve">
+                  <div id="co_sleeveSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="co_lidQty" inputmode="numeric" pattern="\d*" placeholder="Lid">
+                  <div id="co_lidSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="co_insertQty" inputmode="numeric" pattern="\d*" placeholder="Inserts">
+                  <div id="co_insertSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="co_separatorQty" inputmode="numeric" pattern="\d*"
+                    placeholder="Separator">
+                  <div id="co_separatorSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="co_cratesQty" inputmode="numeric" pattern="\d*" placeholder="Crates">
+                  <div id="co_cratesSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="co_dummyQty" inputmode="numeric" pattern="\d*" placeholder="Dummy">
+                  <div id="co_dummySize" class="part-size-text"></div>
+                </div>
+
+              </div>
             </div>
 
-            <div class="note-row add-more-buttons" style="margin-bottom:28px;">
+            <div class="note-row add-more-buttons add-more-row" style="margin-bottom:28px;">
               <button id="co_addSame" class="blue-btn" type="button">ADD MORE FOR SAME CUSTOMER/OEM</button>
               <button id="co_addDiff" class="blue-btn" type="button">ADD MORE FOR DIFFERENT OEM</button>
             </div>
@@ -243,20 +268,45 @@
             </div>
 
             <div class="small-inputs" style="margin-top:22px;">
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_palletQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Pallet" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_sleeveQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Sleeve" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_lidQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Lid" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_insertQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Inserts" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_separatorQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Separator" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_cratesQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Crates" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="ci_dummyQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
+              <div class="small-inputs" style="margin-top:22px;">
+
+                <div class="small-input-item">
+                  <input class="small-box" id="ci_palletQty" inputmode="numeric" pattern="\d*" placeholder="Pallet">
+                  <div id="ci_palletSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="ci_sleeveQty" inputmode="numeric" pattern="\d*" placeholder="Sleeve">
+                  <div id="ci_sleeveSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="ci_lidQty" inputmode="numeric" pattern="\d*" placeholder="Lid">
+                  <div id="ci_lidSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="ci_insertQty" inputmode="numeric" pattern="\d*" placeholder="Inserts">
+                  <div id="ci_insertSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="ci_separatorQty" inputmode="numeric" pattern="\d*"
+                    placeholder="Separator">
+                  <div id="ci_separatorSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="ci_cratesQty" inputmode="numeric" pattern="\d*" placeholder="Crates">
+                  <div id="ci_cratesSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="ci_dummyQty" inputmode="numeric" pattern="\d*" placeholder="Dummy">
+                  <div id="ci_dummySize" class="part-size-text"></div>
+                </div>
+
+              </div>
             </div>
 
             <div class="note-row add-more-buttons" style="margin-bottom:28px;">
@@ -330,20 +380,46 @@
             </div>
 
             <div class="small-inputs" style="margin-top:22px;">
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_palletQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Pallet" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_sleeveQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Sleeve" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_lidQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Lid" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_insertQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Inserts" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_separatorQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Separator" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_cratesQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Crates" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="oem_dummyQty"
-                  inputmode="numeric" pattern="\d*" placeholder="Dummy" /></div>
+              <div class="small-inputs" style="margin-top:22px;">
+
+                <div class="small-input-item">
+                  <input class="small-box" id="oem_palletQty" inputmode="numeric" pattern="\d*" placeholder="Pallet">
+                  <div id="oem_palletSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="oem_sleeveQty" inputmode="numeric" pattern="\d*" placeholder="Sleeve">
+                  <div id="oem_sleeveSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="oem_lidQty" inputmode="numeric" pattern="\d*" placeholder="Lid">
+                  <div id="oem_lidSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="oem_insertQty" inputmode="numeric" pattern="\d*" placeholder="Inserts">
+                  <div id="oem_insertSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="oem_separatorQty" inputmode="numeric" pattern="\d*"
+                    placeholder="Separator">
+                  <div id="oem_separatorSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="oem_cratesQty" inputmode="numeric" pattern="\d*" placeholder="Crates">
+                  <div id="oem_cratesSize" class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item">
+                  <input class="small-box" id="oem_dummyQty" inputmode="numeric" pattern="\d*" placeholder="Dummy">
+                  <div id="oem_dummySize" class="part-size-text"></div>
+                </div>
+
+              </div>
+
             </div>
 
             <div class="note-row add-more-buttons" style="margin-bottom:28px;">
@@ -408,20 +484,46 @@
             </div>
 
             <div class="small-inputs" style="margin-top:22px;">
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_pallet" inputmode="numeric"
-                  pattern="\d*" placeholder="Pallet" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_sleeve" inputmode="numeric"
-                  pattern="\d*" placeholder="Sleeve" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_lid" inputmode="numeric"
-                  pattern="\d*" placeholder="Lid" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box"  id="from_inserts" inputmode="numeric"
-                  pattern="\d*" placeholder="Inserts" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box"  id="from_separator" inputmode="numeric"
-                  pattern="\d*" placeholder="Separator" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_crates" inputmode="numeric"
-                  pattern="\d*" placeholder="Crates" /></div>
-              <div style="text-align:center;width:84px;color:#fff"><br><input class="small-box" id="from_dummy" inputmode="numeric"
-                  pattern="\d*" placeholder="Dummy" /></div>
+             
+              <div class="small-inputs">
+
+                <div class="small-input-item">
+                  <input class="small-box" id="from_pallet" inputmode="numeric" pattern="\d*" placeholder="Pallet" />
+                  <div class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item" >
+                  <input class="small-box" id="from_sleeve" inputmode="numeric" pattern="\d*" placeholder="Sleeve" />
+                  <div class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item" >
+                  <input class="small-box" id="from_lid" inputmode="numeric" pattern="\d*" placeholder="Lid" />
+                  <div class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item" >
+                  <input class="small-box" id="from_inserts" inputmode="numeric" pattern="\d*" placeholder="Inserts" />
+                  <div class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item" >
+                  <input class="small-box" id="from_separator" inputmode="numeric" pattern="\d*"
+                    placeholder="Separator" />
+                  <div class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item" >
+                  <input class="small-box" id="from_crates" inputmode="numeric" pattern="\d*" placeholder="Crates" />
+                  <div class="part-size-text"></div>
+                </div>
+
+                <div class="small-input-item" >
+                  <input class="small-box" id="from_dummy" inputmode="numeric" pattern="\d*" placeholder="Dummy" />
+                  <div class="part-size-text"></div>
+                </div>
+
+              </div>
             </div>
 
 
@@ -989,6 +1091,8 @@
   <script src="/assets/js/co_inward_submit.js"></script>
   <script src="/assets/js/co_oem_inward_submit.js"></script>
   <script src="js/stock_transfer.js"></script>
+  <script src="assets/js/partSizes.js"></script>
+  <script src="assets/js/partPlaceholder.js"></script>
 
 
   <!-- Patch: remove extra tiny blocks in SHORTAGE cells (inward & OEM history) -->
