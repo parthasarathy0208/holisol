@@ -1168,11 +1168,12 @@ module.exports = [
       ]
     },
     unique: [
+      "inserts",
       "crates"
+      
     ],
     notRequired: [
       "sleeve",
-      "inserts",
       "separator"
     ]
   },
