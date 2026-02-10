@@ -38,7 +38,7 @@ const partSizes = {
     "Dummy": "TEL_VW/TURBO CHARGER/DUMMY-INS/1115*915*109"
   },
   "TML KITE": {
-    "Pallet": "NIL",
+    "Pallet": "HLPL/PSB/1445*1150*1070",
     "Sleeve": "HLPL/PSB/1445*1150*1070",
     "Lid": "HLPL/PSB/1445*1150*1070",
     "Inserts": "HLPL/INS/1350*1040*115",
