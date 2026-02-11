@@ -1379,5 +1379,7 @@ input:focus-visible {
   margin-bottom: 0 !important;
   padding: 0 !important;
 }
-
+.diff-invoice {
+  text-align: left;
+}
 
