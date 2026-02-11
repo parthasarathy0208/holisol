@@ -695,10 +695,11 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
 
   block.appendChild(qtyRow);
 
-  clearBtn.addEventListener('click', () => {
+   clearBtn.addEventListener('click', () => {
     block.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
     block.querySelectorAll('input.small-box').forEach(i => i.value = '');
     clearPartSizeText(block);
+  });
   });
   removeBtn.addEventListener('click', () => block.remove());
 
