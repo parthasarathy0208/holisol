@@ -583,6 +583,24 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
   const clearBtn = document.createElement('button'); clearBtn.className='clear-btn'; clearBtn.textContent='CLEAR';
   const removeBtn = document.createElement('button'); removeBtn.className='remove-btn'; removeBtn.textContent='REMOVE';
   topRight.appendChild(clearBtn); topRight.appendChild(removeBtn); block.appendChild(topRight);
+  
+
+  // Invoice Label
+  const invLab = document.createElement('div');
+  invLab.className = 'label';
+  invLab.textContent = 'INVOICE NO *';
+  block.appendChild(invLab);
+
+  // Invoice Input
+  const invInput = document.createElement('input');
+  invInput.style.width = '420px';
+
+  invInput.type = 'text';
+  invInput.className = 'small-box diff-invoice';
+  invInput.id = `co_diff_invoice_${idx}`;
+  invInput.placeholder = 'Enter Invoice No';
+  block.appendChild(invInput);
+
 
   const oemLab = document.createElement('div'); oemLab.className='label'; oemLab.style.marginBottom='8px'; oemLab.textContent='OEM *';
   block.appendChild(oemLab);
