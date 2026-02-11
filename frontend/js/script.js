@@ -625,6 +625,8 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
     parts = Array.from(new Set(inventory.filter(r => r.customer === selCustomer && r.oem === oems[0]).map(r => r.partName).filter(p => p && !selectedParts.has(p))));
   }
   pw.appendChild(createSelect(`co_diff_part_${idx}`, parts));
+  const partSel = pw.querySelector('select');
+  bindPartSizeForBlock(block, partSel);
   block.appendChild(pw);
 
   // When user changes OEM select in this block, update part select accordingly (excluding already selected parts)
