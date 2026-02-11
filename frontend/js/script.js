@@ -584,22 +584,26 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
   const removeBtn = document.createElement('button'); removeBtn.className='remove-btn'; removeBtn.textContent='REMOVE';
   topRight.appendChild(clearBtn); topRight.appendChild(removeBtn); block.appendChild(topRight);
   const invLab = document.createElement('div');
-invLab.className = 'label';
-invLab.textContent = 'INVOICE NO *';
-block.appendChild(invLab);
+  invLab.className = 'label';
+  invLab.textContent = 'INVOICE NO *';
+  block.appendChild(invLab);
 
-const invWrap = document.createElement('div');
-invWrap.style.width = '420px';
+  const invWrap = document.createElement('div');
+  invWrap.style.width = '100%';
+  
 
-const invInput = document.createElement('input');
-invInput.type = 'text';
-invInput.className = 'diff-invoice';
-invInput.id = `co_diff_invoice_${idx}`;
-invInput.placeholder = 'Enter Invoice No';
-invInput.style.width = '100%';
+  const invInput = document.createElement('input');
+  invInput.type = 'text';
+  invInput.className = 'diff-invoice';
+  invInput.id = `co_diff_invoice_${idx}`;
+  invInput.placeholder = 'Enter Invoice No';
+  invInput.style.width = '100%';
+  invInput.style.maxWidth = '420PX';
 
-invWrap.appendChild(invInput);
-block.appendChild(invWrap);
+  invWrap.appendChild(invInput);
+  block.appendChild(invWrap);
+
+
 
  
   const oemLab = document.createElement('div'); oemLab.className='label'; oemLab.style.marginBottom='8px'; oemLab.textContent='OEM *';
