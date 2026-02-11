@@ -250,16 +250,36 @@ alert('Outward submitted and inventory updated.');
                 crates: Number(t.crates || 0),
                 dummy: Number(t.dummy || 0)
               };
-              arr.push({
-                customer: t.customer || '',
-                oem: t.oem || '',
-                partName: t.part || '',
-                boxes: boxes,
-                invoice: invoiceVal,
-                vehicle: vehicleVal,
-                location: locationVal,
-                dispatchDate: dispatchVal
-              });
+               let blockInvoice = invoiceVal; // default main invoice
+
+                // 🔎 check if this is from diff block
+                const diffBlock = Array.from(document.querySelectorAll('#co_extraDiffContainer .extra-block'))
+                  .find(b => {
+                    const oemSel = b.querySelector('select[id^="co_diff_oem_"]');
+                    const partSel = b.querySelector('select[id^="co_diff_part_"]');
+                    return oemSel && partSel &&
+                      oemSel.value === t.oem &&
+                      partSel.value === t.part;
+                  });
+
+                if (diffBlock) {
+                  const invInput = diffBlock.querySelector('.diff-invoice');
+                  if (invInput && invInput.value) {
+                    blockInvoice = invInput.value;
+                  }
+                }
+
+                arr.push({
+                  customer: t.customer || '',
+                  oem: t.oem || '',
+                  partName: t.part || '',
+                  boxes: boxes,
+                  invoice: blockInvoice,   // 🔥 NOW CORRECT
+                  vehicle: vehicleVal,
+                  location: locationVal,
+                  dispatchDate: dispatchVal
+                });
+
             }
           }catch(e){ console.error('build payload error',e); }
           return arr;
