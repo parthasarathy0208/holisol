@@ -582,23 +582,21 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
   const topRight = document.createElement('div'); topRight.className='extra-top-right';
   const clearBtn = document.createElement('button'); clearBtn.className='clear-btn'; clearBtn.textContent='CLEAR';
   const removeBtn = document.createElement('button'); removeBtn.className='remove-btn'; removeBtn.textContent='REMOVE';
-  topRight.appendChild(clearBtn); topRight.appendChild(removeBtn); block.appendChild(topRight);const invLab = document.createElement('div');
-invLab.className = 'label';
-invLab.textContent = 'INVOICE NO *';
-block.appendChild(invLab);
+  topRight.appendChild(clearBtn); topRight.appendChild(removeBtn); block.appendChild(topRight);
+  // Invoice Label
+  const invLab = document.createElement('div');
+  invLab.className = 'label';
+  invLab.textContent = 'INVOICE NO *';
+  block.appendChild(invLab);
 
-const invWrap = document.createElement('div');
-invWrap.style.width = '420px';
+  // Invoice Input
+  const invInput = document.createElement('input');
+  invInput.type = 'text';
+  invInput.className = 'small-box diff-invoice';
+  invInput.id = `co_diff_invoice_${idx}`;
+  invInput.placeholder = 'Enter Invoice No';
 
-const invInput = document.createElement('input');
-invInput.type = 'text';
-invInput.className = 'diff-invoice';
-invInput.id = `co_diff_invoice_${idx}`;
-invInput.placeholder = 'Enter Invoice No';
-invInput.style.width = '100%';
-
-invWrap.appendChild(invInput);
-block.appendChild(invWrap);
+  block.appendChild(invInput);
 
    
   const oemLab = document.createElement('div'); oemLab.className='label'; oemLab.style.marginBottom='8px'; oemLab.textContent='OEM *';
