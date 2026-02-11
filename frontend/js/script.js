@@ -682,7 +682,6 @@ document.getElementById('co_addDiff').addEventListener('click', ()=>{
     block.querySelectorAll('input.small-box').forEach(i => i.value = '');
     clearPartSizeText(block);
   });
-  });
   removeBtn.addEventListener('click', () => block.remove());
 
   document.getElementById('co_extraDiffContainer').appendChild(block);
