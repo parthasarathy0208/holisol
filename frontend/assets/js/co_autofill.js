@@ -115,18 +115,17 @@
     applySets(el, fields, customer, oem, part);
   }
   function setupExtras(){
-    document.addEventListener('input', function(e){
-      const t = e.target;
-      if(/^co_qty_\d+_0$/.test(t.id)) handleExtra(t);
-    }, true);
-    document.addEventListener('change', function(e){
-      const t = e.target;
-      const container = t.closest('.extra-block');
-      if(container){
-        const p = container.querySelector('input[id$="_0"]');
-        if(p && p.value) handleExtra(p);
-      }
-    }, true);
-  }
+
+  // Only run when pallet field (index 0) changes
+  document.addEventListener('input', function(e){
+    const t = e.target;
+    if(/^co_qty_\d+_0$/.test(t.id)){
+      handleExtra(t);
+    }
+  }, true);
+
+  // Remove the broad change listener completely
+}
+
   document.addEventListener('DOMContentLoaded', function(){ setupMain(); setupExtras(); });
 })();
