@@ -14,6 +14,8 @@ const InventorySchema = new mongoose.Schema({
   customer: String,
   oem: String,
   partName: String,
+  oemOrder: Number,   
+  itemOrder: Number,
   boxQuantity: SubSchema,
   warehouseStock: SubSchema,
   inward: SubSchema,
