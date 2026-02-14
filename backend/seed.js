@@ -78,6 +78,8 @@ async function run() {
       obj.customer = sanitizeValue(item.customer);
       obj.oem = sanitizeValue(item.oem);
       obj.partName = sanitizeValue(item.partName);
+      obj.oemOrder = sanitizeValue(item.oemOrder);
+      obj.itemOrder = sanitizeValue(item.itemOrder);
 
       function sanitizeGroup(group) {
         // ensure all expected subkeys exist
