@@ -97,6 +97,10 @@
               <h3>SETS AVAILABILITY</h3>
               <div class="underline"></div>
             </article>
+            <article id="existingTile" class="tile t-set" tabindex="0">
+              <h3>INVENTORY MASTER</h3>
+              <div class="underline"></div>
+            </article>
           </div>
         </section>
 
@@ -715,6 +719,158 @@
             </div>
           </div>
         </section>
+        
+        <section id="editFlowView" class="panel view hidden" aria-hidden="true">
+
+          <!-- TAB BUTTONS -->
+          <div class="row" style="margin-bottom:20px;">
+            <article id="existingTab" class="tile t-set active-tab" tabindex="0">
+              <h3>MODIFY RECORD</h3>
+              <div class="underline"></div>
+            </article>
+
+            <article id="newTab" class="tile t-set" tabindex="0">
+              <h3>CREATE RECORD</h3>
+              <div class="underline"></div>
+            </article>
+          </div>
+
+          <!-- ================= EXISTING EDIT ================= -->
+          <div id="existingSection">
+
+            <div class="row">
+              <div class="field">
+                <div class="label">CUSTOMER</div>
+                <select id="edit_customer">
+                  <option value="">Select Customer</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">OEM</div>
+                <select id="edit_oem">
+                  <option value="">Select OEM</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <div class="label">PART NAME</div>
+                <select id="edit_part">
+                  <option value="">Select Part</option>
+                </select>
+              </div>
+
+              <div class="filter-actions">
+                <button id="loadRecordBtn" class="blue-btn">LOAD</button>
+                <button id="clearFilterBtn" class="secondary-btn">CLEAR FILTER</button>
+              </div>
+            </div>
+
+            <hr style="margin:25px 0;">
+
+            <!-- ORDER -->
+            <div class="row">
+
+              <div class="field">
+                <div class="label">CUSTOMER</div>
+                <input id="edit_customer_text" disabled>
+              </div>
+
+              <div class="field">
+                <div class="label">OEM</div>
+                <input id="edit_oem_text" disabled>
+              </div>
+
+              <div class="field">
+                <div class="label">PART NAME</div>
+                <input id="edit_part_text" disabled>
+              </div>
+
+              <div class="field" style="max-width:80px;">
+                <div class="label">OEM ORDER</div>
+                <input id="edit_oemOrder" disabled>
+              </div>
+
+              <div class="field" style="max-width:120px;">
+                <div class="label">ITEM ORDER</div>
+                <input id="edit_itemOrder" disabled>
+              </div>
+
+            </div>
+
+
+            <div class="dual-stock-row">
+
+              <!-- BOX QUANTITY -->
+              <div class="stock-col">
+                <div class="form-title">BOX QUANTITY</div>
+                <div class="seven-row" id="edit_boxQty"></div>
+              </div>
+
+              <!-- WAREHOUSE STOCK -->
+              <div class="stock-col">
+                <div class="form-title">WAREHOUSE STOCK</div>
+                <div class="seven-row" id="edit_whStock"></div>
+              </div>
+
+            </div>
+
+
+            <div class="action-row">
+              <div class="left-actions">
+                <button id="enableEditBtn" class="blue-btn">EDIT</button>
+                <button id="updateBtn" class="update-btn">UPDATE</button>
+              </div>
+
+              <button id="deleteBtn" class="delete-btn">DELETE</button>
+            </div>
+
+
+          </div>
+
+          <!-- ================= NEW FLOW ================= -->
+          <!-- ================= NEW FLOW ================= -->
+          <div id="newSection" style="display:none;">
+
+            <div class="row">
+
+              <div class="field">
+                <div class="label">CUSTOMER</div>
+                <input id="new_customer" placeholder="Enter Customer">
+              </div>
+
+              <div class="field">
+                <div class="label">OEM</div>
+                <input id="new_oem" placeholder="Enter Oem">
+              </div>
+
+              <div class="field">
+                <div class="label">PARTNAME</div>
+                <input id="new_part" placeholder="Enter Partname">
+              </div>
+
+              <div class="field">
+                <div class="label">OEM ORDER</div>
+                <input id="new_oemOrder" placeholder="Enter Oemorder">
+              </div>
+
+              <div class="field">
+                <div class="label">ITEM ORDER</div>
+                <input id="new_itemOrder" placeholder="Enter Itemorder">
+              </div>
+
+            </div>
+
+            <div class="newflow-actions">
+              <button id="createBtn" class="green-btn">CREATE</button>
+              <button id="newClearBtn" class="orange-btn">CLEAR</button>
+            </div>
+
+
+
+          </div>
+        </section>
+
 
 
 
@@ -1088,6 +1244,9 @@
   <script src="js/stock_transfer.js"></script>
   <script src="assets/js/partSizes.js"></script>
   <script src="assets/js/partPlaceholder.js"></script>
+   <script src="assets/js/inventory_editor.js"></script>
+  <script src="assets/js/editFlow.js"></script>
+
 
 
   <!-- Patch: remove extra tiny blocks in SHORTAGE cells (inward & OEM history) -->
