@@ -12,8 +12,6 @@ router.get('/', async (req, res) => {
   try {
     const items = await Inventory.find({})
       .sort({ oemOrder: 1, itemOrder: 1 })  
-             
-
     res.json(items);
   } catch (err) {
     console.error('GET / inventory error', err);
