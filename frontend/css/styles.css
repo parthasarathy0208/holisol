@@ -1384,26 +1384,6 @@ input:focus-visible {
 }
 
 
-/* ============================================================
-   SMALL INPUT GROUP
-============================================================ */
-
-.small-inputs {
-  display: flex;
-  gap: 18px;
-  margin-bottom: 15px;
-}
-
-.small-input-item {
-  display: flex;
-  flex-direction: column;
-  width: auto !important;
-  min-height: auto !important;
-}
-
-.small-box {
-  width: 80px;
-}
 
 
 /* ============================================================
