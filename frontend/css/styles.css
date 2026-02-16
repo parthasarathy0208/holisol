@@ -38,7 +38,7 @@ header .user{font-weight:500}
 .panel{background:var(--panel-bg);height:auto;border-radius:6px;padding:18px 24px 36px 24px;position:relative}
 
 /* tiles */
-.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;align-items:start;padding:28px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;align-items:start;padding:20px}
 .tile{border-radius:12px;height:160px;padding:20px;position:relative;box-shadow:0 2px 0 rgba(0,0,0,0.25);border:1px solid rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:flex-start;cursor:pointer}
 .tile h3{margin:0;font-weight:500;font-size:18px;letter-spacing:1px;color:#fff}
 .tile .underline{position:absolute;left:24px;right:24px;bottom:24px;height:2px;background:rgba(255,255,255,0.7)}
