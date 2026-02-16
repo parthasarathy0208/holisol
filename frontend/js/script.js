@@ -96,6 +96,8 @@ function showView(name){
     document.getElementById('menuOEM').classList.add('active');
   }else if (name === 'setavailability') {
     document.getElementById('setavailabilityView').classList.remove('hidden');
+  }else if (name === 'editFlow') {
+    document.getElementById('editFlowView').classList.remove('hidden');
   }
 }
 
@@ -2472,6 +2474,65 @@ function clearPartSizeText(scope) {
   if (!scope) return;
   scope.querySelectorAll('.part-size-text').forEach(el => {
     el.innerText = '';
+  });
+}
+
+
+function resetEditForm() {
+
+  currentRecordId = null;
+
+  // Clear dropdowns
+  document.getElementById("edit_customer").value = "";
+  document.getElementById("edit_oem").innerHTML = `<option value="">Select OEM</option>`;
+  document.getElementById("edit_part").innerHTML = `<option value="">Select Part</option>`;
+
+  // Clear editable text fields
+  document.getElementById("edit_customer_text").value = "";
+  document.getElementById("edit_oem_text").value = "";
+  document.getElementById("edit_part_text").value = "";
+
+  // Clear orders
+  document.getElementById("edit_oemOrder").value = "";
+  document.getElementById("edit_itemOrder").value = "";
+
+  // Disable again (view mode)
+  document.getElementById("edit_customer_text").disabled = true;
+  document.getElementById("edit_oem_text").disabled = true;
+  document.getElementById("edit_part_text").disabled = true;
+  document.getElementById("edit_oemOrder").disabled = true;
+  document.getElementById("edit_itemOrder").disabled = true;
+
+  // Clear 7 inputs
+  sizeKeys.forEach(k => {
+    document.getElementById(`edit_box_${k}`).value = "";
+    document.getElementById(`edit_wh_${k}`).value = "";
+
+    document.getElementById(`edit_box_${k}`).disabled = true;
+    document.getElementById(`edit_wh_${k}`).disabled = true;
+  });
+}
+
+// ===============================
+// PASSWORD PROTECT EXISTING EDIT TILE
+// ===============================
+const existingTile = document.getElementById("existingTile");
+
+if (existingTile) {
+  existingTile.addEventListener("click", function (e) {
+
+    e.preventDefault();
+    e.stopImmediatePropagation();   // 🚨 stop other listeners
+
+    const entered = prompt("Enter Admin Password to Access:");
+
+    if (entered !== "HOLISOL@ADMIN") {
+      alert("❌ Incorrect Password! Access Denied.");
+      return false; // stop navigation completely
+    }
+
+    // ✅ Correct password → now open view
+    showView("editFlow");
   });
 }
 
