@@ -34,7 +34,7 @@ let editInventoryData = [];
 
 async function loadEditDropdowns() {
     try {
-        const res = await fetch('/api/inventory');
+        const res = await fetch('https://holisol.onrender.com/api/inventory');
         const data = await res.json();
 
         editInventoryData = data.docs || data;
@@ -243,7 +243,7 @@ document.getElementById("updateBtn")
                 Number(document.getElementById(`edit_wh_${k}`).value || 0);
         });
 
-        const res = await fetch(`/api/inventory/update/${currentRecordId}`, {
+        const res = await fetch(`https://holisol.onrender.com/api/inventory/update/${currentRecordId}`, {
             method: "PUT",
 
             headers: { "Content-Type": "application/json" },
@@ -286,7 +286,7 @@ document.getElementById("deleteBtn")
 
     try {
 
-        const res = await fetch(`/api/inventory/delete/${currentRecordId}`, {
+        const res = await fetch(`https://holisol.onrender.com/api/inventory/delete/${currentRecordId}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" }
         });
@@ -328,7 +328,7 @@ document.getElementById("createBtn")
             return;
         }
 
-        const res = await fetch("/api/inventory/create", {
+        const res = await fetch("https://holisol.onrender.com/api/inventory/create", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
