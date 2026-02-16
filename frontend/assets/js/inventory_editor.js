@@ -1,4 +1,4 @@
-const API = "/api/inventory";
+const API = "https://holisol.onrender.com/api/inventory";
 
 /* ---------- LOAD EXISTING ---------- */
 async function loadExisting() {
