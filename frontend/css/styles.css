@@ -47,9 +47,11 @@ header .user{font-weight:500}
 .t-create-in{background:#c98b8b}
 .t-oem{background:#4f8e8b}
 .t-stock{background:#9a5e5e}
-.t-shortage{background:#d48ac8}
-.t-parts{background:#f28b99}
-.t-set{background:#9fd4f3}
+.t-shortage{background:#f0a83a}
+.t-parts{background:#f65bdc}
+.t-set{background:#58994b}
+.t-exist{background:#ab5ff2}
+
 
 /* generic form elements */
 .form-title{background:#e6e6e6;color:#111;padding:16px 18px;border-radius:4px;margin-bottom:22px;font-size:18px}
