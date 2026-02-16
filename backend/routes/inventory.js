@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
   try {
     const items = await Inventory.find({})
       .sort({ oemOrder: 1, itemOrder: 1 })  
-      .select('-oemOrder -itemOrder');       
+             
 
     res.json(items);
   } catch (err) {
@@ -624,5 +624,82 @@ router.get('/transfer', async (req, res) => {
   }
 });
 
+
+// Load single record
+router.get('/one', async (req, res) => {
+  const { customer, oem, partName } = req.query;
+
+  try {
+    const doc = await Inventory.findOne({ customer, oem, partName });
+    if (!doc) return res.status(404).json({ ok: false });
+
+    res.json({ ok: true, doc });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+
+router.put('/update/:id', async (req, res) => {
+  try {
+    const updated = await Inventory.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    res.json({ ok: true, updated });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    await Inventory.findByIdAndDelete(req.params.id);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+
+router.post('/create', async (req, res) => {
+  try {
+    const { customer, oem, partName, oemOrder, itemOrder } = req.body;
+
+    const zeroSet = {
+      pallet: 0,
+      sleeve: 0,
+      lid: 0,
+      inserts: 0,
+      separator: 0,
+      crates: 0,
+      dummy: 0
+    };
+
+    const newDoc = new Inventory({
+      customer,
+      oem,
+      partName,
+      oemOrder,
+      itemOrder,
+
+      boxQuantity: zeroSet,
+      warehouseStock: zeroSet,
+      inward: zeroSet,
+      outward: zeroSet,
+      damage: zeroSet
+    });
+
+    await newDoc.save();
+
+    res.json({ ok: true });
+
+  } catch (err) {
+    console.error("CREATE ERROR:", err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
 
 module.exports = router;
