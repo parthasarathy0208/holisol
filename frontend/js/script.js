@@ -2423,7 +2423,7 @@ function normalizePartSizeHeights(container) {
   });
 }
 
-/ STEP 3 — below it
+
 function bindPartSizeForBlock(block, partSelect) {
   partSelect.addEventListener('change', () => {
 
