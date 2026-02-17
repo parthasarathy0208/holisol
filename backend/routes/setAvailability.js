@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Inventory = require("../models/Inventory");
-const partMap = require("../utils/partCommonMap");
+const buildPartMapping = require("../utils/buildPartMapping");
 
 function getTotalTransferableStock(comp, map, Inventory) {
   const donorParts = map.commonWith[comp] || [];
@@ -26,10 +26,7 @@ router.get("/analyze/:partName", async (req, res) => {
       return res.status(404).json({ message: "Part not found" });
     }
 
-    const map = partMap.find(p => p.partName === partName);
-    if (!map) {
-      return res.status(404).json({ message: "Mapping not found" });
-    }
+    const map = await buildPartMapping(selectedPart, Inventory);
 
     const components = ["pallet", "sleeve", "lid", "inserts", "separator", "crates", "dummy"];
 
