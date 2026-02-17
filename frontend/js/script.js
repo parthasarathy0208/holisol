@@ -2503,41 +2503,6 @@ function clearPartSizeText(scope) {
 }
 
 
-function resetEditForm() {
-
-  currentRecordId = null;
-
-  // Clear dropdowns
-  document.getElementById("edit_customer").value = "";
-  document.getElementById("edit_oem").innerHTML = `<option value="">Select OEM</option>`;
-  document.getElementById("edit_part").innerHTML = `<option value="">Select Part</option>`;
-
-  // Clear editable text fields
-  document.getElementById("edit_customer_text").value = "";
-  document.getElementById("edit_oem_text").value = "";
-  document.getElementById("edit_part_text").value = "";
-
-  // Clear orders
-  document.getElementById("edit_oemOrder").value = "";
-  document.getElementById("edit_itemOrder").value = "";
-
-  // Disable again (view mode)
-  document.getElementById("edit_customer_text").disabled = true;
-  document.getElementById("edit_oem_text").disabled = true;
-  document.getElementById("edit_part_text").disabled = true;
-  document.getElementById("edit_oemOrder").disabled = true;
-  document.getElementById("edit_itemOrder").disabled = true;
-
-  // Clear 7 inputs
-  sizeKeys.forEach(k => {
-    document.getElementById(`edit_box_${k}`).value = "";
-    document.getElementById(`edit_wh_${k}`).value = "";
-
-    document.getElementById(`edit_box_${k}`).disabled = true;
-    document.getElementById(`edit_wh_${k}`).disabled = true;
-  });
-}
-
 // ===============================
 // PASSWORD PROTECT EXISTING EDIT TILE
 // ===============================
