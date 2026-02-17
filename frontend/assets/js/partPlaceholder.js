@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+
+  // 🔥 LOAD SIZES FIRST (before wiring dropdowns)
+  await loadPartSizesFromDB();
+
 
   const pageConfigs = [
     {
@@ -74,10 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // show sizes
-      const sizes = partSizes[partValue];
+      const sizes = partSizeMap[partValue];
+
       if (!sizes) return;
 
       Object.entries(config.inputs).forEach(([key, inputId]) => {
+
         const input = document.getElementById(inputId);
         if (!input) return;
 
@@ -85,10 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
           .closest(".small-input-item")
           ?.querySelector(".part-size-text");
 
-        if (sizeDiv) {
-          sizeDiv.innerText = sizes[key] || "";
-        }
+        if (!sizeDiv) return;
+
+        // 🔥 convert UI key -> DB key
+        const dbKey = key.toLowerCase();
+
+        sizeDiv.innerText = sizes[dbKey] || "";
       });
+
     });
   });
 
