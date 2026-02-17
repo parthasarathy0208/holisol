@@ -773,7 +773,7 @@
 
               <div class="field">
                 <div class="label">CUSTOMER</div>
-                <input id="edit_customer_text" disabled>
+                <input id="edit_customer_text" placeholder="Customer Name" disabled>
               </div>
 
               <div class="field">
@@ -798,18 +798,23 @@
 
             </div>
 
+            <div class="stock-col" style="margin-bottom:20px;">
+              <div class="form-titlee">PARTNAME SIZE</div>
+              <div class="seven-row" id="edit_partSize"></div>
+            </div>
 
             <div class="dual-stock-row">
 
+
               <!-- BOX QUANTITY -->
               <div class="stock-col">
-                <div class="form-title">BOX QUANTITY</div>
+                <div class="form-titlee">BOX QUANTITY</div>
                 <div class="seven-row" id="edit_boxQty"></div>
               </div>
 
               <!-- WAREHOUSE STOCK -->
               <div class="stock-col">
-                <div class="form-title">WAREHOUSE STOCK</div>
+                <div class="form-titlee">WAREHOUSE STOCK</div>
                 <div class="seven-row" id="edit_whStock"></div>
               </div>
 
@@ -870,10 +875,7 @@
 
           </div>
         </section>
-
-
-
-
+        
 
         <!-- INVENTORY CHART PAGE (UPDATED: last header now OUTWARD) -->
         <section id="inventoryView" class="panel view hidden" aria-hidden="true">
