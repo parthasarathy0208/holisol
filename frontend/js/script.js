@@ -2180,7 +2180,7 @@ document.addEventListener("DOMContentLoaded", () => {
    FETCH DATA FROM DATABASE
 =========================== */
 function loadPartSizeData() {
-  fetch("/api/part-sizes")
+  fetch("https://holisol.onrender.com/api/part-sizes")
     .then(res => res.json())
     .then(data => {
       const formatted = convertToTableFormat(data);
