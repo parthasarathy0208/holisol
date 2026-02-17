@@ -682,7 +682,7 @@ router.post('/create', async (req, res) => {
       partName,
       oemOrder,
       itemOrder,
-
+      partSize: null,
       boxQuantity: zeroSet,
       warehouseStock: zeroSet,
       inward: zeroSet,
