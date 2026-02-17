@@ -2150,42 +2150,94 @@ document.getElementById('oem_clearFilter')?.addEventListener('click', () => {
   document.getElementById('oem_extraDiffContainer').innerHTML = '';
 });
 
-
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
   const partsTile = document.getElementById("partssizeTile");
+  const partsView = document.getElementById("partsSizeView");
 
-  partsTile.addEventListener("click", function () {
+  let isLoaded = false; // ✅ prevent duplicate API calls
 
-    // hide all other views
+  partsTile.addEventListener("click", () => {
+
+    // Hide other views
     document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
 
-    // show Parts Size view
-    const partsView = document.getElementById("partsSizeView");
+    // Show this view
     partsView.classList.remove("hidden");
     partsView.setAttribute("aria-hidden", "false");
 
-    // load table
-    loadExcelData();
+    // Load data only first time
+    if (!isLoaded) {
+      loadPartSizeData();
+      isLoaded = true;
+    }
   });
 
 });
 
-let tableData = [];
 
-function loadExcelData() {
-  fetch("assets/inventory_chart.xlsx")
-    .then(response => response.arrayBuffer())
+/* ===========================
+   FETCH DATA FROM DATABASE
+=========================== */
+function loadPartSizeData() {
+  fetch("/api/part-sizes")
+    .then(res => res.json())
     .then(data => {
-      const workbook = XLSX.read(data, { type: "array" });
-      const sheet = workbook.Sheets[workbook.SheetNames[0]];
-      tableData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-      buildTable(tableData);
+      const formatted = convertToTableFormat(data);
+      buildTable(formatted);
     })
-    .catch(() => alert("Excel file not found in assets folder"));
+    .catch(err => {
+      console.error("Part Size Load Error:", err);
+      alert("Failed to load Part Size data");
+    });
 }
 
+
+/* ===========================
+   CONVERT DB → TABLE FORMAT
+=========================== */
+function convertToTableFormat(data) {
+
+  const table = [];
+
+  // Header row
+  table.push([
+    "CUSTOMER",
+    "OEM",
+    "PARTNAME",
+    "PALLET",
+    "SLEEVE",
+    "LID",
+    "INSERTS",
+    "SEPARATOR",
+    "CRATES",
+    "DUMMY"
+  ]);
+
+  data.forEach(item => {
+    table.push([
+      item.customer ?? "",
+      item.oem ?? "",
+      item.partName ?? "",
+      item.partSize?.pallet ?? "",
+      item.partSize?.sleeve ?? "",
+      item.partSize?.lid ?? "",
+      item.partSize?.inserts ?? "",
+      item.partSize?.separator ?? "",
+      item.partSize?.crates ?? "",
+      item.partSize?.dummy ?? ""
+    ]);
+  });
+
+  return table;
+}
+
+
+/* ===========================
+   BUILD TABLE
+=========================== */
 function buildTable(data) {
+
   const table = document.getElementById("excelTable");
   table.innerHTML = "";
 
@@ -2194,9 +2246,7 @@ function buildTable(data) {
 
   const headerRow = data[0];
 
-  /* ======================
-     FILTER ROW (thead)
-  ====================== */
+  // 🔹 FILTER ROW
   const filterRow = document.createElement("tr");
 
   headerRow.forEach(() => {
@@ -2204,7 +2254,7 @@ function buildTable(data) {
     const input = document.createElement("input");
 
     input.placeholder = "Filter";
-    input.addEventListener("keyup", filterTable);
+    input.addEventListener("input", filterTable);
 
     th.appendChild(input);
     filterRow.appendChild(th);
@@ -2212,9 +2262,7 @@ function buildTable(data) {
 
   thead.appendChild(filterRow);
 
-  /* ======================
-     HEADER ROW (thead)
-  ====================== */
+  // 🔹 HEADER ROW
   const headerTr = document.createElement("tr");
 
   headerRow.forEach(header => {
@@ -2225,15 +2273,13 @@ function buildTable(data) {
 
   thead.appendChild(headerTr);
 
-  /* ======================
-     DATA ROWS (tbody)
-  ====================== */
+  // 🔹 DATA ROWS
   for (let i = 1; i < data.length; i++) {
     const tr = document.createElement("tr");
 
     data[i].forEach(cell => {
       const td = document.createElement("td");
-      td.textContent = cell || "";
+      td.textContent = cell;
       tr.appendChild(td);
     });
 
@@ -2244,49 +2290,45 @@ function buildTable(data) {
   table.appendChild(tbody);
 }
 
-/* ======================
-   FILTER FUNCTION
-====================== */
-function filterTable() {
-  const table = document.getElementById("excelTable");
 
-  const filterInputs = table.querySelectorAll("thead tr:first-child input");
+/* ===========================
+   FILTER FUNCTION
+=========================== */
+function filterTable() {
+
+  const table = document.getElementById("excelTable");
+  const inputs = table.querySelectorAll("thead tr:first-child input");
   const rows = table.querySelectorAll("tbody tr");
 
   rows.forEach(row => {
+
     let showRow = true;
     const cells = row.querySelectorAll("td");
 
-    filterInputs.forEach((input, index) => {
+    inputs.forEach((input, index) => {
+
       const filterValue = input.value.toLowerCase().trim();
+      if (!filterValue) return; // no filter
+
       const cellText = (cells[index]?.textContent || "").toLowerCase();
 
-      if (filterValue) {
-        const keywords = filterValue.split(" ");
-        for (let word of keywords) {
-          if (!cellText.includes(word)) {
-            showRow = false;
-            break;
-          }
+      // 🔹 SPLIT BY SPACE → multiple keywords
+      const keywords = filterValue.split(/\s+/);
+
+      // 🔹 EVERY keyword must exist
+      for (let word of keywords) {
+        if (!cellText.includes(word)) {
+          showRow = false;
+          break;
         }
       }
+
     });
 
     row.style.display = showRow ? "" : "none";
+
   });
 }
-document.getElementById("clearFilterset").addEventListener("click", () => {
-  // 🔹 Clear result section
-  document.getElementById("result").innerHTML = "";
-
-  // 🔹 Reset dropdown to SELECT
-  const dropdown = document.getElementById("partNameDropdown");
-  dropdown.selectedIndex = 0; // SELECT option
-
-  // 🔹 Optional: scroll back to top of panel
-  dropdown.blur();
-});
-
 
 async function loadParts() {
   const res = await fetch(`${API_BASE_URL}/api/inventory`);
