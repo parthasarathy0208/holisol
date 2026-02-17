@@ -12,20 +12,25 @@ const sizeKeys = [
     "dummy"
 ];
 
-function createSevenInputs(containerId, prefix, disabled = true) {
+function createSevenInputs(containerId, prefix, disabled = true, type = "number") {
+
     const container = document.getElementById(containerId);
     container.innerHTML = "";
 
     sizeKeys.forEach(key => {
+
         const input = document.createElement("input");
-        input.type = "number";
+
+        input.type = type;   // ✅ dynamic type
         input.id = `${prefix}_${key}`;
         input.placeholder = key;
+
         if (disabled) input.disabled = true;
 
         container.appendChild(input);
     });
 }
+
 
 
 
@@ -106,6 +111,7 @@ function fillParts(customer, oem) {
 document.addEventListener("DOMContentLoaded", () => {
 
     loadEditDropdowns();
+    createSevenInputs("edit_partSize", "edit_ps", true, "text");
     createSevenInputs("edit_boxQty", "edit_box", true);
     createSevenInputs("edit_whStock", "edit_wh", true);
 
@@ -172,6 +178,13 @@ document.getElementById("loadRecordBtn")
         oemInput.disabled = true;
         itemInput.disabled = true;
 
+        // Fill PART SIZE
+        sizeKeys.forEach(k => {
+            document.getElementById(`edit_ps_${k}`).value =
+                record.partSize?.[k] ?? "";
+        });
+
+
 
         // Fill Box Quantity
         sizeKeys.forEach(k => {
@@ -201,6 +214,7 @@ document.getElementById("enableEditBtn")
         document.getElementById("edit_itemOrder").disabled = false;
 
         sizeKeys.forEach(k => {
+            document.getElementById(`edit_ps_${k}`).disabled = false;
             document.getElementById(`edit_box_${k}`).disabled = false;
             document.getElementById(`edit_wh_${k}`).disabled = false;
         });
@@ -230,12 +244,16 @@ document.getElementById("updateBtn")
             itemOrder: Number(document.getElementById("edit_itemOrder").value || 0),
 
             // 🔹 QUANTITIES
+            partSize: {},
             boxQuantity: {},
             warehouseStock: {}
         };
 
 
         sizeKeys.forEach(k => {
+            payload.partSize[k] =
+                document.getElementById(`edit_ps_${k}`).value.trim() || null;
+
             payload.boxQuantity[k] =
                 Number(document.getElementById(`edit_box_${k}`).value || 0);
 
@@ -266,47 +284,47 @@ document.getElementById("updateBtn")
 // DELETE RECORD
 // ========================================
 document.getElementById("deleteBtn")
-.addEventListener("click", async () => {
+    .addEventListener("click", async () => {
 
-    // 🔐 Ask Delete Password First
-    const entered = prompt("Enter Delete Authorization Password:");
+        // 🔐 Ask Delete Password First
+        const entered = prompt("Enter Delete Authorization Password:");
 
-    if (entered !== "HOLISOL@DELETE") {
-        alert("❌ Incorrect Password! Delete Blocked.");
-        return; // STOP DELETE
-    }
-
-    // Continue only if password correct
-    if (!currentRecordId) {
-        alert("Load record first");
-        return;
-    }
-
-    if (!confirm("Confirm permanently delete?")) return;
-
-    try {
-
-        const res = await fetch(`https://holisol.onrender.com/api/inventory/delete/${currentRecordId}`, {
-            method: "DELETE",
-            headers: { "Content-Type": "application/json" }
-        });
-
-        const data = await res.json();
-
-        if (data.ok) {
-            alert("Record Deleted Successfully ✅");
-            resetEditForm();
-            await loadEditDropdowns();
-        } else {
-            alert("Delete Failed From Server");
+        if (entered !== "HOLISOL@DELETE") {
+            alert("❌ Incorrect Password! Delete Blocked.");
+            return; // STOP DELETE
         }
 
-    } catch (err) {
-        console.error(err);
-        alert("Server Error During Delete");
-    }
+        // Continue only if password correct
+        if (!currentRecordId) {
+            alert("Load record first");
+            return;
+        }
 
-});
+        if (!confirm("Confirm permanently delete?")) return;
+
+        try {
+
+            const res = await fetch(`https://holisol.onrender.com/api/inventory/delete/${currentRecordId}`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" }
+            });
+
+            const data = await res.json();
+
+            if (data.ok) {
+                alert("Record Deleted Successfully ✅");
+                resetEditForm();
+                await loadEditDropdowns();
+            } else {
+                alert("Delete Failed From Server");
+            }
+
+        } catch (err) {
+            console.error(err);
+            alert("Server Error During Delete");
+        }
+
+    });
 
 // ========================================
 // CREATE NEW RECORD
