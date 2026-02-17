@@ -5,6 +5,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const inventoryRoutes = require('./routes/inventory');
 const setAvailabilityRoute = require('./routes/setAvailability');
+const partSizeRoutes = require("./routes/partSizeRoutes");
 
 require('dotenv').config();
 
@@ -18,6 +19,7 @@ app.use(cors());
 app.use('/api/auth', authRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/set-availability', setAvailabilityRoute);
+app.use("/api", partSizeRoutes);
 
 
 // Health check (VERY IMPORTANT for Render testing)
