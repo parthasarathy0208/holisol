@@ -2423,25 +2423,50 @@ function normalizePartSizeHeights(container) {
   });
 }
 
-// STEP 3 — below it
+/ STEP 3 — below it
 function bindPartSizeForBlock(block, partSelect) {
   partSelect.addEventListener('change', () => {
 
-    const sizes = partSizes[partSelect.value];
+    const partValue = partSelect.value.trim();
+    const sizes = partSizeMap[partValue];
 
     block.querySelectorAll('.small-input-item').forEach(item => {
-      const key = item.dataset.key;
+
+      const key = item.dataset.key;        // "Pallet"
+      const dbKey = key.toLowerCase();     // "pallet"
+
       const sizeDiv = item.querySelector('.part-size-text');
 
       if (sizeDiv) {
-        sizeDiv.innerText = sizes ? (sizes[key] || '') : '';
+        sizeDiv.innerText = sizes ? (sizes[dbKey] || '') : '';
       }
     });
 
-    // 🔥 THIS LINE IS THE FIX
     normalizePartSizeHeights(block);
   });
 }
+
+// 🔥 Dynamic Part Size Cache (loaded from DB)
+let partSizeMap = {};
+async function loadPartSizesFromDB() {
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/inventory`);
+    const data = await res.json();
+
+    partSizeMap = {};
+
+    (data.docs || data).forEach(item => {
+      // ✅ key must be partName (as in DB)
+      partSizeMap[item.partName.trim()] = item.partSize || {};
+    });
+
+    console.log("✅ Part Sizes Loaded From DB", partSizeMap);
+
+  } catch (err) {
+    console.error("❌ Failed loading part sizes", err);
+  }
+}
+
 document.getElementById('co_clearFilter').addEventListener('click', () => {
   clearPartSizeText(document);
 });
