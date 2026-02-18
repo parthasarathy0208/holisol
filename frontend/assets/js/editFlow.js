@@ -112,6 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadEditDropdowns();
     createSevenInputs("edit_partSize", "edit_ps", true, "text");
+    createSevenInputs("edit_partWeight", "edit_pw", true, "text");
+
     createSevenInputs("edit_boxQty", "edit_box", true);
     createSevenInputs("edit_whStock", "edit_wh", true);
 
@@ -165,24 +167,35 @@ document.getElementById("loadRecordBtn")
 
         const oemInput = document.getElementById("edit_oemOrder");
         const itemInput = document.getElementById("edit_itemOrder");
+        const loopInput = document.getElementById("edit_loopQty");
 
         /* enable temporarily so browser paints value */
+        loopInput.disabled = false;
         oemInput.disabled = false;
         itemInput.disabled = false;
 
         /* set values */
+        loopInput.value = record.loopQty ?? 0;
         oemInput.value = record.oemOrder ?? 0;
         itemInput.value = record.itemOrder ?? 0;
 
         /* disable again (view mode) */
+        loopInput.disabled = true;
         oemInput.disabled = true;
         itemInput.disabled = true;
 
-        // Fill PART SIZE
+        // Fill PART SIZE (direct from DB)
         sizeKeys.forEach(k => {
             document.getElementById(`edit_ps_${k}`).value =
-                record.partSize?.[k] ?? "";
+                record.partSize[k];
         });
+
+        // Fill PART WEIGHT (direct from DB)
+        sizeKeys.forEach(k => {
+            document.getElementById(`edit_pw_${k}`).value =
+                record.partWeight[k];
+        });
+
 
 
 
@@ -209,12 +222,13 @@ document.getElementById("enableEditBtn")
         document.getElementById("edit_customer_text").disabled = false;
         document.getElementById("edit_oem_text").disabled = false;
         document.getElementById("edit_part_text").disabled = false;
-
+        document.getElementById("edit_loopQty").disabled = false;
         document.getElementById("edit_oemOrder").disabled = false;
         document.getElementById("edit_itemOrder").disabled = false;
 
         sizeKeys.forEach(k => {
             document.getElementById(`edit_ps_${k}`).disabled = false;
+            document.getElementById(`edit_pw_${k}`).disabled = false;
             document.getElementById(`edit_box_${k}`).disabled = false;
             document.getElementById(`edit_wh_${k}`).disabled = false;
         });
@@ -240,11 +254,13 @@ document.getElementById("updateBtn")
             partName: document.getElementById("edit_part_text").value.trim(),
 
             // 🔹 ORDERS
+            loopQty: Number(document.getElementById("edit_loopQty").value || 0),
             oemOrder: Number(document.getElementById("edit_oemOrder").value || 0),
             itemOrder: Number(document.getElementById("edit_itemOrder").value || 0),
 
             // 🔹 QUANTITIES
             partSize: {},
+            partWeight: {},
             boxQuantity: {},
             warehouseStock: {}
         };
@@ -252,7 +268,11 @@ document.getElementById("updateBtn")
 
         sizeKeys.forEach(k => {
             payload.partSize[k] =
-                document.getElementById(`edit_ps_${k}`).value.trim() || null;
+                document.getElementById(`edit_ps_${k}`).value.trim() || "NIL";
+
+            payload.partWeight[k] =
+                document.getElementById(`edit_pw_${k}`).value.trim() || "NIL";
+
 
             payload.boxQuantity[k] =
                 Number(document.getElementById(`edit_box_${k}`).value || 0);
@@ -397,4 +417,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
 
