@@ -19,14 +19,28 @@ const PartSizeSchema = new mongoose.Schema({
   dummy: String
 }, { _id: false });
 
+const PartWeightSchema = new mongoose.Schema({
+  pallet: String,
+  sleeve: String,
+  lid: String,
+  inserts: String,
+  separator: String,
+  crates: String,
+  dummy: String
+}, { _id: false });
+
+
+
 
 const InventorySchema = new mongoose.Schema({
   customer: String,
   oem: String,
   partName: String,
+  loopQty: Number,
   oemOrder: Number,   
   itemOrder: Number,
   partSize: PartSizeSchema,
+  partWeight: PartWeightSchema, 
   boxQuantity: SubSchema,
   warehouseStock: SubSchema,
   inward: SubSchema,
