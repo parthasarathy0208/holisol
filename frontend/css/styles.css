@@ -1397,7 +1397,6 @@ input:focus-visible {
 
 
 
-
 /* ============================================================
    MAIN EDIT FLOW 50% / 50% LAYOUT
 ============================================================ */
@@ -1497,6 +1496,7 @@ input:focus-visible {
 #edit_customer_text,
 #edit_oem_text,
 #edit_part_text,
+#edit_loopQty, 
 #edit_oemOrder,
 #edit_itemOrder {
   height: 45px !important;
@@ -1505,10 +1505,36 @@ input:focus-visible {
   box-sizing: border-box;
 }
 
-#edit_oemOrder,
-#edit_itemOrder {
-  max-width: 100px !important;
+
+/* First 3 fields should expand */
+#editFlowView .row .field {
+  flex: 1;
+  min-width: 0;
 }
+/* Small numeric fields */
+#editFlowView .row .small-field {
+  flex: 0 0 auto;     /* stop flex growing */
+  width: 100px;       /* fixed width */
+}
+/* Push numeric group to right */
+#editFlowView .row .small-field:first-of-type {
+  margin-left: auto;
+}
+
+/* First fields expand */
+#editFlowView .row .field {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Last 3 fields = equal fixed size */
+#editFlowView .row .small-field {
+  flex: 0 0 110px;   /* <-- ALL THREE SAME WIDTH */
+}
+#editFlowView .row .small-field:first-of-type {
+  margin-left: auto;
+}
+
 
 
 /* ============================================================
@@ -1617,28 +1643,100 @@ input:focus-visible {
    📱 MOBILE RESPONSIVE
 ============================================================ */
 
+/* ============================================================
+   📱 MOBILE RESPONSIVE — FIXED VERSION
+============================================================ */
 @media (max-width: 768px) {
 
+  /* Stack sections vertically */
   #editFlowView .dual-section,
   #editFlowView .dual-stock-row {
     flex-direction: column;
     gap: 20px;
   }
 
-  #editFlowView .top-row {
-    flex-direction: column;
-    align-items: stretch;
+  /* Top filters stack */
+  #editFlowView .row {
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
+  /* First 3 fields full width */
+  #editFlowView .row .field {
+    flex: 1 1 100%;
+  }
+
+  /* LOOP / OEM / ITEM appear in one row */
+  #editFlowView .row .small-field {
+    flex: 1 1 calc(33.33% - 8px);
+    width: auto;
+    margin-left: 0 !important;
+  }
+
+  /* ===== 7 INPUT ROW → HORIZONTAL SCROLL ===== */
   #editFlowView .seven-row {
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 6px;
   }
 
+  /* scrollbar styling */
+  #editFlowView .seven-row::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  #editFlowView .seven-row::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 10px;
+  }
+
+  /* each input fixed width */
+  #editFlowView .seven-row input {
+    min-width: 110px;
+    flex: 0 0 110px;
+  }
   .action-row {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     gap: 10px;
-    align-items: stretch;
   }
 
+  /* Flatten the left-actions wrapper */
+  .left-actions {
+    display: contents;
+  }
+
+  /* Now all 3 buttons are equal flex children */
+  #enableEditBtn,
+  #updateBtn,
+  #deleteBtn {
+    flex: 1;
+    width: auto;
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+
+  
 }
+
+.ps-toolbar {
+  margin-bottom: 10px;
+}
+.ps-cell {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.ps-size {
+  font-weight: 500;
+}
+
+.ps-weight {
+  font-size: 11px;
+  color: #444;
+  margin-top: 3px;
+}
+
 
