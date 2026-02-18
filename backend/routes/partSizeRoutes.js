@@ -6,7 +6,7 @@ const Inventory = require("../models/Inventory");
 router.get("/part-sizes", async (req, res) => {
   try {
     const data = await Inventory.find({})
-      .select("customer oem partName partSize -_id")
+      .select("customer oem partName partSize partWeight -_id")
       .sort({ oemOrder: 1, itemOrder: 1 });
 
     res.json(data);
