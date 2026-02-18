@@ -348,42 +348,43 @@ select.with-arrow::-ms-expand{display:none}
 
 /* 1) DATA CELLS (tbody) – full column background */
 
-/* BOX QUANTITY: columns 4–10 */
-#inventoryView #invTable tbody td:nth-child(4),
+/* BOX QUANTITY: columns 5–11 */
 #inventoryView #invTable tbody td:nth-child(5),
 #inventoryView #invTable tbody td:nth-child(6),
 #inventoryView #invTable tbody td:nth-child(7),
 #inventoryView #invTable tbody td:nth-child(8),
 #inventoryView #invTable tbody td:nth-child(9),
-#inventoryView #invTable tbody td:nth-child(10){
-  background-color: #d9ecff !important; /* light blue */
+#inventoryView #invTable tbody td:nth-child(10),
+#inventoryView #invTable tbody td:nth-child(11){
+  background-color:#d9ecff !important;
 }
-/* WAREHOUSE STOCK: columns 11–17 */
-#inventoryView #invTable tbody td:nth-child(11),
+
+/* WAREHOUSE STOCK: columns 12–18 */
 #inventoryView #invTable tbody td:nth-child(12),
 #inventoryView #invTable tbody td:nth-child(13),
 #inventoryView #invTable tbody td:nth-child(14),
 #inventoryView #invTable tbody td:nth-child(15),
 #inventoryView #invTable tbody td:nth-child(16),
-#inventoryView #invTable tbody td:nth-child(17){
+#inventoryView #invTable tbody td:nth-child(17),
+#inventoryView #invTable tbody td:nth-child(18){
   background-color: #fff7c2 !important; /* light yellow */
 }
-#inventoryView #invTable tbody td:nth-child(18),
 #inventoryView #invTable tbody td:nth-child(19),
 #inventoryView #invTable tbody td:nth-child(20),
 #inventoryView #invTable tbody td:nth-child(21),
 #inventoryView #invTable tbody td:nth-child(22),
 #inventoryView #invTable tbody td:nth-child(23),
-#inventoryView #invTable tbody td:nth-child(24){
+#inventoryView #invTable tbody td:nth-child(24),
+#inventoryView #invTable tbody td:nth-child(25){
   background-color: #f599d6 !important; /* light yellow */
 }
-#inventoryView #invTable tbody td:nth-child(25),
 #inventoryView #invTable tbody td:nth-child(26),
 #inventoryView #invTable tbody td:nth-child(27),
 #inventoryView #invTable tbody td:nth-child(28),
 #inventoryView #invTable tbody td:nth-child(29),
 #inventoryView #invTable tbody td:nth-child(30),
-#inventoryView #invTable tbody td:nth-child(31){
+#inventoryView #invTable tbody td:nth-child(31),
+#inventoryView #invTable tbody td:nth-child(32){
   background-color: #a5b6f6 !important; /* light yellow */
 }
 
@@ -401,18 +402,18 @@ select.with-arrow::-ms-expand{display:none}
 */
 
 /* BOX QUANTITY group header (top row) */
-#inventoryView #invTable thead tr:first-child th:nth-child(4){
+#inventoryView #invTable thead tr:first-child th:nth-child(5){
   background-color: #d9ecff !important;
 }
 
 /* WAREHOUSE STOCK group header (top row) */
-#inventoryView #invTable thead tr:first-child th:nth-child(5){
+#inventoryView #invTable thead tr:first-child th:nth-child(6){
   background-color: #fff7c2 !important;
 }
-#inventoryView #invTable thead tr:first-child th:nth-child(6){
+#inventoryView #invTable thead tr:first-child th:nth-child(7){
   background-color: #f599d6 !important;
 }
-#inventoryView #invTable thead tr:first-child th:nth-child(7){
+#inventoryView #invTable thead tr:first-child th:nth-child(8){
   background-color: #a5b6f6  !important;
 }
 
