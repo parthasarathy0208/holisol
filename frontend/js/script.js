@@ -1582,29 +1582,52 @@ if(invSaveBtn) invSaveBtn.addEventListener('click', ()=>{
   const tbody = document.getElementById('invTbody');
   for(let r=0; r<tbody.rows.length; r++){
     const row = tbody.rows[r];
-    // column mapping now:
-    // 0 = customer, 1 = oem, 2 = part
-    // 3-9 = box quantity (7)
-    // 10-16 = warehouse stock (7)
-    // 17-23 = inward (7)
-    // 24-30 = outward (7)
+     // 0 = customer
+    // 1 = oem
+    // 2 = part
+    // 3 = loopQty  <-- new column
+    // 4-10 = box quantity (7)
+    // 11-17 = warehouse stock (7)
+    // 18-24 = inward (7)
+    // 25-31 = outward (7)
+    // 32-38 = damage (7)
+
     const customer = row.cells[0].textContent.trim();
     const oem = row.cells[1].textContent.trim();
     const part = row.cells[2].textContent.trim();
+    const loopQty = row.cells[3].textContent.trim();
+
 
     const boxQty = [];
-    for(let c=3;c<=9;c++){ const inp = row.cells[c].querySelector('input'); boxQty.push(inp ? (inp.value.trim()||'0') : '0'); }
+    for (let c = 4; c <= 10; c++) { const inp = row.cells[c].querySelector('input'); boxQty.push(inp ? (inp.value.trim() || '0') : '0'); }
 
     const ws = [];
-    for(let c=10;c<=16;c++){ const inp = row.cells[c].querySelector('input'); ws.push(inp ? (inp.value.trim()||'0') : '0'); }
+    for (let c = 11; c <= 17; c++) { const inp = row.cells[c].querySelector('input'); ws.push(inp ? (inp.value.trim() || '0') : '0'); }
 
     const inn = [];
-    for(let c=17;c<=23;c++){ const inp = row.cells[c].querySelector('input'); inn.push(inp ? (inp.value.trim()||'0') : '0'); }
+    for (let c = 18; c <= 24; c++) { const inp = row.cells[c].querySelector('input'); inn.push(inp ? (inp.value.trim() || '0') : '0'); }
 
     const out = [];
-    for(let c=24;c<=30;c++){ const inp = row.cells[c].querySelector('input'); out.push(inp ? (inp.value.trim()||'0') : '0'); }
+    for (let c = 25; c <= 31; c++) { const inp = row.cells[c].querySelector('input'); out.push(inp ? (inp.value.trim() || '0') : '0'); }
 
-    rows.push({customer,oem,part,boxQuantity:boxQty,warehouse:ws,inward:inn,outward:out});
+    const damage = [];
+    for (let c = 32; c <= 38; c++) {
+      const inp = row.cells[c].querySelector('input');
+      damage.push(inp ? (inp.value.trim() || '0') : '0');
+    }
+
+
+    rows.push({
+      customer,
+      oem,
+      part,
+      loopQty,
+      boxQuantity: boxQty,
+      warehouse: ws,
+      inward: inn,
+      outward: out,
+      damage
+    });
   }
 });
 /* Inventory export helpers: build header rows explicitly so Excel aligns with on-screen layout */
@@ -1688,16 +1711,22 @@ function exportInventoryToXlsx(){
 
   const ws = XLSX.utils.aoa_to_sheet(aoa);
 
-  // ===== MERGES (Same as webpage) =====
+  
+  // ===== MERGES (Same as webpage with LOOP QTY) =====
   ws['!merges'] = ws['!merges'] || [];
-  ws['!merges'].push({ s:{r:0,c:0}, e:{r:1,c:0} });
-  ws['!merges'].push({ s:{r:0,c:1}, e:{r:1,c:1} });
-  ws['!merges'].push({ s:{r:0,c:2}, e:{r:1,c:2} });
-  ws['!merges'].push({ s:{r:0,c:3},  e:{r:0,c:9}  });  // BOX QUANTITY
-  ws['!merges'].push({ s:{r:0,c:10}, e:{r:0,c:16} });  // WAREHOUSE
-  ws['!merges'].push({ s:{r:0,c:17}, e:{r:0,c:23} });  // INWARD
-  ws['!merges'].push({ s:{r:0,c:24}, e:{r:0,c:30} });  // OUTWARD
-  ws['!merges'].push({ s:{r:0,c:31}, e:{r:0,c:37} });  // DAMAGE
+
+  // CUSTOMER / OEM / PARTNAME / LOOP QTY (rowspan 2)
+  ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 1, c: 0 } });
+  ws['!merges'].push({ s: { r: 0, c: 1 }, e: { r: 1, c: 1 } });
+  ws['!merges'].push({ s: { r: 0, c: 2 }, e: { r: 1, c: 2 } });
+  ws['!merges'].push({ s: { r: 0, c: 3 }, e: { r: 1, c: 3 } }); // LOOP QTY
+
+  // GROUP HEADERS
+  ws['!merges'].push({ s: { r: 0, c: 4 }, e: { r: 0, c: 10 } });  // BOX QUANTITY
+  ws['!merges'].push({ s: { r: 0, c: 11 }, e: { r: 0, c: 17 } }); // WAREHOUSE
+  ws['!merges'].push({ s: { r: 0, c: 18 }, e: { r: 0, c: 24 } }); // INWARD
+  ws['!merges'].push({ s: { r: 0, c: 25 }, e: { r: 0, c: 31 } }); // OUTWARD
+  ws['!merges'].push({ s: { r: 0, c: 32 }, e: { r: 0, c: 38 } }); // DAMAGE
 
   // ===== COLORING (Matches webpage CSS) =====
   const range = XLSX.utils.decode_range(ws['!ref']);
