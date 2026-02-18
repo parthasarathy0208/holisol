@@ -1633,7 +1633,7 @@ if(invSaveBtn) invSaveBtn.addEventListener('click', ()=>{
 /* Inventory export helpers: build header rows explicitly so Excel aligns with on-screen layout */
 function inventoryHeaderRowsForExport(){
   const first = [
-    'CUSTOMER','OEM','PARTNAME',
+    'CUSTOMER','OEM','PARTNAME','LOOP QTY',
     'BOX QUANTITY','','','','','','',
     'WAREHOUSE STOCK','','','','','','',
     'INWARD','','','','','','',
@@ -1642,7 +1642,7 @@ function inventoryHeaderRowsForExport(){
   ];
 
   const second = [
-    'CUSTOMER','OEM','PARTNAME',
+    'CUSTOMER','OEM','PARTNAME', 'LOOP QTY',
     'PALLET','SLEEVE','LID','INSERTS','SEPARATOR','CRATES','DUMMY',
     'PALLET','SLEEVE','LID','INSERTS','SEPARATOR','CRATES','DUMMY',
     'PALLET','SLEEVE','LID','INSERTS','SEPARATOR','CRATES','DUMMY',
@@ -1668,6 +1668,7 @@ function buildInventoryAoA(){
     row.push((cells[0]?.textContent || '').trim()); // CUSTOMER
     row.push((cells[1]?.textContent || '').trim()); // OEM
     row.push((cells[2]?.textContent || '').trim()); // PART
+    row.push((cells[3]?.textContent || '').trim()); // LOOP QTY
 
     function pushInputs(start, end){
       for(let c=start; c<=end; c++){
@@ -1677,11 +1678,11 @@ function buildInventoryAoA(){
       }
     }
 
-    pushInputs(3,9);   // BOX QTY
-    pushInputs(10,16); // WAREHOUSE
-    pushInputs(17,23); // INWARD
-    pushInputs(24,30); // OUTWARD
-    pushInputs(31,37); // DAMAGE
+   pushInputs(4, 10);   // BOX
+    pushInputs(11, 17);  // WAREHOUSE
+    pushInputs(18, 24);  // INWARD
+    pushInputs(25, 31);  // OUTWARD
+    pushInputs(32, 38);  // DAMAGE
 
     aoa.push(row);
   });
