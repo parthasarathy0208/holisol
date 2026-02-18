@@ -2150,6 +2150,10 @@ document.getElementById('oem_clearFilter')?.addEventListener('click', () => {
   document.getElementById('oem_extraDiffContainer').innerHTML = '';
 });
 
+// PARTSIZE
+let originalData = [];   // stores API data
+let showWeight = false;  // toggle state
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const partsTile = document.getElementById("partssizeTile");
@@ -2183,24 +2187,29 @@ function loadPartSizeData() {
   fetch("https://holisol.onrender.com/api/part-sizes")
     .then(res => res.json())
     .then(data => {
-      const formatted = convertToTableFormat(data);
-      buildTable(formatted);
+      originalData = data;   // store once
+      renderTable();         // always render through controller
     })
+
     .catch(err => {
       console.error("Part Size Load Error:", err);
       alert("Failed to load Part Size data");
     });
+}
+function renderTable() {
+  const formatted = convertToTableFormat(originalData, showWeight);
+  buildTable(formatted);
 }
 
 
 /* ===========================
    CONVERT DB → TABLE FORMAT
 =========================== */
-function convertToTableFormat(data) {
+function convertToTableFormat(data, includeWeight) {
 
   const table = [];
 
-  // Header row
+  // headers NEVER change
   table.push([
     "CUSTOMER",
     "OEM",
@@ -2215,22 +2224,59 @@ function convertToTableFormat(data) {
   ]);
 
   data.forEach(item => {
+
+    function renderCell(size, weight) {
+
+      const sizeText = size ?? "";   // ALWAYS show size
+
+      // If toggle OFF → show only size (OLD behaviour)
+      if (!includeWeight) {
+        return `<div class="ps-size">${sizeText}</div>`;
+      }
+
+      // toggle ON → append weight BELOW size
+      const wtText =
+        (weight === undefined || weight === null || weight === "")
+          ? "NULL"
+          : weight + " KG";
+
+      return `
+        <div class="ps-cell">
+          <div class="ps-size">${sizeText}</div>
+          <div class="ps-weight">WT : ${wtText}</div>
+        </div>
+      `;
+    }
+
     table.push([
       item.customer ?? "",
       item.oem ?? "",
       item.partName ?? "",
-      item.partSize?.pallet ?? "",
-      item.partSize?.sleeve ?? "",
-      item.partSize?.lid ?? "",
-      item.partSize?.inserts ?? "",
-      item.partSize?.separator ?? "",
-      item.partSize?.crates ?? "",
-      item.partSize?.dummy ?? ""
+
+      renderCell(item.partSize?.pallet, item.partWeight?.pallet),
+      renderCell(item.partSize?.sleeve, item.partWeight?.sleeve),
+      renderCell(item.partSize?.lid, item.partWeight?.lid),
+      renderCell(item.partSize?.inserts, item.partWeight?.inserts),
+      renderCell(item.partSize?.separator, item.partWeight?.separator),
+      renderCell(item.partSize?.crates, item.partWeight?.crates),
+      renderCell(item.partSize?.dummy, item.partWeight?.dummy)
     ]);
   });
 
   return table;
 }
+
+document.getElementById("toggleWeightBtn").addEventListener("click", () => {
+
+  showWeight = !showWeight;
+
+  document.getElementById("toggleWeightBtn").textContent =
+    showWeight ? "Hide Weight" : "Show Weight";
+
+  toggleWeightDisplay();   // ⭐ only update cells
+});
+
+
 
 
 /* ===========================
@@ -2279,7 +2325,7 @@ function buildTable(data) {
 
     data[i].forEach(cell => {
       const td = document.createElement("td");
-      td.textContent = cell;
+      td.innerHTML = cell;
       tr.appendChild(td);
     });
 
@@ -2326,6 +2372,53 @@ function filterTable() {
     });
 
     row.style.display = showRow ? "" : "none";
+
+  });
+}
+
+
+function toggleWeightDisplay() {
+
+  const rows = document.querySelectorAll("#excelTable tbody tr");
+
+  rows.forEach(row => {
+
+    const customer = row.cells[0].innerText.trim();
+    const oem = row.cells[1].innerText.trim();
+    const partName = row.cells[2].innerText.trim();
+
+    // find matching original record
+    const record = originalData.find(r =>
+      r.customer === customer &&
+      r.oem === oem &&
+      r.partName === partName
+    );
+
+    if (!record) return;
+
+    const fields = ["pallet","sleeve","lid","inserts","separator","crates","dummy"];
+
+    fields.forEach((field, index) => {
+
+      const cell = row.cells[index + 3]; // start from pallet column
+      const size = record.partSize?.[field] ?? "";
+
+      if (!showWeight) {
+        // revert to original size only
+        cell.innerHTML = `<div class="ps-size">${size}</div>`;
+        return;
+      }
+
+      const weight = record.partWeight?.[field];
+      const wtText = (weight === undefined || weight === null) ? "NULL" : weight + " KG";
+
+      cell.innerHTML = `
+        <div class="ps-cell">
+          <div class="ps-size">${size}</div>
+          <div class="ps-weight">WT : ${wtText}</div>
+        </div>
+      `;
+    });
 
   });
 }
