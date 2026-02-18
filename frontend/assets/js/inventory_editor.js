@@ -93,13 +93,13 @@ async function createNew() {
 }
 
 function clearSevenInputs(prefix) {
-  sizeKeys.forEach(k => {
-    const el = document.getElementById(`${prefix}_${k}`);
-    if (el) {
-      el.value = "";          // clear value
-      el.defaultValue = "";   // clear browser cache
-    }
-  });
+    sizeKeys.forEach(k => {
+        const el = document.getElementById(`${prefix}_${k}`);
+        if (el) {
+            el.value = "";          // clear value
+            el.defaultValue = "";   // clear browser cache
+        }
+    });
 }
 
 function resetEditForm() {
@@ -113,7 +113,7 @@ function resetEditForm() {
   document.getElementById("edit_part").innerHTML = `<option value="">Select Part</option>`;
 
   // 🔹 Clear text/order fields
-  ["edit_customer_text", "edit_oem_text", "edit_part_text",
+  ["edit_customer_text", "edit_oem_text", "edit_part_text","edit_loopQty",
     "edit_oemOrder", "edit_itemOrder"].forEach(id => {
       const el = document.getElementById(id);
       if (el) {
@@ -124,16 +124,19 @@ function resetEditForm() {
 
   // ✅ VERY IMPORTANT — clear values BEFORE rebuild
   clearSevenInputs("edit_ps");
+  clearSevenInputs("edit_pw"); 
   clearSevenInputs("edit_box");
   clearSevenInputs("edit_wh");
 
   // 🔹 Remove DOM nodes completely
   document.getElementById("edit_partSize").replaceChildren();
+  document.getElementById("edit_partWeight").replaceChildren();
   document.getElementById("edit_boxQty").replaceChildren();
   document.getElementById("edit_whStock").replaceChildren();
 
   // 🔹 Rebuild fresh inputs
   createSevenInputs("edit_partSize", "edit_ps", true, "text");
+  createSevenInputs("edit_partWeight", "edit_pw", true, "text");
   createSevenInputs("edit_boxQty", "edit_box", true, "number");
   createSevenInputs("edit_whStock", "edit_wh", true, "number");
 }
