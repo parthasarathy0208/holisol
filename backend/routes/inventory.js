@@ -662,9 +662,10 @@ router.delete('/delete/:id', async (req, res) => {
 });
 
 
+
 router.post('/create', async (req, res) => {
   try {
-    const { customer, oem, partName, oemOrder, itemOrder } = req.body;
+    const { customer, oem, partName, oemOrder, itemOrder,  loopQty } = req.body;
 
     const zeroSet = {
       pallet: 0,
@@ -675,14 +676,26 @@ router.post('/create', async (req, res) => {
       crates: 0,
       dummy: 0
     };
+    const nilSet = {
+      pallet: "NIL",
+      sleeve: "NIL",
+      lid: "NIL",
+      inserts: "NIL",
+      separator: "NIL",
+      crates: "NIL",
+      dummy: "NIL"
+    };
+
 
     const newDoc = new Inventory({
       customer,
       oem,
       partName,
+      loopQty: loopQty ?? 0,
       oemOrder,
       itemOrder,
-      partSize: null,
+      partSize: { ...nilSet },
+      partWeight: { ...nilSet },
       boxQuantity: zeroSet,
       warehouseStock: zeroSet,
       inward: zeroSet,
