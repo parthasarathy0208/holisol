@@ -678,13 +678,19 @@
           </div>
         </section>
 
-        
+        <!-- PARTSIZE -->
         <section id="partsSizeView" class="panel view hidden">
+
+          <div class="ps-toolbar">
+            <button id="toggleWeightBtn" class="oh-btn">Show Weight</button>
+          </div>
+
           <div id="psScrollContainer">
             <div id="psDataWrap" class="oh-data-wrap">
               <table id="excelTable" class="oh-table"></table>
             </div>
           </div>
+
         </section>
         <!-- set availability -->
         <section id="setavailabilityView" class="panel view hidden" aria-hidden="true">
@@ -768,7 +774,7 @@
 
             <hr style="margin:25px 0;">
 
-            <!-- ORDER -->
+           <!-- ORDER -->
             <div class="row">
 
               <div class="field">
@@ -786,12 +792,18 @@
                 <input id="edit_part_text" disabled>
               </div>
 
-              <div class="field" style="max-width:80px;">
+              <div class="field small-field">
+                <div class="label">LOOP QTY</div>
+                <input id="edit_loopQty" disabled>
+              </div>
+
+
+              <div class="field small-field">
                 <div class="label">OEM ORDER</div>
                 <input id="edit_oemOrder" disabled>
               </div>
 
-              <div class="field" style="max-width:120px;">
+              <div class="field small-field">
                 <div class="label">ITEM ORDER</div>
                 <input id="edit_itemOrder" disabled>
               </div>
@@ -801,6 +813,11 @@
             <div class="stock-col" style="margin-bottom:20px;">
               <div class="form-titlee">PARTNAME SIZE</div>
               <div class="seven-row" id="edit_partSize"></div>
+            </div>
+
+            div class="stock-col" style="margin-bottom:20px;">
+              <div class="form-titlee">PARTNAME WEIGHT</div>
+              <div class="seven-row" id="edit_partWeight"></div>
             </div>
 
             <div class="dual-stock-row">
