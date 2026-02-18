@@ -6,6 +6,7 @@
       customer: r.customer || r.CUSTOMER || r.customerName || '',
       oem: r.oem || r.OEM || '',
       partName: r.partName || r.partname || r['PART NAME'] || '',
+      loopQty: r.loopQty ?? r.LOOPQTY ?? 0,
       boxQuantity: {
         pallet: (r.boxQuantity && r.boxQuantity.pallet) ?? r['BOX QUANTITY PALLET'] ?? null,
         sleeve: (r.boxQuantity && r.boxQuantity.sleeve) ?? r['BOX QUANTITY SLEEVE'] ?? null,
@@ -116,6 +117,8 @@
       if (oemCell && !oemCell.querySelector('input')) oemCell.textContent = item.oem || '';
       const partCell = row.querySelector('.partname') || row.querySelector('td:nth-child(3)');
       if (partCell && !partCell.querySelector('input')) partCell.textContent = item.partName || '';
+      const loopCell = row.querySelector('.col-loop') || row.querySelector('td:nth-child(4)');
+      if (loopCell) loopCell.textContent = item.loopQty ?? 0;
     });
     return true;
   }
