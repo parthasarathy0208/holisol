@@ -51,6 +51,7 @@ header .user{font-weight:500}
 .t-parts{background:#f65bdc}
 .t-set{background:#58994b}
 .t-exist{background:#ab5ff2}
+.t-sets{background:#a69f9f}
 
 
 /* generic form elements */
@@ -1634,10 +1635,11 @@ input:focus-visible {
 ============================================================ */
 
 .active-tab {
-  background: #a69f9f;
+  background:#58994b ;
   color: #0f0f0f;
   font-weight: 600;
 }
+
 
 
 /* ============================================================
