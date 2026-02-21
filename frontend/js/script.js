@@ -1996,19 +1996,20 @@ if (shortageSummaryTile && shortageSummaryView) {
   });
 }
 
-// Shortage Summary - SHORTAGE TABLE
+// Shortage Summary - SHORTAGE TABLE (MULTI OEM + MULTI PART SUPPORT)
 document.querySelector('.ss-orange-btn')?.addEventListener('click', async () => {
+
   const fromSource = document.getElementById('ss_from')?.value;
   let url = '';
 
-if (fromSource.toUpperCase() === 'INWARD HISTORY') {
-  url = 'https://holisol.onrender.com/api/inventory/inward-summary';
-} else if (fromSource.toUpperCase() === 'OEM INWARD HISTORY') {
-  url = 'https://holisol.onrender.com/api/inventory/oem-inward-summary';
-} else {
-  alert("Please select a valid FROM option");
-  return;
-}
+  if (fromSource.toUpperCase() === 'INWARD HISTORY') {
+    url = 'https://holisol.onrender.com/api/inventory/inward-summary';
+  } else if (fromSource.toUpperCase() === 'OEM INWARD HISTORY') {
+    url = 'https://holisol.onrender.com/api/inventory/oem-inward-summary';
+  } else {
+    alert("Please select a valid FROM option");
+    return;
+  }
 
   const fromDate = document.getElementById('ss_date_from').value;
   const toDate = document.getElementById('ss_date_to').value;
@@ -2025,44 +2026,19 @@ if (fromSource.toUpperCase() === 'INWARD HISTORY') {
   if (spinner) spinner.style.display = "inline-block";
 
   try {
+
     const res = await fetch(
-  `${url}?from=${fromDate}&to=${toDate}&customer=${customer}&oem=${oem}&partName=${part}`
-);
+      `${url}?from=${fromDate}&to=${toDate}&customer=${customer}&oem=${oem}&partName=${part}`
+    );
+
     const data = await res.json();
 
     if (spinner) spinner.style.display = "none";
 
-    if (!data.ok) {
-      alert("No inward data found for selected filters");
+    if (!data.ok || !data.rows || data.rows.length === 0) {
+      alert("No data found for selected filters");
       return;
     }
-
-    const t = data.total;
-
-    const row = `
-  <tr>
-    <td>${fromDate}</td>
-    <td>${toDate}</td>
-    <td>${customer}</td>
-    <td>${oem}</td>
-    <td>${part}</td>
-    <td>${t.pallet}</td>
-    <td>${t.sleeve}</td>
-    <td>${t.lid}</td>
-    <td>${t.inserts}</td>
-    <td>${t.separator}</td>
-    <td>${t.crates}</td>
-    <td>${t.dummy}</td>
-    <td>${data.sets || 0}</td>
-    <td>${data.shortages?.pallet || 0}</td>
-    <td>${data.shortages?.sleeve || 0}</td>
-    <td>${data.shortages?.lid || 0}</td>
-    <td>${data.shortages?.inserts || 0}</td>
-    <td>${data.shortages?.separator || 0}</td>
-    <td>${data.shortages?.crates || 0}</td>
-    <td>${data.shortages?.dummy || 0}</td>
-  </tr>
-`;
 
     const table = document.getElementById("ssTable");
     if (!table) {
@@ -2070,21 +2046,52 @@ if (fromSource.toUpperCase() === 'INWARD HISTORY') {
       return;
     }
 
-    // Remove old rows (keep headers)
+    // ✅ Remove old rows (keep header rows)
     table.querySelectorAll("tr").forEach((tr, i) => {
       if (i > 1) tr.remove();
     });
 
-    // Insert row safely
-    table.insertAdjacentHTML("beforeend", row);
+    // ✅ Insert MULTIPLE rows
+    data.rows.forEach(r => {
+
+      const row = `
+        <tr>
+          <td>${fromDate}</td>
+          <td>${toDate}</td>
+          <td>${r.customer}</td>
+          <td>${r.oem}</td>
+          <td>${r.partName}</td>
+
+          <td>${r.total.pallet}</td>
+          <td>${r.total.sleeve}</td>
+          <td>${r.total.lid}</td>
+          <td>${r.total.inserts}</td>
+          <td>${r.total.separator}</td>
+          <td>${r.total.crates}</td>
+          <td>${r.total.dummy}</td>
+
+          <td>${r.sets}</td>
+
+          <td>${r.shortages.pallet}</td>
+          <td>${r.shortages.sleeve}</td>
+          <td>${r.shortages.lid}</td>
+          <td>${r.shortages.inserts}</td>
+          <td>${r.shortages.separator}</td>
+          <td>${r.shortages.crates}</td>
+          <td>${r.shortages.dummy}</td>
+        </tr>
+      `;
+
+      table.insertAdjacentHTML("beforeend", row);
+    });
 
   } catch (err) {
     if (spinner) spinner.style.display = "none";
     console.error(err);
     alert("Server error while fetching summary");
   }
-});
 
+});
 
 // Shortage Summary - Clear Filter
 document.getElementById('ss_clear')?.addEventListener('click', () => {
