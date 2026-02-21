@@ -392,137 +392,181 @@ router.get('/inward-summary', async (req, res) => {
 
       const recordDate = r.receiveDate.trim();
 
+      // Date filter always applied
       if (recordDate < fromDMY || recordDate > toDMYDate) return false;
-      if (customer && normalize(r.customer) !== normalize(customer)) return false;
-      if (oem && normalize(r.oem) !== normalize(oem)) return false;
-      if (partName && normalize(r.partName) !== normalize(partName)) return false;
+
+      const recCustomer = normalize(r.customer);
+      const recOEM = normalize(r.oem);
+      const recPart = normalize(r.partName);
+
+      // Apply filters ONLY if user selected them
+      if (customer && recCustomer !== normalize(customer)) return false;
+      if (oem && recOEM !== normalize(oem)) return false;
+      if (partName && recPart !== normalize(partName)) return false;
 
       return true;
     });
 
-    const total = {
-      pallet: 0, sleeve: 0, lid: 0,
-      inserts: 0, separator: 0,
-      crates: 0, dummy: 0
-    };
+    // ✅ GROUP BY CUSTOMER + OEM + PARTNAME
+    const grouped = {};
 
     filtered.forEach(r => {
+      const key = `${normalize(r.customer)}|${normalize(r.oem)}|${normalize(r.partName)}`;
+
+      if (!grouped[key]) {
+        grouped[key] = {
+          customer: normalize(r.customer),
+          oem: normalize(r.oem),
+          partName: normalize(r.partName),
+          total: { pallet: 0, sleeve: 0, lid: 0, inserts: 0, separator: 0, crates: 0, dummy: 0 }
+        };
+      }
+
       const b = r.boxes || {};
-      total.pallet += Number(b.pallet || 0);
-      total.sleeve += Number(b.sleeve || 0);
-      total.lid += Number(b.lid || 0);
-      total.inserts += Number(b.inserts || 0);
-      total.separator += Number(b.separator || 0);
-      total.crates += Number(b.crates || 0);
-      total.dummy += Number(b.dummy || 0);
+
+      grouped[key].total.pallet += Number(b.pallet || 0);
+      grouped[key].total.sleeve += Number(b.sleeve || 0);
+      grouped[key].total.lid += Number(b.lid || 0);
+      grouped[key].total.inserts += Number(b.inserts || 0);
+      grouped[key].total.separator += Number(b.separator || 0);
+      grouped[key].total.crates += Number(b.crates || 0);
+      grouped[key].total.dummy += Number(b.dummy || 0);
     });
 
+    // ✅ CALCULATE SETS + SHORTAGE FOR EACH GROUP
+    const result = [];
 
-    // compute sets & shortages using Inventory.boxQuantity
-    let sets = 0;
-    let shortages = { pallet: 0, sleeve: 0, lid: 0, inserts: 0, separator: 0, crates: 0, dummy: 0 };
+    for (const key in grouped) {
+      const g = grouped[key];
 
-    const inv = await Inventory.findOne({
-      customer: normalize(customer),
-      oem: normalize(oem),
-      partName: normalize(partName)
-    });
-
-    if (inv && inv.boxQuantity) {
-      const keys = ['pallet', 'sleeve', 'lid', 'inserts', 'separator', 'crates', 'dummy'];
-      const possible = [];
-      keys.forEach(k => {
-        const b = Number(inv.boxQuantity[k] || 0);
-        if (b > 0) possible.push(Math.floor(Number(total[k] || 0) / b));
+      const inv = await Inventory.findOne({
+        customer: g.customer,
+        oem: g.oem,
+        partName: g.partName
       });
-      sets = possible.length ? Math.min(...possible) : 0;
-      keys.forEach(k => {
-        shortages[k] = Number(total[k] || 0) - sets * Number(inv.boxQuantity[k] || 0);
-      });
+
+      let sets = 0;
+      let shortages = { pallet: 0, sleeve: 0, lid: 0, inserts: 0, separator: 0, crates: 0, dummy: 0 };
+
+      if (inv && inv.boxQuantity) {
+        const keys = ['pallet', 'sleeve', 'lid', 'inserts', 'separator', 'crates', 'dummy'];
+        const possible = [];
+
+        keys.forEach(k => {
+          const b = Number(inv.boxQuantity[k] || 0);
+          if (b > 0) possible.push(Math.floor(g.total[k] / b));
+        });
+
+        sets = possible.length ? Math.min(...possible) : 0;
+
+        keys.forEach(k => {
+          shortages[k] = g.total[k] - sets * Number(inv.boxQuantity[k] || 0);
+        });
+      }
+
+      result.push({ ...g, sets, shortages });
     }
 
-    res.json({ ok: true, total, sets, shortages });
-
+    res.json({ ok: true, rows: result });
 
   } catch (err) {
-    console.error('Inward summary error:', err);
-    res.status(500).json({ ok: false, error: String(err) });
+    console.error(err);
+    res.status(500).json({ ok: false });
   }
 });
-// GET OEM Inward Summary for Shortage Summary Page
+
 router.get('/oem-inward-summary', async (req, res) => {
   try {
     const { from, to, customer, oem, partName } = req.query;
 
     const normalize = v => (v || "").trim().toUpperCase();
 
-    // OEM Inward receiveDate format = YYYY-MM-DD
     const records = await OEMInwardHistory.find({});
 
+    // ✅ FILTER (independent filters like inward-summary)
     const filtered = records.filter(r => {
       if (!r.receiveDate) return false;
 
       const recordDate = r.receiveDate.trim(); // YYYY-MM-DD
 
       if (recordDate < from || recordDate > to) return false;
-      if (customer && normalize(r.customer) !== normalize(customer)) return false;
-      if (oem && normalize(r.oem) !== normalize(oem)) return false;
-      if (partName && normalize(r.partName) !== normalize(partName)) return false;
+
+      const recCustomer = normalize(r.customer);
+      const recOEM = normalize(r.oem);
+      const recPart = normalize(r.partName);
+
+      if (customer && recCustomer !== normalize(customer)) return false;
+      if (oem && recOEM !== normalize(oem)) return false;
+      if (partName && recPart !== normalize(partName)) return false;
 
       return true;
     });
 
-    const total = {
-      pallet: 0,
-      sleeve: 0,
-      lid: 0,
-      inserts: 0,
-      separator: 0,
-      crates: 0,
-      dummy: 0
-    };
+    // ✅ GROUP BY CUSTOMER + OEM + PARTNAME
+    const grouped = {};
 
     filtered.forEach(r => {
+      const key = `${normalize(r.customer)}|${normalize(r.oem)}|${normalize(r.partName)}`;
+
+      if (!grouped[key]) {
+        grouped[key] = {
+          customer: normalize(r.customer),
+          oem: normalize(r.oem),
+          partName: normalize(r.partName),
+          total: { pallet:0, sleeve:0, lid:0, inserts:0, separator:0, crates:0, dummy:0 }
+        };
+      }
+
       const b = r.boxes || {};
-      total.pallet += Number(b.pallet || 0);
-      total.sleeve += Number(b.sleeve || 0);
-      total.lid += Number(b.lid || 0);
-      total.inserts += Number(b.inserts || 0);
-      total.separator += Number(b.separator || 0);
-      total.crates += Number(b.crates || 0);
-      total.dummy += Number(b.dummy || 0);
+
+      grouped[key].total.pallet += Number(b.pallet || 0);
+      grouped[key].total.sleeve += Number(b.sleeve || 0);
+      grouped[key].total.lid += Number(b.lid || 0);
+      grouped[key].total.inserts += Number(b.inserts || 0);
+      grouped[key].total.separator += Number(b.separator || 0);
+      grouped[key].total.crates += Number(b.crates || 0);
+      grouped[key].total.dummy += Number(b.dummy || 0);
     });
 
+    // ✅ CALCULATE SETS + SHORTAGES PER GROUP
+    const result = [];
 
-    // compute sets & shortages using Inventory.boxQuantity
-    let sets = 0;
-    let shortages = { pallet: 0, sleeve: 0, lid: 0, inserts: 0, separator: 0, crates: 0, dummy: 0 };
+    for (const key in grouped) {
+      const g = grouped[key];
 
-    const inv = await Inventory.findOne({
-      customer: normalize(customer),
-      oem: normalize(oem),
-      partName: normalize(partName)
-    });
-
-    if (inv && inv.boxQuantity) {
-      const keys = ['pallet', 'sleeve', 'lid', 'inserts', 'separator', 'crates', 'dummy'];
-      const possible = [];
-      keys.forEach(k => {
-        const b = Number(inv.boxQuantity[k] || 0);
-        if (b > 0) possible.push(Math.floor(Number(total[k] || 0) / b));
+      const inv = await Inventory.findOne({
+        customer: g.customer,
+        oem: g.oem,
+        partName: g.partName
       });
-      sets = possible.length ? Math.min(...possible) : 0;
-      keys.forEach(k => {
-        shortages[k] = Number(total[k] || 0) - sets * Number(inv.boxQuantity[k] || 0);
-      });
+
+      let sets = 0;
+      let shortages = { pallet:0, sleeve:0, lid:0, inserts:0, separator:0, crates:0, dummy:0 };
+
+      if (inv && inv.boxQuantity) {
+        const keys = ['pallet','sleeve','lid','inserts','separator','crates','dummy'];
+        const possible = [];
+
+        keys.forEach(k => {
+          const b = Number(inv.boxQuantity[k] || 0);
+          if (b > 0) possible.push(Math.floor(g.total[k] / b));
+        });
+
+        sets = possible.length ? Math.min(...possible) : 0;
+
+        keys.forEach(k => {
+          shortages[k] = g.total[k] - sets * Number(inv.boxQuantity[k] || 0);
+        });
+      }
+
+      result.push({ ...g, sets, shortages });
     }
 
-    res.json({ ok: true, total, sets, shortages });
-
+    res.json({ ok:true, rows: result });
 
   } catch (err) {
     console.error('OEM Inward summary error:', err);
-    res.status(500).json({ ok: false, error: String(err) });
+    res.status(500).json({ ok:false, error:String(err) });
   }
 });
 
